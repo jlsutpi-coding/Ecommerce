@@ -4,11 +4,10 @@ import Header from "../components/Header";
 
 const Layout = () => {
   return (
-    <>
+    <div className=" px-8">
       <Header />
       <Outlet />
-      <p>hi hello world</p>
-    </>
+    </div>
   );
 };
 
