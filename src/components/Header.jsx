@@ -3,7 +3,7 @@ import { LiaShoppingBagSolid } from "react-icons/lia";
 
 const Header = () => {
   return (
-    <nav className="  h-21  bg-[#F8F9FA] flex justify-between items-center">
+    <nav className=" px-8  h-21  bg-[#F8F9FA] flex justify-between items-center">
       <div>
         <h1 className=" font-extrabold leading-8 tracking-[-1.2px]  text-[24px]">
           Indigo
