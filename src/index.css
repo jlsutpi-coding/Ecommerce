@@ -8,4 +8,6 @@
 
 @theme {
   --font-inter: "Inter", sans-serif;
+  --color-primary: #24389c;
+  --color-secondary: #565c84;
 }
