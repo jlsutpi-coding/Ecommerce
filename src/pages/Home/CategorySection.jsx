@@ -1,5 +1,3 @@
-import React from "react";
-
 const CategorySection = ({ products }) => {
   const categoryCount = products.reduce((acc, product) => {
     const cat = product.category;
@@ -13,7 +11,7 @@ const CategorySection = ({ products }) => {
   const categories = Object.entries(categoryCount);
 
   return (
-    <div className="  min-w-[256px]  ">
+    <div className="  w-full lg:w-64 shrink-0  ">
       <h2 className=" mb-6 font-bold opacity-40  text-[#191C1D]  text-[14px] leading-5 tracking-[1.4px]">
         {" "}
         CATEGORIES

@@ -2,12 +2,9 @@
 
 @import "tailwindcss";
 
-* {
-  font-family: "Manrope", sans-serif;
-}
-
 @theme {
   --font-inter: "Inter", sans-serif;
   --color-primary: #24389c;
   --color-secondary: #565c84;
+  --font-manrope: "Manrope", sans-serif;
 }

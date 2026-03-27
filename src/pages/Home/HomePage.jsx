@@ -21,9 +21,9 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="px-8 mx-auto">
+    <div className="pt-32 pb-20 max-w-360 mx-auto px-8">
       <HeroTitleSection />
-      <div className="flex justify-center gap-12">
+      <div className="flex flex-col lg:flex-row  gap-12">
         <CategorySection products={products} />
         <CardsSection products={products} />
       </div>
