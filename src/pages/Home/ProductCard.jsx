@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router";
 
 const ProductCard = ({ product }) => {
-  console.log(product);
   const { category, title, price, id, image } = product;
   return (
     <Link className="" to={`/product/${id}`}>

@@ -2,23 +2,19 @@ import React, { useEffect, useState } from "react";
 import HeroTitleSection from "./HeroTitleSection";
 import CardsSection from "./CardsSection";
 import CategorySection from "./CategorySection";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../../features/productSlice";
 
 const HomePage = () => {
-  const [products, setProducts] = useState([]);
+  const { products, status, error } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch(`https://fakestoreapi.com/products`);
-        const data = await response.json();
-        console.log(data, "data");
-        setProducts(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchProducts();
+    if (status === "idle") {
+      dispatch(fetchProducts());
+    }
   }, []);
+  console.log(products, " form redux");
 
   return (
     <div className="pt-32 pb-20 max-w-360 mx-auto px-8">

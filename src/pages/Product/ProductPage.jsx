@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import StarRating from "./StarRating";
 import { MdOutlineDeliveryDining } from "react-icons/md";
 import { CiHeart } from "react-icons/ci";
+import { useSelector } from "react-redux";
 
 const ProductPage = () => {
   const { productId } = useParams();
@@ -22,8 +23,6 @@ const ProductPage = () => {
     };
     fetchProduct();
   }, [productId]);
-
-  console.log(product);
 
   const { category, title, price, image, rating, description } = product;
 
