@@ -1,4 +1,8 @@
-const CategorySection = ({ products }) => {
+import { useSelector } from "react-redux";
+
+const CategorySection = () => {
+  const products = useSelector((state) => state.products.products);
+
   const categoryCount = products.reduce((acc, product) => {
     const cat = product.category;
     if (!acc[cat]) {

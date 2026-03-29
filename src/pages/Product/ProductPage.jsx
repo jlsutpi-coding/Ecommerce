@@ -1,30 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router";
-import StarRating from "./StarRating";
+
+import { useDispatch, useSelector } from "react-redux";
+
 import { MdOutlineDeliveryDining } from "react-icons/md";
 import { CiHeart } from "react-icons/ci";
-import { useSelector } from "react-redux";
+
+import {
+  clearSelectedProduct,
+  fetchProductById,
+} from "../../features/productSlice";
+import StarRating from "./StarRating";
 
 const ProductPage = () => {
   const { productId } = useParams();
-  const [product, setProduct] = useState({});
+
+  const dispatch = useDispatch();
+  const { selectedProduct, detailStatus, error } = useSelector(
+    (state) => state.products,
+  );
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const respose = await fetch(
-          `https://fakestoreapi.com/products/${productId}`,
-        );
-        const data = await respose.json();
-        setProduct(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchProduct();
-  }, [productId]);
+    dispatch(fetchProductById(productId));
 
-  const { category, title, price, image, rating, description } = product;
+    return () => dispatch(clearSelectedProduct());
+  }, [productId, dispatch]);
+
+  if (detailStatus === "pending") return <>pending</>;
+  if (detailStatus === "failed") return <>error</>;
+
+  if (!selectedProduct) return null;
+
+  const { category, title, price, image, rating, description } =
+    selectedProduct;
 
   return (
     <div className=" mt-24 mb-12 mx-12 flex gap-16 items-center">

@@ -3,10 +3,13 @@ import axios from "axios";
 
 const initialState = {
   products: [],
-  status: "idle", // idel | pending | successed | failed
+  selectedProduct: null,
+  productsStatus: "idle", // idel | pending | successed | failed
+  detailStatus: "idle", // idel | pending | successed | failed
   error: null,
 };
 
+// fetch all products from fakestoreapi.com/products
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
@@ -15,23 +18,49 @@ export const fetchProducts = createAsyncThunk(
   },
 );
 
-export const productSlice = createSlice({
+//fetch a product from fakestoreapi using id
+export const fetchProductById = createAsyncThunk(
+  "products/fetchProductById",
+  async (id) => {
+    const response = await axios.get(`https:fakestoreapi.com/products/${id}`);
+    return response.data;
+  },
+);
+
+export const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    clearSelectedProduct: (state) => {
+      state.selectedProduct = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
-        state.status = "pending";
+        state.productsStatus = "pending";
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.status = "successed";
+        state.productsStatus = "successed";
         state.products = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
-        state.status = "failed";
+        state.productsStatus = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(fetchProductById.pending, (state) => {
+        state.detailStatus = "pending";
+      })
+      .addCase(fetchProductById.fulfilled, (state, action) => {
+        state.detailStatus = "successed";
+        state.selectedProduct = action.payload;
+      })
+      .addCase(fetchProductById.rejected, (state, action) => {
+        state.detailStatus = "failed";
         state.error = action.error.message;
       });
   },
 });
-export default productSlice.reducer;
+export default productsSlice.reducer;
+
+export const { clearSelectedProduct } = productsSlice.actions;
