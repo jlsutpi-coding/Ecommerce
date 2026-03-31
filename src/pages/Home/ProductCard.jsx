@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router";
 
 const ProductCard = ({ product }) => {
-  const { category, title, price, id, image } = product;
+  const { category, title, price, id, thumbnail } = product;
   return (
     <Link className="" to={`/product/${id}`}>
       <div className=" group  w-70.5 h-112.25 flex flex-col gap-5  rounded-lg  ">
         <div className="w-full h-88.25 bg-[#F3F4F5]  overflow-hidden rounded-lg">
           <img
-            src={image}
+            src={thumbnail}
             className="w-full group-hover:scale-105 transition-all duration-300 h-full object-contain"
             alt=""
           />

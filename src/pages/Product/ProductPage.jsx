@@ -31,13 +31,13 @@ const ProductPage = () => {
 
   if (!selectedProduct) return null;
 
-  const { category, title, price, image, rating, description } =
+  const { category, title, price, thumbnail, rating, description } =
     selectedProduct;
 
   return (
     <div className=" mt-24 mb-12 mx-12 flex gap-16 items-center">
       <div className=" w-166 h-207.5 rounded-xl">
-        <img src={image} className=" w-full h-full object-contain" alt="" />
+        <img src={thumbnail} className=" w-full h-full object-contain" alt="" />
       </div>
       <div className=" w-114 flex flex-col gap-4 ">
         <div className="flex flex-col gap-2 pb-6 ">
