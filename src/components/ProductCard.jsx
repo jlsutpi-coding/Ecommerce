@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import ProductPricing from "../../components/ProductPricing";
+import ProductPricing from "./ProductPricing";
 
 const ProductCard = ({ product }) => {
   const { category, title, id, thumbnail } = product;

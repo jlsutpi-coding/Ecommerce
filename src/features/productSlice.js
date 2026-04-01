@@ -81,7 +81,11 @@ export const selectCategoriesWithCounts = createSelector(
     });
     return Object.keys(counts).map((slug) => ({
       slug,
-      name: slug?.charAt(0).toUpperCase() + slug.slice(1),
+      name: slug
+        .replace(/-/g, " ")
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" "),
       counts: counts[slug],
     }));
   },

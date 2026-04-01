@@ -4,6 +4,11 @@ import { selectCategoriesWithCounts } from "../../features/productSlice";
 const CategorySection = () => {
   const categories = useSelector(selectCategoriesWithCounts);
 
+  // all products counts
+  const allProductCounts = categories.reduce((acc, cat) => {
+    return acc + cat.counts;
+  }, 0);
+
   return (
     <div className="  w-full lg:w-64 shrink-0  ">
       <h2 className=" mb-6 font-bold opacity-40  text-[#191C1D]  text-[14px] leading-5 tracking-[1.4px]">
@@ -15,7 +20,7 @@ const CategorySection = () => {
           All Object
         </span>
         <span className=" font-inter  font-semibold text-[12px] leading-4 text-primary">
-          {/* {products.length} */}
+          {allProductCounts}
         </span>
       </div>
       {categories.map((item, index) => {
