@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import ProductPricing from "../../components/ProductPricing";
 
 const ProductCard = ({ product }) => {
-  const { category, title, price, id, thumbnail } = product;
+  const { category, title, id, thumbnail } = product;
   return (
     <Link className="" to={`/product/${id}`}>
       <div className=" group  w-70.5 h-112.25 flex flex-col gap-5  rounded-lg  ">

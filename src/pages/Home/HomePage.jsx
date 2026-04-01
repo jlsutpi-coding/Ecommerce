@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import HeroTitleSection from "./HeroTitleSection";
 import CardsSection from "./CardsSection";
-import CategorySection from "./CategorySection";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../features/productSlice";
+import CategorySection from "./CategorySection";
 
 const HomePage = () => {
-  const { productsStatus, error } = useSelector((state) => state.products);
+  const { productsStatus, products } = useSelector((state) => state.products);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (productsStatus === "idle") {
       dispatch(fetchProducts());
     }
-  }, [productsStatus, dispatch]);
+  }, [productsStatus, dispatch, fetchProducts]);
 
   if (productsStatus === "pending") return <p>Loading...</p>;
   if (productsStatus === "failed") return <p>Error: {error}</p>;
+  console.log(products);
+  if (products.length < 1) return null;
 
   return (
     <div className="pt-32 pb-20 max-w-360 mx-auto px-8">

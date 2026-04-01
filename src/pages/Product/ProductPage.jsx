@@ -14,7 +14,7 @@ const ProductPage = () => {
   const { productId } = useParams();
 
   const dispatch = useDispatch();
-  const { selectedProduct, detailStatus, error } = useSelector(
+  const { selectedProduct, detailStatus } = useSelector(
     (state) => state.products,
   );
 

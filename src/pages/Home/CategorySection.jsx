@@ -1,19 +1,8 @@
 import { useSelector } from "react-redux";
+import { selectCategoriesWithCounts } from "../../features/productSlice";
 
 const CategorySection = () => {
-  const products = useSelector((state) => state.products.products);
-
-  if (!products) return;
-  const categoryCount = products.reduce((acc, product) => {
-    const cat = product.category;
-    if (!acc[cat]) {
-      acc[cat] = 0;
-    }
-    acc[cat] += 1;
-    return acc;
-  }, {});
-
-  const categories = Object.entries(categoryCount);
+  const categories = useSelector(selectCategoriesWithCounts);
 
   return (
     <div className="  w-full lg:w-64 shrink-0  ">
@@ -26,20 +15,20 @@ const CategorySection = () => {
           All Object
         </span>
         <span className=" font-inter  font-semibold text-[12px] leading-4 text-primary">
-          {products.length}
+          {/* {products.length} */}
         </span>
       </div>
-      {categories.map(([cat, count], index) => {
+      {categories.map((item, index) => {
         return (
           <button
             key={index}
             className=" group  w-full cursor-pointer flex justify-between items-center mb-4"
           >
             <span className=" text-[#191C1D]/60 group-hover:text-primary  text-[16px] leading-6 font-normal font-inter">
-              {cat}
+              {item.name}
             </span>
             <span className=" font-inter leading-4 group-hover:text-primary text-[#191C1D]/60 text-[12px]">
-              {count}
+              {item.counts}
             </span>
           </button>
         );
