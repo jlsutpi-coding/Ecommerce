@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router";
 import ProductPricing from "./ProductPricing";
 
@@ -6,13 +5,18 @@ const ProductCard = ({ product }) => {
   const { category, title, id, thumbnail } = product;
   return (
     <Link className="" to={`/product/${id}`}>
-      <div className=" group  w-70.5 h-112.25 flex flex-col gap-5  rounded-lg  ">
+      <div className=" group  w-70.5 h-112.25 flex flex-col gap-5  rounded-lg  relative ">
         <div className="w-full h-88.25 bg-[#F3F4F5]  overflow-hidden rounded-lg">
           <img
             src={thumbnail}
             className="w-full group-hover:scale-105 transition-all duration-300 h-full object-contain"
             alt=""
           />
+          {product.discountPercentage > 10 && (
+            <span className="absolute top-2 left-2 z-20 bg-red-500 text-white px-2 py-1 text-xs rounded">
+              -{Math.round(product.discountPercentage)}%
+            </span>
+          )}
         </div>
         <div className=" p-2 flex flex-col gap-[4.5px] ">
           <div className=" font-inter text-priamry tracking-[1px] leading-3.75 font-semibold text-[10px] opacity-60">
