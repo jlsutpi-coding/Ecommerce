@@ -1,8 +1,12 @@
 import { Link } from "react-router";
 import ProductPricing from "./ProductPricing";
+import { LiaShoppingBagSolid } from "react-icons/lia";
+import { useSelector } from "react-redux";
 
 const ProductCard = ({ product }) => {
   const { category, title, id, thumbnail } = product;
+  const cartItems = useSelector((state) => state.carts);
+  console.log(cartItems);
   return (
     <Link className="" to={`/product/${id}`}>
       <div className=" group  w-70.5 h-112.25 flex flex-col gap-5  rounded-lg  relative ">
@@ -26,6 +30,16 @@ const ProductCard = ({ product }) => {
             {title.length > 20 ? title.substring(0, 20) + "..." : title}
           </h2>
           <ProductPricing product={product} page={"home"} />
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+            className="mt-4 w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white py-3 rounded-lg font-headline font-bold text-sm transition-all duration-300 group/btn active:scale-[0.98]"
+          >
+            <LiaShoppingBagSolid className="w-5 h-5" />
+
+            <span>Add to Cart</span>
+          </button>
         </div>
       </div>
     </Link>
