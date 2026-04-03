@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
     dispatch(addToCart(product));
   };
   return (
-    <Link className="" to={`/product/${id}`}>
+    <Link className="" to={`/products/${id}`}>
       <div className="   w-70.5 h-112.25 flex flex-col gap-5  rounded-lg  relative ">
         <div className="group w-full h-88.25">
           <div className=" bg-[#F3F4F5]  overflow-hidden rounded-lg">

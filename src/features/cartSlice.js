@@ -30,6 +30,7 @@ export const cartsSlice = createSlice({
           discountPercentage: payload.discountPercentage,
           total: totals.normalTotalPrice,
           discountedTotal: totals.totalDiscountedPrice,
+          category: payload.category,
         });
       } else {
         existingItem.quantity += 1;

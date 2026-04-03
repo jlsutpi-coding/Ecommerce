@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import CartItem from "./CartItem";
 
 const CartPage = () => {
   const { cartItems } = useSelector((state) => state.carts);
   return (
-    <main className="pt-32 px-12 pb-20 max-w-screen-2xl mx-auto">
+    <main className="pt-32 px-12 bg-[#f8f9fa] pb-20 max-w-screen-2xl mx-auto">
       <header className="mb-12">
         <h1 className="text-4xl font-manrope font-extrabold tracking-tight mb-2">
           Shopping Bag
@@ -14,13 +15,13 @@ const CartPage = () => {
         </p>
       </header>
 
-      <div className=" grid grid-cols-12 gap-12">
-        <div className=" grid-cols-8 bg-red-500 space-y-8">
+      <div className="  grid grid-cols-12 gap-12">
+        <div className=" col-span-8  space-y-8">
           {cartItems?.map((cart) => {
-            return <div key={cart.id}>hello </div>;
+            return <CartItem key={cart.id} cart={cart} />;
           })}
         </div>
-        <div className="grid-cols-4 bg-blue-600 "></div>
+        <div className="col-span-4 bg-blue-600 "></div>
       </div>
     </main>
   );
