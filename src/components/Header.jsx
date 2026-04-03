@@ -18,14 +18,16 @@ const Header = () => {
         <div>
           <input type="text" placeholder="search" />
         </div>
-        <button className=" cursor-pointer relative">
-          <LiaShoppingBagSolid className="w-7 h-7" />
-          {cartItems.length ? (
-            <span className=" text-white text-[10px]  bg-primary rounded-full h-4 w-4 absolute top-0 r-0">
-              {cartItems.length}
-            </span>
-          ) : null}
-        </button>
+        <Link to={"/cart"}>
+          <button className=" cursor-pointer relative">
+            <LiaShoppingBagSolid className="w-7 h-7" />
+            {cartItems.length ? (
+              <span className=" text-white text-[10px]  bg-primary rounded-full h-4 w-4 absolute top-0 r-0">
+                {cartItems.length}
+              </span>
+            ) : null}
+          </button>
+        </Link>
       </div>
     </nav>
   );
