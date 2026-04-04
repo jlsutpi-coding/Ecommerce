@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router";
 
 import { CgTrash } from "react-icons/cg";
@@ -6,12 +5,12 @@ import { IoMdAdd, IoMdRemove } from "react-icons/io";
 
 const CartItem = ({ cart }) => {
   return (
-    <div className="flex gap-8 bg-white rounded-xl shadow-sm group  p-6">
+    <div className="flex gap-8 bg-white rounded-xl shadow-sm  p-6">
       <div className=" h-60 rounded-lg  overflow-hidden shrink-0">
         <Link to={`/products/${cart.id}`}>
           <img
             src={cart.thumbnail}
-            className=" w-full h-full  mix-blend-multiply opacity-90 transition-transform duration-500 group-hover:scale-105 object-contain  "
+            className=" w-full h-full  mix-blend-multiply opacity-90 transition-transform duration-500 hover:scale-105 object-contain  "
             alt=""
           />
         </Link>

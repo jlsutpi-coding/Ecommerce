@@ -1,9 +1,7 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import CartItem from "./CartItem";
+import RightColumn from "./RightColumn";
+import LeftColumn from "./LeftColumn";
 
 const CartPage = () => {
-  const { cartItems } = useSelector((state) => state.carts);
   return (
     <main className="pt-32 px-12 bg-[#f8f9fa] pb-20 max-w-screen-2xl mx-auto">
       <header className="mb-12">
@@ -16,12 +14,8 @@ const CartPage = () => {
       </header>
 
       <div className="  grid grid-cols-12 gap-12">
-        <div className=" col-span-8  space-y-8">
-          {cartItems?.map((cart) => {
-            return <CartItem key={cart.id} cart={cart} />;
-          })}
-        </div>
-        <div className="col-span-4 bg-blue-600 "></div>
+        <LeftColumn />
+        <RightColumn />
       </div>
     </main>
   );
