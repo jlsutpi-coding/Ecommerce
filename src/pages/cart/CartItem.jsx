@@ -35,10 +35,10 @@ const CartItem = ({ cart }) => {
           </p>
           <div className=" flex items-end gap-2">
             <p className=" text-primary text-[24px] font-semibold leading-8  font-inter">
-              ${cart.discountedTotal}
+              ${cart.discountedTotal.toFixed(2)}
             </p>
             <p className=" line-through text-[14px] font-normal leading-5 text-[#454652] opacity-60 font-inter">
-              ${cart.price}
+              ${cart.price.toFixed(2)}
             </p>
           </div>
         </div>

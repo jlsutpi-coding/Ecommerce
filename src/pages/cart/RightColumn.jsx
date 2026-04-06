@@ -1,6 +1,11 @@
 import { FaArrowRight } from "react-icons/fa";
 
+import { useSelector } from "react-redux";
+
 const RightColumn = () => {
+  const carts = useSelector((state) => state.carts);
+  console.log(carts);
+
   return (
     <div className="col-span-4 bg-[#F3F4F5] rounded-xl flex flex-col p-8 gap-8 ">
       <div className=" flex flex-col gap-8 ">
@@ -14,7 +19,7 @@ const RightColumn = () => {
                 Subtotal
               </p>
               <p className=" font-inter font-semibold text-[16px]  text-[#191C1D] leading-6">
-                $3.23
+                ${carts?.totalAmount}
               </p>
             </div>
             <div className=" flex justify-between items-center">
@@ -30,7 +35,7 @@ const RightColumn = () => {
                 Discounts Applied
               </p>
               <p className=" font-inter font-semibold text-[16px]  text-[#2E7D32] leading-6">
-                -$112
+                -${carts?.totalDiscount}
               </p>
             </div>
             <hr className=" text-[#C5C5D4]/30" />
@@ -39,7 +44,7 @@ const RightColumn = () => {
                 Total
               </p>
               <p className="text-[24px] text-primary font-semibold font-inter leading-8">
-                $33.45
+                ${carts.totalDiscountedPrice}
               </p>
             </div>
           </div>

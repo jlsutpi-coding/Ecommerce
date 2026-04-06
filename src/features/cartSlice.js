@@ -1,9 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
   cartItems: [],
   totalQuantity: 0,
   totalAmount: 0,
+  totalDiscount: 0,
+  totalDiscountedPrice: 0,
   isLoading: false,
   error: null,
 };
@@ -32,6 +34,14 @@ export const cartsSlice = createSlice({
           discountedTotal: totals.totalDiscountedPrice,
           category: payload.category,
         });
+
+        console.log(current(state.cartItems));
+        // calculate all items total price
+        const allitemTotal = calculateTotalPrices(current(state.cartItems));
+
+        state.totalAmount = allitemTotal.totalPrice;
+        state.totalDiscount = allitemTotal.totalDiscount;
+        state.totalDiscountedPrice = allitemTotal.totalDiscountedPrice;
       } else {
         existingItem.quantity += 1;
         existingItem.total = totals.normalTotalPrice;
@@ -57,6 +67,35 @@ const calculateProductDetailTotal = (product, quantity = 1) => {
     normalTotalPrice: (priceInCents * quantity) / 100,
     totalDiscountedPrice: (discountedPricePerItemCent * quantity) / 100,
     totalSaving: (discountPerItemCents * quantity) / 100,
+  };
+};
+
+const calculateTotalPrices = (cartItems) => {
+  // Use a single reduce to calculate all three values at once
+  const totals = cartItems.reduce(
+    (acc, item) => {
+      const priceCents = Math.round(item.total * 100);
+      const discountedPriceCents = Math.round(item.discountedTotal * 100);
+
+      acc.totalPriceCents += priceCents;
+      acc.totalDiscountedPriceCents += discountedPriceCents;
+
+      // The discount is the original price minus the discounted price
+      acc.totalDiscountCents += priceCents - discountedPriceCents;
+
+      return acc;
+    },
+    {
+      totalPriceCents: 0,
+      totalDiscountedPriceCents: 0,
+      totalDiscountCents: 0,
+    },
+  );
+
+  return {
+    totalPrice: totals.totalPriceCents / 100,
+    totalDiscountedPrice: totals.totalDiscountedPriceCents / 100,
+    totalDiscount: totals.totalDiscountCents / 100,
   };
 };
 
