@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { CgTrash } from "react-icons/cg";
 import { IoMdAdd, IoMdRemove } from "react-icons/io";
 import { useDispatch } from "react-redux";
-import { addQuantity } from "../../features/cartSlice";
+import { addQuantity, subStractQuantity } from "../../features/cartSlice";
 
 const CartItem = ({ cart }) => {
   console.log(cart);
@@ -11,6 +11,10 @@ const CartItem = ({ cart }) => {
 
   const onAddBtnClick = (id) => {
     dispatch(addQuantity(id));
+  };
+
+  const onSubstractClick = (id) => {
+    dispatch(subStractQuantity(id));
   };
 
   return (
@@ -53,7 +57,12 @@ const CartItem = ({ cart }) => {
         </div>
         <div className="flex items-center justify-between mt-6">
           <div className="flex items-center border border-[#c5c5d4]/20 rounded-lg p-1 bg-[#f3f4f5]">
-            <button className="w-8 h-8 flex items-center justify-center hover:bg-[#e1e3e4] rounded transition-colors">
+            <button
+              onClick={() => {
+                onSubstractClick(cart.id);
+              }}
+              className="w-8 h-8 flex items-center justify-center hover:bg-[#e1e3e4] rounded transition-colors"
+            >
               <IoMdRemove />
             </button>
             <span className="w-10 text-center font-bold text-sm">

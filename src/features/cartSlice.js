@@ -65,6 +65,25 @@ export const cartsSlice = createSlice({
         updateGlobalTotals(state);
       }
     },
+    subStractQuantity: (state, { payload }) => {
+      const selectedProduct = state.cartItems.find((item) => {
+        return item.id === payload;
+      });
+      if (!selectedProduct || selectedProduct.quantity <= 1) return;
+      selectedProduct.quantity -= 1;
+
+      // calculate single item total and update the data
+
+      const totals = calculateProductDetailTotal(
+        selectedProduct,
+        selectedProduct.quantity,
+      );
+      selectedProduct.total = totals.normalTotalPrice;
+      selectedProduct.discountedTotal = totals.totalDiscountedPrice;
+
+      // update the totals of all items price
+      updateGlobalTotals(state);
+    },
   },
 });
 
@@ -126,4 +145,4 @@ const updateGlobalTotals = (state) => {
 };
 
 export default cartsSlice.reducer;
-export const { addToCart, addQuantity } = cartsSlice.actions;
+export const { addToCart, addQuantity, subStractQuantity } = cartsSlice.actions;
