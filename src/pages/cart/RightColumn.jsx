@@ -1,6 +1,7 @@
 import { FaArrowRight } from "react-icons/fa";
 
 import { useSelector } from "react-redux";
+import BtnPrimary from "../../components/BtnPrimary";
 
 const RightColumn = () => {
   const carts = useSelector((state) => state.carts);
@@ -60,18 +61,18 @@ const RightColumn = () => {
               type="text"
               className=" rounded-lg grow px-4 py-3 font-inter focus-visible:ring-1 focus-visible:ring-[#F3F4F5] focus:outline-none bg-[#E1E3E4]"
             />
-            <button className=" bg-primary rounded-lg text-white font-inter font-semibold text-[12px] leading-4  tracking-[-0.3px] px-4 py-3.5 ">
+            <BtnPrimary font_family="font-inter" text_size="text-[12px]">
               Apply
-            </button>
+            </BtnPrimary>
           </div>
         </div>
         <div>
-          <button className="   px-4 py-3.5 rounded-lg  w-full flex justify-center gap-2 items-center bg-primary grow text-white">
+          <BtnPrimary aditionnal={"grow"}>
             <span className=" font-manrope text-[18px] leading-7 font-bold">
               Proceed Checkout
             </span>
             <FaArrowRight />
-          </button>
+          </BtnPrimary>
         </div>
       </div>
     </div>

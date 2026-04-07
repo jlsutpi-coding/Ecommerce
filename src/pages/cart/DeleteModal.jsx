@@ -22,7 +22,6 @@ const DeleteModal = ({ openModal, setOpenModal, targetId }) => {
         <div className=" w-full flex  items-center gap-1 ">
           <BtnPrimary
             bg_color={"bg-gray-500"}
-            text_color={"text-white"}
             aditionnal={"grow"}
             onBtnClick={() => setOpenModal(false)}
           >
@@ -30,7 +29,6 @@ const DeleteModal = ({ openModal, setOpenModal, targetId }) => {
           </BtnPrimary>
           <BtnPrimary
             bg_color={"bg-red-500"}
-            text_color={"text-white"}
             aditionnal={"grow"}
             onBtnClick={() => {
               dispatch(deleteFromCart(targetId));

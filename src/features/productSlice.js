@@ -76,7 +76,7 @@ export const selectCategoriesWithCounts = createSelector(
   (products) => {
     const counts = {};
 
-    products.forEach((p) => {
+    products?.forEach((p) => {
       counts[p.category] = (counts[p.category] || 0) + 1;
     });
     return Object.keys(counts).map((slug) => ({

@@ -15,7 +15,6 @@ const ProductActions = ({ product }) => {
   return (
     <div className=" flex flex-col gap-4 ">
       <BtnPrimary
-        bg_color={"bg-primary"}
         aditionnal={
           "shadow-xl hover:shadow-2xl font-manrope text-white font-bold text-[18px] py-5 px-8 leading-7 tracking-[0.45px] w-full"
         }

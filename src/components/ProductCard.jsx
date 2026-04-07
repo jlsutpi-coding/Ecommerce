@@ -3,6 +3,7 @@ import ProductPricing from "./ProductPricing";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../features/cartSlice";
+import BtnPrimary from "./BtnPrimary";
 
 const ProductCard = ({ product }) => {
   const { category, title, id, thumbnail } = product;
@@ -37,18 +38,18 @@ const ProductCard = ({ product }) => {
             <ProductPricing product={product} page={"home"} />
           </div>
         </div>
-        <button
-          onClick={(e) => {
+        <BtnPrimary
+          onBtnClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
             btnAddToCart();
           }}
-          className="mt-4 w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white py-3 rounded-lg font-headline font-bold text-sm transition-all duration-300 group/btn active:scale-[0.98]"
+          aditionnal={"mt-4 w-full"}
         >
           <LiaShoppingBagSolid className="w-5 h-5" />
 
           <span>Add to Cart</span>
-        </button>
+        </BtnPrimary>
       </div>
     </Link>
   );

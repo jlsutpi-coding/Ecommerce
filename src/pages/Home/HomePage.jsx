@@ -18,7 +18,7 @@ const HomePage = () => {
 
   if (productsStatus === "pending") return <p>Loading...</p>;
   if (productsStatus === "failed") return <p>Error: {error}</p>;
-  if (products.length < 1) return null;
+  if (products?.length < 1) return null;
 
   return (
     <div className="pt-32 pb-20 max-w-360 mx-auto px-8">
