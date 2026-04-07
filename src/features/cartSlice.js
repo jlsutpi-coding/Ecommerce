@@ -1,6 +1,6 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+const initialState = JSON.parse(localStorage.getItem("carts")) || {
   cartItems: [],
   totalQuantity: 0,
   totalAmount: 0,
@@ -9,6 +9,7 @@ const initialState = {
   isLoading: false,
   error: null,
 };
+
 export const cartsSlice = createSlice({
   name: "carts",
   initialState,
@@ -41,6 +42,7 @@ export const cartsSlice = createSlice({
         existingItem.discountedTotal = totals.totalDiscountedPrice;
       }
       updateGlobalTotals(state);
+      updateToLocalStorage(state);
     },
 
     addQuantity: (state, { payload }) => {
@@ -62,6 +64,7 @@ export const cartsSlice = createSlice({
         selectedProduct.total = totals.normalTotalPrice;
         selectedProduct.discountedTotal = totals.totalDiscountedPrice;
         updateGlobalTotals(state);
+        updateToLocalStorage(state);
       }
     },
     subStractQuantity: (state, { payload }) => {
@@ -82,10 +85,12 @@ export const cartsSlice = createSlice({
 
       // update the totals of all items price
       updateGlobalTotals(state);
+      updateToLocalStorage(state);
     },
     deleteFromCart: (state, { payload }) => {
       state.cartItems = state.cartItems.filter((item) => item.id !== payload);
       updateGlobalTotals(state);
+      updateToLocalStorage(state);
     },
   },
 });
@@ -147,6 +152,9 @@ const updateGlobalTotals = (state) => {
   state.totalDiscountedPrice = allitemTotal.totalDiscountedPrice;
 };
 
+const updateToLocalStorage = (state) => {
+  localStorage.setItem("carts", JSON.stringify(state));
+};
 export default cartsSlice.reducer;
 export const { addToCart, addQuantity, subStractQuantity, deleteFromCart } =
   cartsSlice.actions;
