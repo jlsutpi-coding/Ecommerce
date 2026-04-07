@@ -59,7 +59,7 @@ const CartItem = ({ cart, onOpenModal }) => {
               ${cart.discountedTotal.toFixed(2)}
             </p>
             <p className=" line-through text-[14px] font-normal leading-5 text-[#454652] opacity-60 font-inter">
-              ${cart.price.toFixed(2)}
+              ${cart?.price.toFixed(2)}
             </p>
           </div>
         </div>

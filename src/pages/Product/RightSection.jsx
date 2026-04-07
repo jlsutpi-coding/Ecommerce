@@ -6,6 +6,7 @@ import ProductTrustBadges from "./ProductTrustBadges";
 
 const RightSection = ({ product }) => {
   const {
+    id,
     category,
     title,
     rating,
@@ -42,7 +43,7 @@ const RightSection = ({ product }) => {
           />
         </div>
 
-        <ProductActions />
+        <ProductActions product={product} />
 
         <ProductDescription description={description} />
       </div>

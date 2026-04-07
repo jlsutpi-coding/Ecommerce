@@ -15,6 +15,7 @@ export const cartsSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, { payload }) => {
+      if (!payload) return;
       // search if the prodcut is already exist or not
       const existingItem = state.cartItems.find(
         (item) => item.id === payload.id,
