@@ -3,7 +3,11 @@ import { Link } from "react-router";
 import { CgTrash } from "react-icons/cg";
 import { IoMdAdd, IoMdRemove } from "react-icons/io";
 import { useDispatch } from "react-redux";
-import { addQuantity, subStractQuantity } from "../../features/cartSlice";
+import {
+  addQuantity,
+  deleteFromCart,
+  subStractQuantity,
+} from "../../features/cartSlice";
 
 const CartItem = ({ cart }) => {
   console.log(cart);
@@ -15,6 +19,10 @@ const CartItem = ({ cart }) => {
 
   const onSubstractClick = (id) => {
     dispatch(subStractQuantity(id));
+  };
+
+  const onDelete = (id) => {
+    dispatch(deleteFromCart(id));
   };
 
   return (
@@ -38,7 +46,12 @@ const CartItem = ({ cart }) => {
             <p className=" font-inter ">{cart.category}</p>
           </div>
 
-          <button className="  p-2 text-[#454652] bg-[#F3F4F5] rounded-full hover:text-[#ba1a1a] transition-colors cursor-pointer">
+          <button
+            onClick={() => {
+              onDelete(cart.id);
+            }}
+            className="  p-2 text-[#454652] bg-[#F3F4F5] rounded-full hover:text-[#ba1a1a] transition-colors cursor-pointer"
+          >
             <CgTrash className="text-[20px]" />
           </button>
         </div>

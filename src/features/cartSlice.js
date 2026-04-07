@@ -48,7 +48,6 @@ export const cartsSlice = createSlice({
       const selectedProduct = state.cartItems.find(
         (item) => item.id === payload,
       );
-      console.log(state.cartItems);
 
       if (selectedProduct) {
         // update the quantity of selected Product
@@ -82,6 +81,10 @@ export const cartsSlice = createSlice({
       selectedProduct.discountedTotal = totals.totalDiscountedPrice;
 
       // update the totals of all items price
+      updateGlobalTotals(state);
+    },
+    deleteFromCart: (state, { payload }) => {
+      state.cartItems = state.cartItems.filter((item) => item.id !== payload);
       updateGlobalTotals(state);
     },
   },
@@ -145,4 +148,5 @@ const updateGlobalTotals = (state) => {
 };
 
 export default cartsSlice.reducer;
-export const { addToCart, addQuantity, subStractQuantity } = cartsSlice.actions;
+export const { addToCart, addQuantity, subStractQuantity, deleteFromCart } =
+  cartsSlice.actions;
