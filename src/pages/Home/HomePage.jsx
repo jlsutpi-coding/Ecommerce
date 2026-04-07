@@ -18,7 +18,6 @@ const HomePage = () => {
 
   if (productsStatus === "pending") return <p>Loading...</p>;
   if (productsStatus === "failed") return <p>Error: {error}</p>;
-  console.log(products);
   if (products.length < 1) return null;
 
   return (

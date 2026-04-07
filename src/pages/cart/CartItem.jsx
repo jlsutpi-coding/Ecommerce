@@ -2,8 +2,17 @@ import { Link } from "react-router";
 
 import { CgTrash } from "react-icons/cg";
 import { IoMdAdd, IoMdRemove } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { addQuantity } from "../../features/cartSlice";
 
 const CartItem = ({ cart }) => {
+  console.log(cart);
+  const dispatch = useDispatch();
+
+  const onAddBtnClick = (id) => {
+    dispatch(addQuantity(id));
+  };
+
   return (
     <div className="flex gap-8 bg-white rounded-xl shadow-sm  p-6">
       <div className=" h-60 rounded-lg  overflow-hidden shrink-0">
@@ -47,14 +56,18 @@ const CartItem = ({ cart }) => {
             <button className="w-8 h-8 flex items-center justify-center hover:bg-[#e1e3e4] rounded transition-colors">
               <IoMdRemove />
             </button>
-            <span className="w-10 text-center font-bold text-sm">02</span>
-            <button className="w-8 h-8 flex items-center justify-center hover:bg-[#e1e3e4] rounded transition-colors">
+            <span className="w-10 text-center font-bold text-sm">
+              {cart?.quantity}
+            </span>
+            <button
+              onClick={() => {
+                onAddBtnClick(cart?.id);
+              }}
+              className="w-8 h-8 flex items-center justify-center hover:bg-[#e1e3e4] rounded transition-colors"
+            >
               <IoMdAdd />
             </button>
           </div>
-          <span className="text-sm font-semibold text-primary/80">
-            Last 2 items
-          </span>
         </div>
       </div>
     </div>

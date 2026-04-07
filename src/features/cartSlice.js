@@ -14,6 +14,7 @@ export const cartsSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, { payload }) => {
+      // search if the prodcut is already exist or not
       const existingItem = state.cartItems.find(
         (item) => item.id === payload.id,
       );
@@ -34,18 +35,34 @@ export const cartsSlice = createSlice({
           discountedTotal: totals.totalDiscountedPrice,
           category: payload.category,
         });
-
-        console.log(current(state.cartItems));
-        // calculate all items total price
-        const allitemTotal = calculateTotalPrices(current(state.cartItems));
-
-        state.totalAmount = allitemTotal.totalPrice;
-        state.totalDiscount = allitemTotal.totalDiscount;
-        state.totalDiscountedPrice = allitemTotal.totalDiscountedPrice;
       } else {
         existingItem.quantity += 1;
         existingItem.total = totals.normalTotalPrice;
         existingItem.discountedTotal = totals.totalDiscountedPrice;
+      }
+      updateGlobalTotals(state);
+    },
+
+    addQuantity: (state, { payload }) => {
+      // Find the selected to update quantity
+      const selectedProduct = state.cartItems.find(
+        (item) => item.id === payload,
+      );
+      console.log(state.cartItems);
+
+      if (selectedProduct) {
+        // update the quantity of selected Product
+        selectedProduct.quantity += 1;
+
+        // calculate the prdouct deatals total prices
+        const totals = calculateProductDetailTotal(
+          selectedProduct,
+          selectedProduct.quantity,
+        );
+        // update the total price of product deatail
+        selectedProduct.total = totals.normalTotalPrice;
+        selectedProduct.discountedTotal = totals.totalDiscountedPrice;
+        updateGlobalTotals(state);
       }
     },
   },
@@ -99,5 +116,14 @@ const calculateTotalPrices = (cartItems) => {
   };
 };
 
+const updateGlobalTotals = (state) => {
+  // calculate all items total price
+  const allitemTotal = calculateTotalPrices(state.cartItems);
+  // update all items total price
+  state.totalAmount = allitemTotal.totalPrice;
+  state.totalDiscount = allitemTotal.totalDiscount;
+  state.totalDiscountedPrice = allitemTotal.totalDiscountedPrice;
+};
+
 export default cartsSlice.reducer;
-export const { addToCart } = cartsSlice.actions;
+export const { addToCart, addQuantity } = cartsSlice.actions;

@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 const RightColumn = () => {
   const carts = useSelector((state) => state.carts);
-  console.log(carts);
 
   return (
     <div className="col-span-4 bg-[#F3F4F5] rounded-xl flex flex-col p-8 gap-8 ">
