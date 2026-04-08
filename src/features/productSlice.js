@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   products: [],
+  filteredItems: [],
   selectedProduct: null,
   productsStatus: "idle", // idel | pending | successed | failed
   detailStatus: "idle", // idel | pending | successed | failed
@@ -40,6 +41,15 @@ export const productsSlice = createSlice({
   reducers: {
     clearSelectedProduct: (state) => {
       state.selectedProduct = null;
+    },
+    searchFromCart: (state, { payload }) => {
+      if (!payload) {
+        state.filteredItems = state.products;
+      } else {
+        state.filteredItems = state.products.filter((item) =>
+          item.title.toLowerCase().includes(payload.toLowerCase()),
+        );
+      }
     },
   },
   extraReducers: (builder) => {
@@ -92,4 +102,4 @@ export const selectCategoriesWithCounts = createSelector(
 );
 export default productsSlice.reducer;
 
-export const { clearSelectedProduct } = productsSlice.actions;
+export const { clearSelectedProduct, searchFromCart } = productsSlice.actions;
