@@ -1,9 +1,10 @@
-import React from "react";
 import { Route, Routes } from "react-router";
+
 import Layout from "./layout/Layout";
 import HomePage from "./pages/Home/HomePage";
 import ProductPage from "./pages/Product/ProductPage";
 import CartPage from "./pages/cart/CartPage";
+import WatchlistPage from "./pages/WatchlistPage";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/products/:productId" element={<ProductPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/watchlist" element={<WatchlistPage />} />
       </Route>
     </Routes>
   );

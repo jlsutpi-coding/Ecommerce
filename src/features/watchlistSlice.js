@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  cartItems: [],
+  watchlistItems: [],
   isError: null,
   isLoading: false,
 };
@@ -9,7 +9,14 @@ const initialState = {
 const watchlistSlice = createSlice({
   name: "watchlist",
   initialState,
-  reducers: {},
+  reducers: {
+    addToWatchlist: (state, { payload }) => {
+      if (!state.watchlistItems.some((item) => item.id === payload.id)) {
+        state.watchlistItems.push(payload);
+      }
+    },
+  },
 });
 
 export default watchlistSlice.reducer;
+export const { addToWatchlist } = watchlistSlice.actions;

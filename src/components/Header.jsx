@@ -1,14 +1,19 @@
+import { useState } from "react";
+
 import { Link } from "react-router";
 
-import { LiaShoppingBagSolid } from "react-icons/lia";
 import { useDispatch, useSelector } from "react-redux";
-import { CiSearch } from "react-icons/ci";
-import { useState } from "react";
+
+import { LiaShoppingBagSolid } from "react-icons/lia";
+import { CiHeart, CiSearch } from "react-icons/ci";
+
 import { searchFromCart } from "../features/productSlice";
+import HeaderIconButton from "./HeaderIconButton";
 
 const Header = () => {
   const [inputValue, setInputValue] = useState("");
   const { cartItems } = useSelector((state) => state.carts);
+  const { watchlistItems } = useSelector((state) => state.watchlists);
   const dispatch = useDispatch();
   return (
     <nav className=" px-8 fixed top-0 w-full z-50 bg-[#f8f9fa]/80  backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.05)]  h-21   flex justify-between items-center">
@@ -38,16 +43,17 @@ const Header = () => {
             aria-label="Search archive"
           />
         </div>
-        <Link to={"/cart"}>
-          <button className=" cursor-pointer relative">
-            <LiaShoppingBagSolid className="w-7 h-7" />
-            {cartItems.length ? (
-              <span className=" text-white text-[10px]  bg-primary rounded-full h-4 w-4 absolute top-0 r-0">
-                {cartItems.length}
-              </span>
-            ) : null}
-          </button>
-        </Link>
+
+        <HeaderIconButton
+          icon={<CiHeart className="w-7 h-7" />}
+          cartItems={watchlistItems}
+          link={"/watchlist"}
+        />
+        <HeaderIconButton
+          icon={<LiaShoppingBagSolid className="w-7 h-7" />}
+          cartItems={cartItems}
+          link={"/cart"}
+        />
       </div>
     </nav>
   );
