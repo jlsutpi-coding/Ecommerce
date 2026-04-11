@@ -6,7 +6,9 @@ import { fetchProducts } from "../../features/productSlice";
 import CategorySection from "./CategorySection";
 
 const HomePage = () => {
-  const { productsStatus } = useSelector((state) => state.products);
+  const { productsStatus, productsError, products } = useSelector(
+    (state) => state.products,
+  );
 
   const dispatch = useDispatch();
 
@@ -14,13 +16,13 @@ const HomePage = () => {
     if (productsStatus === "idle") {
       dispatch(fetchProducts());
     }
-  }, [productsStatus, dispatch, fetchProducts]);
+  }, [productsStatus, dispatch]);
 
   if (productsStatus === "pending") return <p>Loading...</p>;
-  if (productsStatus === "failed") return <p>Error: {error}</p>;
+  if (productsStatus === "failed") return <p>productsError: {productsError}</p>;
 
-  const { products } = useSelector((state) => state.products);
-  if (!products) return;
+  if (!products || products.length === 0)
+    return <p> No prodcuts available at the moment.</p>;
 
   return (
     <div className="pt-32 pb-20 max-w-360 mx-auto px-8">

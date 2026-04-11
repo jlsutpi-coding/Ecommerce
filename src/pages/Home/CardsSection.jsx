@@ -3,6 +3,10 @@ import ProductCard from "../../components/ProductCard";
 
 const CardsSection = () => {
   const { filteredItems, products } = useSelector((state) => state.products);
+
+  if (!products || !filteredItems)
+    return <p> No prodcuts available at the moment.</p>;
+
   const productsToshow = filteredItems.length > 0 ? filteredItems : products;
 
   return (
