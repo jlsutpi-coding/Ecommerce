@@ -5,7 +5,7 @@ const WatchlistHeader = ({ watchlistItems }) => {
   return (
     <>
       {" "}
-      <div className=" flex justify-between items-end">
+      <div className=" flex justify-between items-end mb-12">
         <div className=" flex flex-col gap-2">
           <div className=" flex gap-3 items-center justify-start">
             <IoEye className=" text-primary" />
