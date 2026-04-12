@@ -36,7 +36,7 @@ const HomePage = () => {
       <HeroTitleSection />
       <div className="flex flex-col lg:flex-row  gap-12">
         <CategorySection />
-        <CardsSection productsToshow={productsToshow} />
+        <CardsSection productsToshow={productsToshow} page={"home"} />
       </div>
     </div>
   );

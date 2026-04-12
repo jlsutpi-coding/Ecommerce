@@ -14,8 +14,8 @@ const ProductCard = ({ product }) => {
   };
   return (
     <Link className="" to={`/products/${id}`}>
-      <div className="   w-70.5 h-112.25 flex flex-col gap-5  rounded-lg  relative ">
-        <div className="group w-full h-88.25">
+      <div className="  col-span-1  flex flex-col gap-5  rounded-lg  relative ">
+        <div className="group w-full ">
           <div className=" bg-[#F3F4F5]  overflow-hidden rounded-lg">
             <img
               src={thumbnail}
@@ -44,7 +44,7 @@ const ProductCard = ({ product }) => {
             e.stopPropagation();
             btnAddToCart();
           }}
-          aditionnal={"mt-4 w-full"}
+          aditionnal={" w-full"}
         >
           <LiaShoppingBagSolid className="w-5 h-5" />
 

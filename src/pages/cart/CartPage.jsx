@@ -27,7 +27,7 @@ const CartPage = () => {
         </p>
       </header>
 
-      <div className="  grid grid-cols-12 gap-12">
+      <div className="  grid grid-cols-12 gap-12 items-start">
         <LeftColumn onOpenModal={triggerDeleteModal} />
         <RightColumn />
       </div>
