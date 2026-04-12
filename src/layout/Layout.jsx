@@ -1,12 +1,16 @@
 import React from "react";
 import { Outlet } from "react-router";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Layout = () => {
   return (
-    <div className="">
+    <div className=" flex flex-col min-h-screen">
       <Header />
-      <Outlet />
+      <main className=" grow">
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   );
 };

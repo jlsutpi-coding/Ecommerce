@@ -32,7 +32,7 @@ const HomePage = () => {
   console.log(productsToshow.length, productsStatus);
 
   return (
-    <div className="pt-32 pb-20 max-w-360 mx-auto px-8">
+    <div className="pt-32 px-8 pb-20 max-w-360 mx-auto ">
       <HeroTitleSection />
       <div className="flex flex-col lg:flex-row  gap-12">
         <CategorySection />
