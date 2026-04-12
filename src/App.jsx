@@ -4,7 +4,7 @@ import Layout from "./layout/Layout";
 import HomePage from "./pages/Home/HomePage";
 import ProductPage from "./pages/Product/ProductPage";
 import CartPage from "./pages/cart/CartPage";
-import WatchlistPage from "./pages/WatchlistPage";
+import WatchlistPage from "./pages/watchlist/WatchlistPage";
 
 const App = () => {
   return (

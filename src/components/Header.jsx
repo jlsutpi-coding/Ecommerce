@@ -29,6 +29,7 @@ const Header = () => {
           <CiSearch className="text-[#191c1d] text-base shrink-0" />
 
           <input
+            id="search"
             onChange={(e) => {
               setInputValue(e.target.value);
             }}
