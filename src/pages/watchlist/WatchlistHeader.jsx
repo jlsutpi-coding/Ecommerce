@@ -1,7 +1,13 @@
+import { useDispatch } from "react-redux";
 import BtnPrimary from "../../components/BtnPrimary";
 import { IoEye } from "react-icons/io5";
+import { deleteAllFromWatchlist } from "../../features/watchListSlice";
 
 const WatchlistHeader = ({ watchlistItems }) => {
+  const dispatch = useDispatch();
+  const onDeleteAllFromWatchlist = () => {
+    dispatch(deleteAllFromWatchlist());
+  };
   return (
     <>
       {" "}
@@ -34,7 +40,7 @@ const WatchlistHeader = ({ watchlistItems }) => {
             Move All to Cart
           </BtnPrimary>
           <BtnPrimary
-            onBtnClick={() => {}}
+            onBtnClick={() => onDeleteAllFromWatchlist()}
             bg_color="bg-[#ba1a1a]"
             aditionnal={"whitespace-nowrap"}
           >

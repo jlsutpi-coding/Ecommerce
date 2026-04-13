@@ -20,8 +20,13 @@ const watchlistSlice = createSlice({
         addToLocalStorage(state);
       }
     },
+    deleteAllFromWatchlist: (state) => {
+      state.watchlistItems = [];
+      addToLocalStorage(state);
+    },
   },
 });
 
 export default watchlistSlice.reducer;
-export const { addToWatchlist } = watchlistSlice.actions;
+export const { addToWatchlist, deleteAllFromWatchlist } =
+  watchlistSlice.actions;
