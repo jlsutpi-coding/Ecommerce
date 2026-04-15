@@ -2,11 +2,18 @@ import { useDispatch } from "react-redux";
 import BtnPrimary from "../../components/BtnPrimary";
 import { IoEye } from "react-icons/io5";
 import { deleteAllFromWatchlist } from "../../features/watchListSlice";
+import { addToCart } from "../../features/cartSlice";
 
 const WatchlistHeader = ({ watchlistItems }) => {
   const dispatch = useDispatch();
   const onDeleteAllFromWatchlist = () => {
     dispatch(deleteAllFromWatchlist());
+  };
+
+  const onMoveToAllCart = (watchlistItems) => {
+    watchlistItems.forEach((item) => {
+      dispatch(addToCart(item));
+    });
   };
   return (
     <>
@@ -32,21 +39,25 @@ const WatchlistHeader = ({ watchlistItems }) => {
             </span>
           </div>
         </div>
-        <div className="flex gap-4 flex-nowrap ">
-          <BtnPrimary
-            onBtnClick={() => {}}
-            aditionnal={"grow whitespace-nowrap"}
-          >
-            Move All to Cart
-          </BtnPrimary>
-          <BtnPrimary
-            onBtnClick={() => onDeleteAllFromWatchlist()}
-            bg_color="bg-[#ba1a1a]"
-            aditionnal={"whitespace-nowrap"}
-          >
-            <span>Delete All From watchlists</span>
-          </BtnPrimary>
-        </div>
+        {watchlistItems.length ? (
+          <div className="flex gap-4 flex-nowrap ">
+            <BtnPrimary
+              onBtnClick={() => onMoveToAllCart(watchlistItems)}
+              aditionnal={"grow whitespace-nowrap"}
+            >
+              Move All to Cart
+            </BtnPrimary>
+            <BtnPrimary
+              onBtnClick={() => onDeleteAllFromWatchlist()}
+              bg_color="bg-[#ba1a1a]"
+              aditionnal={"whitespace-nowrap"}
+            >
+              <span>Delete All From watchlists</span>
+            </BtnPrimary>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );

@@ -28,5 +28,5 @@ const watchlistSlice = createSlice({
 });
 
 export default watchlistSlice.reducer;
-export const { addToWatchlist, deleteAllFromWatchlist } =
+export const { addToWatchlist, deleteAllFromWatchlist, moveAllToWatchlist } =
   watchlistSlice.actions;
