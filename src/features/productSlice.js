@@ -51,6 +51,12 @@ export const productsSlice = createSlice({
         );
       }
     },
+    filterByCategory: (state, { payload }) => {
+      if (!payload) return;
+      state.filteredItems = state.products.filter(
+        (item) => item.category.toLowerCase() === payload.toLowerCase(),
+      );
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -60,6 +66,7 @@ export const productsSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.productsStatus = "successed";
         state.products = action.payload.products;
+        state.filteredItems = action.payload.products;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.productsStatus = "failed";
@@ -100,6 +107,32 @@ export const selectCategoriesWithCounts = createSelector(
     }));
   },
 );
+
+// get category type
+export const getCategoryType = (state) => {
+  const { filteredItems, products } = state.products;
+  if (!filteredItems.length) {
+    return null;
+  }
+  const allProductCounts = products.length || 0;
+  if (filteredItems.length === allProductCounts) {
+    return "all-products";
+  }
+
+  if (!allProductCounts) {
+    return null;
+  }
+
+  const firstCategory = filteredItems[0].category;
+
+  const allSameCategory = filteredItems.every(
+    (item) => item.category === firstCategory,
+  );
+
+  return allSameCategory ? firstCategory : null;
+};
+
 export default productsSlice.reducer;
 
-export const { clearSelectedProduct, searchFromCart } = productsSlice.actions;
+export const { clearSelectedProduct, searchFromCart, filterByCategory } =
+  productsSlice.actions;

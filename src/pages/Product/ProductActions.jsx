@@ -18,7 +18,6 @@ const ProductActions = ({ product }) => {
   };
 
   const { watchlistItems } = useSelector((state) => state.watchlists);
-  console.log(watchlistItems);
   return (
     <div className=" flex flex-col gap-4 ">
       <BtnPrimary

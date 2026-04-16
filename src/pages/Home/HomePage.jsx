@@ -13,9 +13,7 @@ const HomePage = () => {
 
   useEffect(() => {
     if (productsStatus === "idle") {
-      console.log("Hi");
       dispatch(fetchProducts());
-      console.log(products);
     }
   }, [productsStatus, dispatch]);
 
@@ -29,7 +27,6 @@ const HomePage = () => {
   }
 
   const productsToshow = filteredItems.length > 0 ? filteredItems : products;
-  console.log(productsToshow.length, productsStatus);
 
   return (
     <div className="pt-32 px-8 pb-20 max-w-360 mx-auto ">

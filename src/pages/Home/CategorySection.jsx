@@ -1,13 +1,23 @@
-import { useSelector } from "react-redux";
-import { selectCategoriesWithCounts } from "../../features/productSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  filterByCategory,
+  getCategoryType,
+  selectCategoriesWithCounts,
+} from "../../features/productSlice";
 
 const CategorySection = () => {
   const categories = useSelector(selectCategoriesWithCounts);
+  const activeCategory = useSelector(getCategoryType);
+
+  const dispatch = useDispatch();
 
   // all products counts
   const allProductCounts = categories.reduce((acc, cat) => {
     return acc + cat.counts;
   }, 0);
+  console.log(categories);
+
+  //
 
   return (
     <div className="  w-full lg:w-64 shrink-0  ">
@@ -16,10 +26,14 @@ const CategorySection = () => {
         CATEGORIES
       </h2>
       <div className=" cursor-pointer flex justify-between items-center mb-4  ">
-        <span className=" font-inter text-primary font-semibold text-[16px] leading-6">
+        <span
+          className={` font-inter ${activeCategory === "all-products" ? "text-primary" : "text-[#191C1D]/60"}  ${activeCategory === null && "opacity-50"} font-semibold text-[16px] leading-6`}
+        >
           All Object
         </span>
-        <span className=" font-inter  font-semibold text-[12px] leading-4 text-primary">
+        <span
+          className={` font-inter  font-semibold text-[12px] leading-4  ${activeCategory === null && "opacity-50"} ${activeCategory === "all-products" ? "text-primary" : "text-[#191C1D]/60"}`}
+        >
           {allProductCounts}
         </span>
       </div>
@@ -27,12 +41,16 @@ const CategorySection = () => {
         return (
           <button
             key={index}
-            className=" group  w-full cursor-pointer flex justify-between items-center mb-4"
+            onClick={() => {
+              dispatch(filterByCategory(item.slug));
+              // getActiveCategory();
+            }}
+            className={` ${activeCategory === item.slug ? "text-primary" : "text-[#191C1D]/60"} group  w-full cursor-pointer flex justify-between items-center mb-4`}
           >
-            <span className=" text-[#191C1D]/60 group-hover:text-primary  text-[16px] leading-6 font-normal font-inter">
+            <span className="  group-hover:text-primary/90  text-[16px] leading-6 font-normal font-inter">
               {item.name}
             </span>
-            <span className=" font-inter leading-4 group-hover:text-primary text-[#191C1D]/60 text-[12px]">
+            <span className=" font-inter leading-4 group-hover:text-primary/90  text-[12px]">
               {item.counts}
             </span>
           </button>
