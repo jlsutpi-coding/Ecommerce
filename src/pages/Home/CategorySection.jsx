@@ -3,6 +3,7 @@ import {
   filterByCategory,
   getCategoryType,
   selectCategoriesWithCounts,
+  selectTotalProductCount,
 } from "../../features/productSlice";
 
 const CategorySection = () => {
@@ -12,9 +13,7 @@ const CategorySection = () => {
   const dispatch = useDispatch();
 
   // all products counts
-  const allProductCounts = categories.reduce((acc, cat) => {
-    return acc + cat.counts;
-  }, 0);
+  const allProductCounts = useSelector(selectTotalProductCount);
   console.log(categories);
 
   //

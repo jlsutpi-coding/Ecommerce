@@ -132,6 +132,13 @@ export const getCategoryType = (state) => {
   return allSameCategory ? firstCategory : null;
 };
 
+export const selectTotalProductCount = createSelector(
+  [selectCategoriesWithCounts],
+  (categories) => {
+    return categories.reduce((acc, cat) => cat.counts + acc, 0);
+  },
+);
+
 export default productsSlice.reducer;
 
 export const { clearSelectedProduct, searchFromCart, filterByCategory } =

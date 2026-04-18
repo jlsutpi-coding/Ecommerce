@@ -10,7 +10,7 @@ const HomePage = () => {
     useSelector((state) => state.products);
 
   const dispatch = useDispatch();
-
+  console.log(products);
   useEffect(() => {
     if (productsStatus === "idle") {
       dispatch(fetchProducts());
