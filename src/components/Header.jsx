@@ -14,6 +14,9 @@ const Header = () => {
   const [inputValue, setInputValue] = useState("");
   const { cartItems } = useSelector((state) => state.carts);
   const { watchlistItems } = useSelector((state) => state.watchlists);
+
+  const { searchQuery } = useSelector((state) => state.search);
+  console.log(searchQuery);
   const dispatch = useDispatch();
   return (
     <nav className=" px-12 fixed top-0 w-full z-50 bg-[#f8f9fa]/80  backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.05)]  h-21   flex justify-between items-center">
