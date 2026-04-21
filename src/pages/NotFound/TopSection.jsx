@@ -18,12 +18,12 @@ const TopSection = () => {
               <MdFolderOff className="w-8 h-8 text-[#D9DADB]" />
             </div>
             <div className=" flex flex-col gap-2">
-              <div className=" w-[80%] h-2 rounded-sm bg-[#D9DADB]"></div>
-              <div className=" w-[50%] h-2 rounded-sm bg-[#D9DADB]/50"></div>
-              <div className=" w-[60%] h-2 rounded-sm bg-[#D9DADB]/30"></div>
+              <div className=" w-[80%] animate-pulse h-2 rounded-sm bg-[#D9DADB]"></div>
+              <div className=" w-[50%] h-2 rounded-sm animate-pulse bg-[#D9DADB]/50"></div>
+              <div className=" w-[60%] h-2 rounded-sm animate-pulse bg-[#D9DADB]/30"></div>
             </div>
             <div>
-              <div className=" mt-1.75 w-[20%] bg-[#24389C]/20 h-2 rounded-sm"></div>
+              <div className=" animate-pulse mt-1.75 w-[20%] bg-[#24389C]/20 h-2 rounded-sm"></div>
             </div>
           </div>
         </div>

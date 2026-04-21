@@ -1,5 +1,5 @@
+import InputSearch from "../../components/InputSearch";
 import ActionButtons from "./ActionButtons";
-import SearchArea from "./SearchArea";
 import TopSection from "./TopSection";
 import TypoContent from "./TypoContent";
 
@@ -9,7 +9,9 @@ const NotFoundPage = () => {
       <div className=" max-w-4xl  flex flex-col items-center gap-12  grow  mt-30">
         <TopSection />
         <TypoContent />
-        <SearchArea />
+        <div className="mx-auto">
+          <InputSearch page={"not-found"} />
+        </div>
         <ActionButtons />
       </div>
     </div>
