@@ -9,18 +9,10 @@ const HomePage = () => {
   const { filteredItems, productsStatus, productsError, products } =
     useSelector((state) => state.products);
 
-  const dispatch = useDispatch();
-  console.log(products);
-  useEffect(() => {
-    if (productsStatus === "idle") {
-      dispatch(fetchProducts());
-    }
-  }, [productsStatus, dispatch]);
-
   if (productsStatus === "pending") return <p>Loading...</p>;
   if (productsStatus === "failed") return <p>productsError: {productsError}</p>;
 
-  if (productsStatus === "succeeded" && products.length === 0) {
+  if (productsStatus === "successed" && products.length === 0) {
     return (
       <p className="mt-40 text-center">No products available at the moment.</p>
     );

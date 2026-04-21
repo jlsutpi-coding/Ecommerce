@@ -14,7 +14,6 @@ const CategorySection = () => {
 
   // all products counts
   const allProductCounts = useSelector(selectTotalProductCount);
-  console.log(categories);
 
   //
 
