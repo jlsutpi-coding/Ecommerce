@@ -30,7 +30,7 @@ const ProductActions = ({ product }) => {
       </BtnPrimary>
       <button
         onClick={() => onAddToWatchlistClick(product)}
-        className=" hover:bg-[#f3f4f5] transition-colors duration-200 flex items-center justify-center border-[#C5C5D4]/20 border font-manrope gap-3 w-full  py-5  leading-7 tracking-[0.45px] rounded-lg   font-bold text-[18px] "
+        className=" hover:bg-[#f3f4f5] transition-colors duration-200 flex items-center justify-center border-[#C5C5D4]/20 border font-manrope gap-3 w-full  py-5  active:scale-[0.98]  leading-7 tracking-[0.45px] rounded-lg   font-bold text-[18px] "
       >
         <CiHeart className=" w-5  text-[#191C1D]" />
         <span className="font-bold text-[18px] text-[#191C1D] leading-7">

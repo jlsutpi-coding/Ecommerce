@@ -10,6 +10,7 @@ import { CiHeart, CiSearch } from "react-icons/ci";
 import { searchFromCart } from "../features/productSlice";
 import HeaderIconButton from "./HeaderIconButton";
 import { setIsSearching, setSearchQery } from "../features/searchSlice";
+import InputSearch from "./InputSearch";
 
 const Header = () => {
   const [inputValue, setInputValue] = useState("");
@@ -38,24 +39,7 @@ const Header = () => {
         </Link>
       </div>
       <div className=" items-center flex gap-3  justify-start ">
-        <form
-          onSubmit={handleSearch}
-          className="hidden lg:flex items-center px-4 py-2 bg-[#e1e3e4]/10 hover:bg-[#e1e3e4]/15 focus-within:ring-1 focus-within:ring-[#191c1d]/20 transition-all rounded-lg gap-3"
-        >
-          <CiSearch className="text-[#191c1d] text-base shrink-0" />
-
-          <input
-            id="search"
-            value={inputValue}
-            onChange={(e) => {
-              setInputValue(e.target.value);
-            }}
-            className="bg-transparent border-none outline-none text-sm font-label w-48 placeholder:text-[#191c1d]/50 text-[#191c1d]"
-            placeholder="Search archive..."
-            type="text"
-            aria-label="Search archive"
-          />
-        </form>
+        <InputSearch />
 
         <HeaderIconButton
           icon={<CiHeart className="w-7 h-7" />}

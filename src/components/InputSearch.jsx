@@ -1,0 +1,38 @@
+import React, { useState } from "react";
+import { CiSearch } from "react-icons/ci";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+import { setIsSearching, setSearchQery } from "../features/searchSlice";
+
+const InputSearch = ({ page }) => {
+  const [inputValue, setInputValue] = useState("");
+  const dispatch = useDispatch();
+  const navigte = useNavigate();
+
+  const onSearchSubmit = (e) => {
+    e.preventDefault();
+    dispatch(setSearchQery(inputValue));
+    dispatch(setIsSearching(true));
+    if (inputValue.trim()) {
+      navigte(`/search?q=${encodeURIComponent(inputValue)}`);
+    }
+  };
+  return (
+    <form
+      onSubmit={onSearchSubmit}
+      className={` ${page !== "not-found" ? "hidden lg:flex" : ""} group relative  flex items-center transition-all duration-300`}
+    >
+      <CiSearch className=" absolute left-4 text-[#757684] group-focus-within:text-primary transition-colors" />
+      <input
+        type="text"
+        id="serch-input"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        className={` ${page !== "not-found" ? "w-48  text-sm pr-4 pl-10 py-2" : "w-full pr-6 pl-12 py-4.5 text-[16px] "} border-none focus:ring-1 transition-all outline-none placeholder:text-[#757684]/60 rounded-lg focus:ring-primary bg-[#e1e3e4] focus:bg-white font-inter font-normal `}
+        placeholder="Search the archive"
+      />
+    </form>
+  );
+};
+
+export default InputSearch;
