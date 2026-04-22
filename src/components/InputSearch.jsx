@@ -19,16 +19,19 @@ const InputSearch = ({ page }) => {
   };
   return (
     <form
+      id="search-form"
+      name="search-form"
       onSubmit={onSearchSubmit}
       className={` ${page !== "not-found" ? "hidden lg:flex" : ""} group relative  flex items-center transition-all duration-300`}
     >
-      <CiSearch className=" absolute left-4 text-[#757684] group-focus-within:text-primary transition-colors" />
+      <CiSearch className=" absolute left-4 text-[#757684] group-focus-within:text-primary dark:group-focus-within:text-[#C0C1FF] transition-colors" />
       <input
         type="text"
         id="serch-input"
+        name="search-input"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
-        className={` ${page !== "not-found" ? "w-48  text-sm pr-4 pl-10 py-2" : "w-full pr-6 pl-12 py-4.5 text-[16px] "} border-none focus:ring-1 transition-all outline-none placeholder:text-[#757684]/60 rounded-lg focus:ring-primary bg-[#e1e3e4] focus:bg-white font-inter font-normal `}
+        className={` ${page !== "not-found" ? "w-48  text-sm pr-4 pl-10 py-2" : "w-full pr-6 pl-12 py-4.5 text-[16px] "} border-none focus:ring-1 dark:focus:ring-[#C0C1FF] transition-all outline-none placeholder:text-[#757684]/60 dark:text-[#dae2fd]  dark:placeholder:text-[#918fa1] rounded-lg focus:ring-primary bg-[#e1e3e4] dark:bg-[#131B2E] focus:bg-white dark:focus:bg-[#131B2E]/40 font-inter font-normal `}
         placeholder="Search the archive"
       />
     </form>

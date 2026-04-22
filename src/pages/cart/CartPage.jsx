@@ -12,7 +12,7 @@ const CartPage = () => {
     setOpenModal(true);
   };
   return (
-    <main className="pt-32 px-12 bg-[#f8f9fa] pb-20 max-w-screen-2xl mx-auto">
+    <main className="pt-32 px-12 bg-[#f8f9fa]  dark:bg-[#0B1326]  pb-20 max-w-screen-2xl mx-auto">
       <DeleteModal
         openModal={openModal}
         setOpenModal={setOpenModal}
