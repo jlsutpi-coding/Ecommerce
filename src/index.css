@@ -8,3 +8,4 @@
   --color-secondary: #565c84;
   --font-manrope: "Manrope", sans-serif;
 }
+@custom-variant dark (&:where(.dark, .dark *));
