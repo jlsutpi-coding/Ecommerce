@@ -22,7 +22,7 @@ const Layout = () => {
     return <>No prodcuts available </>;
   return (
     <ThemeProvider>
-      <div className=" flex flex-col min-h-screen bg-white dark:bg-[#0B1326]">
+      <div className=" flex flex-col min-h-screen bg-white dark:bg-[#0B1326] transition-colors ease-in-out duration-300">
         <Header />
         <main className=" grow">
           <Outlet />
