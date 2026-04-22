@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../features/productSlice";
+import ThemeProvider from "./ThemeProvider";
 
 const Layout = () => {
   const { productsStatus, products } = useSelector((state) => state.products);
@@ -20,13 +21,15 @@ const Layout = () => {
   if (productsStatus === "successed" && products.length === 0)
     return <>No prodcuts available </>;
   return (
-    <div className=" flex flex-col min-h-screen">
-      <Header />
-      <main className=" grow">
-        <Outlet />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className=" flex flex-col min-h-screen">
+        <Header />
+        <main className=" grow">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 };
 
