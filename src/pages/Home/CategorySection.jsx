@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   filterByCategory,
   getCategoryType,
+  resetFilterByCategory,
   selectCategoriesWithCounts,
   selectTotalProductCount,
 } from "../../features/productSlice";
@@ -19,22 +20,25 @@ const CategorySection = () => {
 
   return (
     <div className="  w-full lg:w-64 shrink-0  ">
-      <h2 className=" mb-6 font-bold opacity-40  text-[#191C1D]  text-[14px] leading-5 tracking-[1.4px]">
+      <h2 className=" mb-6 font-bold opacity-40 dark:text-[#C7C4D8]  text-[#191C1D]  text-[14px] leading-5 tracking-[1.4px]">
         {" "}
         CATEGORIES
       </h2>
-      <div className=" cursor-pointer flex justify-between items-center mb-4  ">
+      <button
+        onClick={() => dispatch(resetFilterByCategory())}
+        className=" w-full group cursor-pointer flex justify-between items-center mb-4  "
+      >
         <span
-          className={` font-inter ${activeCategory === "all-products" ? "text-primary" : "text-[#191C1D]/60"}  ${activeCategory === null && "opacity-50"} font-semibold text-[16px] leading-6`}
+          className={` font-inter ${activeCategory === "all-products" ? "text-primary" : "text-[#191C1D]/60 dark:text-[#C7C4D8] "}  ${activeCategory === null && "opacity-50"} group-hover:text-primary/90  font-semibold text-[16px] leading-6`}
         >
           All Object
         </span>
         <span
-          className={` font-inter  font-semibold text-[12px] leading-4  ${activeCategory === null && "opacity-50"} ${activeCategory === "all-products" ? "text-primary" : "text-[#191C1D]/60"}`}
+          className={` font-inter group-hover:text-primary/90   font-semibold text-[12px] leading-4  ${activeCategory === null && "opacity-50"} ${activeCategory === "all-products" ? "text-primary" : "text-[#191C1D]/60 dark:text-[#C7C4D8]"}`}
         >
           {allProductCounts}
         </span>
-      </div>
+      </button>
       {categories.map((item, index) => {
         return (
           <button
@@ -43,7 +47,7 @@ const CategorySection = () => {
               dispatch(filterByCategory(item.slug));
               // getActiveCategory();
             }}
-            className={` ${activeCategory === item.slug ? "text-primary" : "text-[#191C1D]/60"} group  w-full cursor-pointer flex justify-between items-center mb-4`}
+            className={` ${activeCategory === item.slug ? "text-primary" : "text-[#191C1D]/60 dark:text-[#C7C4D8]"} group    w-full cursor-pointer flex justify-between items-center mb-4`}
           >
             <span className="  group-hover:text-primary/90  text-[16px] leading-6 font-normal font-inter">
               {item.name}
