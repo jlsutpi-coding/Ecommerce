@@ -14,7 +14,9 @@ const HomePage = () => {
 
   if (productsStatus === "successed" && products.length === 0) {
     return (
-      <p className="mt-40 text-center">No products available at the moment.</p>
+      <p className="mt-40 text-center h-screen dark:bg-[#0B1326]">
+        No products available at the moment.
+      </p>
     );
   }
 

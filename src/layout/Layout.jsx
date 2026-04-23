@@ -16,7 +16,12 @@ const Layout = () => {
       dispatch(fetchProducts());
     }
   }, [dispatch, productsStatus]);
-  if (productsStatus === "pending") return <>Products are pending</>;
+  if (productsStatus === "pending")
+    return (
+      <div className=" h-screen dark:bg-[#0b1326] text-white">
+        Products are pending
+      </div>
+    );
   if (productsStatus === "failed") return <>Products fetch is error</>;
   if (productsStatus === "successed" && products.length === 0)
     return <>No prodcuts available </>;
