@@ -57,6 +57,9 @@ export const productsSlice = createSlice({
         (item) => item.category.toLowerCase() === payload.toLowerCase(),
       );
     },
+    resetFilterByCategory: (state) => {
+      state.filteredItems = state.products;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -141,5 +144,9 @@ export const selectTotalProductCount = createSelector(
 
 export default productsSlice.reducer;
 
-export const { clearSelectedProduct, searchFromCart, filterByCategory } =
-  productsSlice.actions;
+export const {
+  clearSelectedProduct,
+  searchFromCart,
+  filterByCategory,
+  resetFilterByCategory,
+} = productsSlice.actions;
