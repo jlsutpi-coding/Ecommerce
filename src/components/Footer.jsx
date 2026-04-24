@@ -11,13 +11,13 @@ const Footer = () => {
     "Contact",
   ];
   return (
-    <div className="   py-16 px-12 bg-[#F3F4F5] flex items-center justify-between  ">
+    <div className="   py-16 px-12 bg-[#F3F4F5] dark:bg-[#060E20] flex items-center justify-between  ">
       <div>
-        <h4 className=" font-bold text-[18px] leading-7 font-manrope text-[#191C1D]">
+        <h4 className=" font-bold text-[18px] leading-7 font-manrope text-[#191C1D] dark:text-[#DAE2FD]">
           {" "}
           Indigo
         </h4>
-        <span className=" font-inter font-normal text-[14px] leading-5 tracking-[0.34px] text-[#191C1D]/50">
+        <span className=" font-inter font-normal text-[14px] leading-5 tracking-[0.34px] text-[#191C1D]/50 dark:text-[#C7C4D8]">
           Curating the intersection of utility and <br /> beauty <br /> for the
           modern aesthetic.
         </span>
@@ -27,9 +27,9 @@ const Footer = () => {
           return (
             <Link
               key={index}
-              className=" hover:underline underline-offset-5 decoration-1 decoration-[#191C1D]/50"
+              className=" hover:underline underline-offset-5 decoration-1 decoration-[#191C1D]/50 dark:decoration-[#C7C4D8]/50"
             >
-              <li className=" font-inter font-normal text-[14px] leading-5 tracking-[0.35px] text-[#191C1D]/50">
+              <li className=" font-inter font-normal text-[14px] leading-5 tracking-[0.35px] text-[#191C1D]/50 dark:text-[#C7C4D8]">
                 {item}
               </li>
             </Link>
@@ -38,15 +38,15 @@ const Footer = () => {
       </ul>
       <div className=" flex flex-col gap-4 items-end ">
         <div className=" flex  items-center gap-4">
-          <button className=" cursor-pointer rounded-full p-2 shadow-sm hover:scale-105 transition-transform bg-white text-[#191C1D] ">
+          <button className=" cursor-pointer rounded-full dark:border dark:border-[#464555]/20 p-2 shadow-sm hover:scale-105 transition-transform bg-white dark:bg-[#060E20] dark:text-[#C7C4D8] text-[#191C1D] ">
             <IoShareSocial className="text-xl" />
           </button>
-          <button className=" cursor-pointer rounded-full p-2 shadow-sm hover:scale-105 transition-transform bg-white text-[#191C1D] ">
+          <button className=" cursor-pointer rounded-full dark:border dark:border-[#464555]/20 p-2 shadow-sm hover:scale-105 transition-transform bg-white text-[#191C1D] dark:bg-[#060E20] dark:text-[#C7C4D8] ">
             <FiMail className=" text-xl" />
           </button>
         </div>
         <div>
-          <span className=" font-inter font-normal text-[14px] leading-5 tracking-[0.35px] text-[#191C1D]/50">
+          <span className=" font-inter font-normal text-[14px] leading-5 tracking-[0.35px] text-[#191C1D]/50 dark:text-[#C0C1FF]">
             &copy; 2024 Indigo Archive. All rights reserved.
           </span>{" "}
         </div>
