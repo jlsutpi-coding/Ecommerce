@@ -16,11 +16,11 @@ const ProductCard = ({ product }) => {
     <Link className="" to={`/products/${id}`}>
       <div className="  col-span-1  flex flex-col gap-5  rounded-lg  relative ">
         <div className="group w-full ">
-          <div className=" bg-[#F3F4F5]  overflow-hidden rounded-lg">
+          <div className=" bg-[#F3F4F5] dark:bg-[#171F33]  overflow-hidden rounded-lg">
             <img
               src={thumbnail}
-              className="w-full group-hover:scale-105 transition-all duration-300 h-full object-contain"
-              alt=""
+              className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-110 will-change-transform"
+              alt={title}
             />
             {product.discountPercentage > 10 && (
               <span className="absolute top-2 left-2 z-20 bg-red-500 text-white px-2 py-1 text-xs rounded">

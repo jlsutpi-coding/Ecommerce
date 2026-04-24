@@ -21,12 +21,12 @@ const CartItem = ({ cart, onOpenModal }) => {
   };
 
   return (
-    <div className="flex gap-8 bg-white rounded-xl shadow-sm  p-6">
+    <div className="flex gap-8 bg-white dark:bg-[#171F33] rounded-xl shadow-sm  p-6">
       <div className=" h-60 rounded-lg  overflow-hidden shrink-0">
         <Link to={`/products/${cart.id}`}>
           <img
             src={cart.thumbnail}
-            className=" w-full h-full  mix-blend-multiply opacity-90 transition-transform duration-500 hover:scale-105 object-contain  "
+            className=" w-full h-full   transition-transform duration-500 hover:scale-105 object-contain  "
             alt=""
           />
         </Link>
@@ -35,17 +35,17 @@ const CartItem = ({ cart, onOpenModal }) => {
       <div className=" grow flex-col flex justify-between py-2 ">
         <div className="  w-full flex justify-between items-start">
           <div>
-            <h3 className="text-xl font-bold mb-1 font-manrope">
+            <h3 className="text-xl font-bold mb-1 font-manrope dark:text-[#DAE2FD]">
               {cart.title}
             </h3>
-            <p className=" font-inter ">{cart.category}</p>
+            <p className=" font-inter dark:text-[#FFB695] ">{cart.category}</p>
           </div>
 
           <button
             onClick={() => {
               onDelete(cart.id);
             }}
-            className="  p-2 text-[#454652] bg-[#F3F4F5] rounded-full hover:text-[#ba1a1a] transition-colors cursor-pointer"
+            className="  p-2 text-[#454652] dark:text-[#DAE2FD] bg-[#F3F4F5] dark:bg-[#171F33] dark:border dark:border-[#464555]/20 dark:hover:bg-[#F3F4F5]/20 rounded-full hover:text-[#ba1a1a] dark:hover:text-[#FFB695] transition-colors cursor-pointer"
           >
             <CgTrash className="text-[20px]" />
           </button>
@@ -55,32 +55,32 @@ const CartItem = ({ cart, onOpenModal }) => {
             {cart.discountPercentage} %OFF
           </p>
           <div className=" flex items-end gap-2">
-            <p className=" text-primary text-[24px] font-semibold leading-8  font-inter">
+            <p className=" text-primary text-[24px] font-semibold dark:text-[#C0C1FF] leading-8  font-inter">
               ${cart.discountedTotal.toFixed(2)}
             </p>
-            <p className=" line-through text-[14px] font-normal leading-5 text-[#454652] opacity-60 font-inter">
+            <p className=" line-through text-[14px] font-normal leading-5 text-[#454652]  dark:text-[#C7C4D8] opacity-60 font-inter">
               ${cart?.price.toFixed(2)}
             </p>
           </div>
         </div>
         <div className="flex items-center justify-between mt-6">
-          <div className="flex items-center border border-[#c5c5d4]/20 rounded-lg p-1 bg-[#f3f4f5]">
+          <div className="flex items-center border border-[#c5c5d4]/20 dark:bg-[#131B2E] rounded-full p-1 bg-[#f3f4f5]">
             <button
               onClick={() => {
                 onSubstractClick(cart.id);
               }}
-              className="w-8 h-8 flex items-center justify-center hover:bg-[#e1e3e4] rounded transition-colors"
+              className="w-8 h-8 flex items-center justify-center hover:bg-[#e1e3e4] dark:text-[#C7C4D8] dark:hover:bg-[#171F33]  rounded-full transition-colors"
             >
               <IoMdRemove />
             </button>
-            <span className="w-10 text-center font-bold text-sm">
+            <span className="w-10 text-center font-bold text-sm dark:text-[#C7C4D8]">
               {cart?.quantity}
             </span>
             <button
               onClick={() => {
                 onAddBtnClick(cart?.id);
               }}
-              className="w-8 h-8 flex items-center justify-center hover:bg-[#e1e3e4] rounded transition-colors"
+              className="w-8 h-8 flex items-center justify-center hover:bg-[#e1e3e4] dark:text-[#C7C4D8] dark:hover:bg-[#171F33] rounded-full transition-colors"
             >
               <IoMdAdd />
             </button>

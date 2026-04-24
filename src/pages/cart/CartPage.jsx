@@ -19,10 +19,10 @@ const CartPage = () => {
         targetId={targetId}
       />
       <header className="mb-12">
-        <h1 className="text-4xl font-manrope font-extrabold tracking-tight mb-2">
+        <h1 className="text-4xl font-manrope dark:text-[#DAE2FD] font-extrabold tracking-tight mb-2">
           Shopping Bag
         </h1>
-        <p className="font-inter font-[16px] leading-4 text-[#454652]">
+        <p className="font-inter font-[16px] leading-4 text-[#454652] dark:text-[#C7C4D8]">
           Review your selected pieces from the Archive.
         </p>
       </header>
