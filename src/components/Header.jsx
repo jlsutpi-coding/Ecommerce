@@ -20,7 +20,6 @@ const Header = () => {
   const { watchlistItems } = useSelector((state) => state.watchlists);
 
   const { theme, setThemeMode } = useContext(ThemeContext);
-  console.log(theme);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,10 +39,10 @@ const Header = () => {
   };
 
   return (
-    <nav className=" px-12 fixed top-0 w-full z-50 bg-[#f8f9fa]/80 dark:bg-[#0B1326]/70 dark:shadow-[0_40px_64px_-12px_rgba(218,226,253,0.06)]  backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.05)]  h-21   flex justify-between items-center">
+    <nav className=" transition-colors duration-300 px-12 fixed top-0 w-full z-50 bg-[#f8f9fa]/80 dark:bg-[#0B1326]/70 dark:shadow-[0_40px_64px_-12px_rgba(218,226,253,0.06)]  backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.05)]  h-21   flex justify-between items-center">
       <div>
         <Link to={"/"}>
-          <h1 className=" font-extrabold font-manrope leading-8 tracking-[-1.2px] dark:text-[#DAE2FD]  text-[24px]">
+          <h1 className=" font-extrabold font-manrope leading-8 tracking-[-1.2px] dark:text-[#DAE2FD] transition-colors duration-300  text-[24px]">
             Indigo
           </h1>
         </Link>
@@ -53,14 +52,14 @@ const Header = () => {
 
         <HeaderIconButton
           icon={
-            <IoMdHeartEmpty className="w-7 dark:group-hover:text-[#dae2fd] dark:text-[#C0C1FF] group-hover:text-primary h-7" />
+            <IoMdHeartEmpty className="w-7 dark:group-hover:text-[#dae2fd] transition-colors duration-300 dark:text-[#C0C1FF] group-hover:text-primary h-7" />
           }
           cartItems={watchlistItems}
           link={"/watchlist"}
         />
         <HeaderIconButton
           icon={
-            <LiaShoppingBagSolid className="w-7 dark:group-hover:text-[#dae2fd] dark:text-[#C0C1FF] group-hover:text-primary h-7" />
+            <LiaShoppingBagSolid className="w-7 dark:group-hover:text-[#dae2fd] dark:text-[#C0C1FF] transition-colors duration-300 group-hover:text-primary h-7" />
           }
           cartItems={cartItems}
           link={"/cart"}
@@ -70,7 +69,7 @@ const Header = () => {
           className=" cursor-pointer group"
         >
           {theme === "dark" ? (
-            <MdOutlineDarkMode className="w-7 dark:group-hover:text-[#dae2fd] dark:text-[#FFB695] group-hover:text-primary h-7" />
+            <MdOutlineDarkMode className="w-7 dark:group-hover:text-[#dae2fd] transition-colors duration-300 dark:text-[#FFB695] group-hover:text-primary h-7" />
           ) : (
             <MdOutlineLightMode className="w-7  group-hover:text-primary h-7" />
           )}

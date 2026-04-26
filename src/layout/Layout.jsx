@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../features/productSlice";
 import ThemeProvider from "./ThemeProvider";
 
+import "../index.css";
 const Layout = () => {
   const { productsStatus, products } = useSelector((state) => state.products);
 
@@ -18,7 +19,7 @@ const Layout = () => {
   }, [dispatch, productsStatus]);
   if (productsStatus === "pending")
     return (
-      <div className=" h-screen dark:bg-[#0b1326] text-white">
+      <div className=" h-screen  dark:bg-[#0b1326] text-white">
         Products are pending
       </div>
     );
@@ -27,7 +28,7 @@ const Layout = () => {
     return <>No prodcuts available </>;
   return (
     <ThemeProvider>
-      <div className=" flex flex-col min-h-screen bg-white dark:bg-[#0B1326] ">
+      <div className=" transition-colors duration-300 flex flex-col min-h-screen bg-white dark:bg-[#0B1326] ">
         <Header />
         <main className=" grow">
           <Outlet />
