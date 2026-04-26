@@ -14,7 +14,6 @@ const ThemeProvider = ({ children }) => {
     }
     return "light";
   });
-  console.log(theme);
 
   const setThemeMode = (mode) => {
     setTheme(mode);
@@ -25,7 +24,6 @@ const ThemeProvider = ({ children }) => {
       document.documentElement.classList.remove("dark");
     }
   };
-  console.log(theme);
   return (
     <ThemeContext.Provider value={{ theme, setThemeMode }}>
       {children}
