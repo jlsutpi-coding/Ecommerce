@@ -27,12 +27,12 @@ const WatchlistHeader = ({ watchlistItems }) => {
             </span>
           </div>
           <div>
-            <h2 className=" text-[#191C1D] text-[48px] font-extrabold leading-12 tracking-[-2.4px] font-manrope">
+            <h2 className=" dark:text-[#DAE2FD] dark-transition text-[#191C1D] text-[48px] font-extrabold leading-12 tracking-[-2.4px] font-manrope">
               Your Watchlist
             </h2>
           </div>
           <div>
-            <span className="  font-inter text-[16px] leading-6 font-normal text-[#454652]">
+            <span className=" dark-transition dark:text-[#C7C4D8]  font-inter text-[16px] leading-6 font-normal text-[#454652]">
               {" "}
               {watchlistItems?.length} objects currently under observation in
               your archive.
