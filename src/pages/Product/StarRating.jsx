@@ -21,7 +21,7 @@ const StarRating = ({ rating }) => {
           );
         }
       })}
-      <span className="text-[14px] font-inter font-semibold leading-5 pl-2 text-[#191C1D]">
+      <span className="text-[14px] dark:text-[#FFB695] font-inter font-semibold leading-5 pl-2 text-[#191C1D]">
         {rating}
       </span>
     </div>

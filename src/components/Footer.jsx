@@ -11,13 +11,13 @@ const Footer = () => {
     "Contact",
   ];
   return (
-    <div className=" transition-colors duration-300   py-16 px-12 bg-[#F3F4F5] dark:bg-[#060E20] flex items-center justify-between  ">
+    <div className=" dark-transition   py-16 px-12 bg-[#F3F4F5] dark:bg-[#060E20] flex items-center justify-between  ">
       <div>
-        <h4 className=" font-bold text-[18px] leading-7 transition-colors duration-300 font-manrope text-[#191C1D] dark:text-[#DAE2FD]">
+        <h4 className=" font-bold text-[18px] leading-7 dark-transition font-manrope text-[#191C1D] dark:text-[#DAE2FD]">
           {" "}
           Indigo
         </h4>
-        <span className=" font-inter font-normal text-[14px] leading-5 tracking-[0.34px] transition-colors duration-300 text-[#191C1D]/50 dark:text-[#C7C4D8]">
+        <span className=" font-inter font-normal text-[14px] leading-5 tracking-[0.34px] dark-transition text-[#191C1D]/50 dark:text-[#C7C4D8]">
           Curating the intersection of utility and <br /> beauty <br /> for the
           modern aesthetic.
         </span>
@@ -27,9 +27,9 @@ const Footer = () => {
           return (
             <Link
               key={index}
-              className=" hover:underline underline-offset-5 decoration-1 transition-colors duration-300 decoration-[#191C1D]/50 dark:decoration-[#C7C4D8]/50"
+              className=" hover:underline underline-offset-5 decoration-1 dark-transition decoration-[#191C1D]/50 dark:decoration-[#C7C4D8]/50"
             >
-              <li className=" font-inter font-normal text-[14px] leading-5 tracking-[0.35px] text-[#191C1D]/50 transition-colors duration-300 dark:text-[#C7C4D8]">
+              <li className=" font-inter font-normal text-[14px] leading-5 tracking-[0.35px] text-[#191C1D]/50 dark-transition dark:text-[#C7C4D8]">
                 {item}
               </li>
             </Link>
@@ -46,7 +46,7 @@ const Footer = () => {
           </button>
         </div>
         <div>
-          <span className=" font-inter font-normal text-[14px] leading-5 tracking-[0.35px] transition-colors duration-300 text-[#191C1D]/50 dark:text-[#C0C1FF]">
+          <span className=" font-inter font-normal text-[14px] leading-5 tracking-[0.35px] dark-transition text-[#191C1D]/50 dark:text-[#C0C1FF]">
             &copy; 2024 Indigo Archive. All rights reserved.
           </span>{" "}
         </div>

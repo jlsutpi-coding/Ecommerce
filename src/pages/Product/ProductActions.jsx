@@ -30,10 +30,14 @@ const ProductActions = ({ product }) => {
       </BtnPrimary>
       <button
         onClick={() => onAddToWatchlistClick(product)}
-        className=" hover:bg-[#f3f4f5] transition-colors duration-200 flex items-center justify-center border-[#C5C5D4]/20 border font-manrope gap-3 w-full  py-5  active:scale-[0.98]  leading-7 tracking-[0.45px] rounded-lg   font-bold text-[18px] "
+        className="dark-transition shadow-xl flex items-center justify-center gap-3 w-full py-5 rounded-lg font-bold text-[18px] leading-7 tracking-[0.45px] font-manrope border active:scale-[0.98]
+    /* Light Mode */
+    border-[#C5C5D4]/20 hover:bg-[#f3f4f5] 
+    /* Dark Mode */
+    dark:border-white/10 dark:hover:bg-slate-800"
       >
-        <CiHeart className=" w-5  text-[#191C1D]" />
-        <span className="font-bold text-[18px] text-[#191C1D] leading-7">
+        <CiHeart className="w-5 text-[#191C1D] dark:text-white" />
+        <span className="font-bold text-[18px] text-[#191C1D] dark:text-white leading-7">
           Wishlist
         </span>
       </button>

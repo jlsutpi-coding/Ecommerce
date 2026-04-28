@@ -14,7 +14,7 @@ const HomePage = () => {
 
   if (productsStatus === "successed" && products.length === 0) {
     return (
-      <p className="mt-40 text-center h-screen transition-colors duration-300 dark:bg-[#0B1326]">
+      <p className="mt-40 text-center h-screen dark-transition dark:bg-[#0B1326]">
         No products available at the moment.
       </p>
     );

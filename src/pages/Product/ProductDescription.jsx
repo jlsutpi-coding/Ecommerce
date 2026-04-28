@@ -6,7 +6,7 @@ const ProductDescription = ({ description }) => {
           DESCRIPTION
         </span>
       </div>
-      <p className=" font-inter font-normal leading-6.5 text-[#454652] text-[16px]">
+      <p className=" font-inter font-normal leading-6.5 text-[#454652] dark:text-[#C7C4D8] dark-transition text-[16px]">
         {description}
       </p>
     </div>
