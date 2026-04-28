@@ -9,3 +9,7 @@
   --font-manrope: "Manrope", sans-serif;
 }
 @custom-variant dark (&:where(.dark, .dark *));
+
+.dark-transition {
+  @apply transition-colors duration-300 ease-out;
+}

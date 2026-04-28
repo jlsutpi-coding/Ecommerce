@@ -24,7 +24,7 @@ const InputSearch = ({ page }) => {
       onSubmit={onSearchSubmit}
       className={` ${page !== "not-found" ? "hidden lg:flex" : ""} group relative  flex items-center transition-all duration-300`}
     >
-      <CiSearch className=" absolute left-4 text-[#757684] group-focus-within:text-primary  duration-300 dark:group-focus-within:text-[#C0C1FF] transition-colors" />
+      <CiSearch className=" absolute left-4 text-[#757684] group-focus-within:text-primary   dark:group-focus-within:text-[#C0C1FF] dark-transition" />
       <input
         type="text"
         id="serch-input"

@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
     <Link className="" to={`/products/${id}`}>
       <div className="  col-span-1  flex flex-col gap-5  rounded-lg  relative ">
         <div className="group w-full ">
-          <div className="bg-[#F3F4F5] dark:bg-[#171F33] transition-colors duration-300 overflow-hidden rounded-lg ">
+          <div className="bg-[#F3F4F5] dark:bg-[#171F33] dark-transition overflow-hidden rounded-lg ">
             <img
               src={thumbnail}
               className="w-full h-full object-contain hover:scale-105 duration-300 transition-transform "
@@ -29,10 +29,10 @@ const ProductCard = ({ product }) => {
             </span>
           )}
           <div className=" p-2 flex flex-col gap-[4.5px] ">
-            <div className=" font-inter text-priamry tracking-[1px] dark:text-[#FFB695] transition-colors duration-300 leading-3.75 font-semibold text-[10px] opacity-60">
+            <div className=" font-inter text-priamry tracking-[1px] dark:text-[#FFB695] dark-transition leading-3.75 font-semibold text-[10px] opacity-60">
               {category.toUpperCase()}
             </div>
-            <h2 className=" font-bold text-[18px] leading-7 text-[#191C1D] dark:text-[#DAE2FD] transition-colors duration-300 tracking-[0px]">
+            <h2 className=" font-bold text-[18px] leading-7 text-[#191C1D] dark:text-[#DAE2FD] dark-transition tracking-[0px]">
               {title.length > 20 ? title.substring(0, 20) + "..." : title}
             </h2>
             <ProductPricing product={product} page={"home"} />

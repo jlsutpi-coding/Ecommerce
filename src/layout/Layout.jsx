@@ -28,7 +28,7 @@ const Layout = () => {
     return <>No prodcuts available </>;
   return (
     <ThemeProvider>
-      <div className=" transition-colors duration-300 flex flex-col min-h-screen bg-white dark:bg-[#0B1326] ">
+      <div className=" dark-transition flex flex-col min-h-screen bg-white dark:bg-[#0B1326] ">
         <Header />
         <main className=" grow">
           <Outlet />
