@@ -1,18 +1,16 @@
 import { useContext, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Link, useNavigate } from "react-router";
 
-import { useDispatch, useSelector } from "react-redux";
-
 import { LiaShoppingBagSolid } from "react-icons/lia";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 
-import { searchFromCart } from "../features/productSlice";
 import HeaderIconButton from "./HeaderIconButton";
-import { setIsSearching, setSearchQery } from "../features/searchSlice";
 import InputSearch from "./InputSearch";
 import { ThemeContext } from "../context/ThemeContext";
 import { IoMdHeartEmpty } from "react-icons/io";
-import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
+import { setIsSearching, setSearchQery } from "../redux/features/searchSlice";
 
 const Header = () => {
   const [inputValue, setInputValue] = useState("");

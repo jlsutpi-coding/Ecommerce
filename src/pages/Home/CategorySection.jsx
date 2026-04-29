@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
+
 import {
-  filterByCategory,
   getCategoryType,
   resetFilterByCategory,
   selectCategoriesWithCounts,
   selectTotalProductCount,
-} from "../../features/productSlice";
+} from "../../redux/features/productSlice";
 
 const CategorySection = () => {
   const categories = useSelector(selectCategoriesWithCounts);

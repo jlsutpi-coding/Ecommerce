@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { CiHeart } from "react-icons/ci";
 
 import BtnPrimary from "../../components/BtnPrimary";
-import { addToCart } from "../../features/cartSlice";
-import { addToWatchlist } from "../../features/watchlistSlice";
+import { addToCart } from "../../redux/features/cartSlice";
+import { addToWatchlist } from "../../redux/features/watchlistSlice";
 
 const ProductActions = ({ product }) => {
   const dispatch = useDispatch();

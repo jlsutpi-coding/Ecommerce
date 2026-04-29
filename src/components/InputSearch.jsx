@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { setIsSearching, setSearchQery } from "../features/searchSlice";
+import { setIsSearching, setSearchQery } from "../redux/features/searchSlice";
 
 const InputSearch = ({ page }) => {
   const [inputValue, setInputValue] = useState("");

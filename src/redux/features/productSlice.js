@@ -42,15 +42,7 @@ export const productsSlice = createSlice({
     clearSelectedProduct: (state) => {
       state.selectedProduct = null;
     },
-    searchFromCart: (state, { payload }) => {
-      if (!payload) {
-        state.filteredItems = state.products;
-      } else {
-        state.filteredItems = state.products.filter((item) =>
-          item.title.toLowerCase().includes(payload.toLowerCase()),
-        );
-      }
-    },
+
     filterByCategory: (state, { payload }) => {
       if (!payload) return;
       state.filteredItems = state.products.filter(
@@ -144,9 +136,5 @@ export const selectTotalProductCount = createSelector(
 
 export default productsSlice.reducer;
 
-export const {
-  clearSelectedProduct,
-  searchFromCart,
-  filterByCategory,
-  resetFilterByCategory,
-} = productsSlice.actions;
+export const { clearSelectedProduct, filterByCategory, resetFilterByCategory } =
+  productsSlice.actions;

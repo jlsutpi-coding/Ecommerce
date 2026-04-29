@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   clearSelectedProduct,
   fetchProductById,
-} from "../../features/productSlice";
+} from "../../redux/features/productSlice";
 import LeftSection from "./LeftSection";
 import RightSection from "./RightSection";
 
