@@ -4,14 +4,16 @@ import { useSearchParams } from "react-router";
 
 import { useDispatch, useSelector } from "react-redux";
 
+// import {
+
+// } from "../features/searchSlice";
+import ProductCard from "../components/ProductCard";
+import CardsSection from "../components/CardsSection";
 import {
   clearSearch,
   setIsSearching,
   setSearchResults,
-} from "../features/searchSlice";
-import { fetchProducts } from "../features/productSlice";
-import ProductCard from "../components/ProductCard";
-import CardsSection from "../components/CardsSection";
+} from "../redux/features/searchSlice";
 
 const SearchPage = () => {
   const { products, productsStatus, filteredItems } = useSelector(

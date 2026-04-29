@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
+
 import { Outlet } from "react-router";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { fetchProducts } from "../redux/features/productSlice";
+
+import ThemeProvider from "./ThemeProvider";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../features/productSlice";
-import ThemeProvider from "./ThemeProvider";
-
 import "../index.css";
+
 const Layout = () => {
   const { productsStatus, products } = useSelector((state) => state.products);
 

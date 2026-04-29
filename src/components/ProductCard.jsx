@@ -1,12 +1,17 @@
 import { Link } from "react-router";
-import ProductPricing from "./ProductPricing";
-import { LiaShoppingBagSolid } from "react-icons/lia";
+
 import { useDispatch } from "react-redux";
-import { addToCart } from "../features/cartSlice";
+
+import { LiaShoppingBagSolid } from "react-icons/lia";
+
+import { addToCart } from "../redux/features/cartSlice";
+
 import BtnPrimary from "./BtnPrimary";
+import ProductPricing from "./ProductPricing";
 
 const ProductCard = ({ product }) => {
   const { category, title, id, thumbnail } = product;
+  // const
 
   const dispatch = useDispatch();
   const btnAddToCart = () => {

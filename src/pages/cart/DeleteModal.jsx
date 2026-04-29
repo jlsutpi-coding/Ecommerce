@@ -2,7 +2,7 @@ import { RxCrossCircled } from "react-icons/rx";
 import { useDispatch } from "react-redux";
 
 import BtnPrimary from "../../components/BtnPrimary";
-import { deleteFromCart } from "../../features/cartSlice";
+import { deleteFromCart } from "../../redux/features/cartSlice";
 
 const DeleteModal = ({ openModal, setOpenModal, targetId }) => {
   const dispatch = useDispatch();

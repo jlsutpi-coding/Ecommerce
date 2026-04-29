@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+
 import HeroTitleSection from "./HeroTitleSection";
 import CardsSection from "../../components/CardsSection";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../features/productSlice";
 import CategorySection from "./CategorySection";
 
 const HomePage = () => {

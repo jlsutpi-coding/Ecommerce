@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import BtnPrimary from "../../components/BtnPrimary";
 import { IoEye } from "react-icons/io5";
-import { deleteAllFromWatchlist } from "../../features/watchListSlice";
-import { addToCart } from "../../features/cartSlice";
+import { deleteAllFromWatchlist } from "../../redux/features/watchListSlice";
+import { addToCart } from "../../redux/features/cartSlice";
 
 const WatchlistHeader = ({ watchlistItems }) => {
   const dispatch = useDispatch();

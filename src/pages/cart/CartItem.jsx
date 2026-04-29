@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { CgTrash } from "react-icons/cg";
 import { IoMdAdd, IoMdRemove } from "react-icons/io";
 import { useDispatch } from "react-redux";
-import { addQuantity, subStractQuantity } from "../../features/cartSlice";
+import { addQuantity, subStractQuantity } from "../../redux/features/cartSlice";
 
 const CartItem = ({ cart, onOpenModal }) => {
   const dispatch = useDispatch();
