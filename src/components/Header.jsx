@@ -10,7 +10,7 @@ import HeaderIconButton from "./HeaderIconButton";
 import InputSearch from "./InputSearch";
 import { ThemeContext } from "../context/ThemeContext";
 import { IoMdHeartEmpty } from "react-icons/io";
-import { setIsSearching, setSearchQery } from "../redux/features/searchSlice";
+import { setIsSearching, setSearchQuery } from "../redux/features/searchSlice";
 
 const Header = () => {
   const [inputValue, setInputValue] = useState("");

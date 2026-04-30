@@ -10,7 +10,6 @@ const HomePage = () => {
   const { filteredItems, productsStatus, productsError, products } =
     useSelector((state) => state.products);
 
-  if (productsStatus === "pending") return <p>Loading...</p>;
   if (productsStatus === "failed") return <p>productsError: {productsError}</p>;
 
   if (productsStatus === "successed" && products.length === 0) {
