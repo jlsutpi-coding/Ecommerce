@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = JSON.parse(localStorage.getItem("watchlist")) || {
+const initialState = JSON.parse(localStorage.getItem("watchlists")) || {
   watchlistItems: [],
   isError: null,
   isLoading: false,
 };
 
 const addToLocalStorage = (state) => {
-  localStorage.setItem("watchlist", JSON.stringify(state));
+  localStorage.setItem("watchlists", JSON.stringify(state));
 };
 
 const watchlistSlice = createSlice({
-  name: "watchlist",
+  name: "watchlists",
   initialState,
   reducers: {
     addToWatchlist: (state, { payload }) => {
