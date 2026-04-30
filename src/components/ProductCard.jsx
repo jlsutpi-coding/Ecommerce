@@ -6,7 +6,10 @@ import { LiaShoppingBagSolid } from "react-icons/lia";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 
 import { addToCart } from "../redux/features/cartSlice";
-import { addToWatchlist } from "../redux/features/watchListSlice";
+import {
+  addToWatchlist,
+  removeFromWatchlist,
+} from "../redux/features/watchListSlice";
 
 import BtnPrimary from "./BtnPrimary";
 import ProductPricing from "./ProductPricing";
@@ -25,7 +28,11 @@ const ProductCard = ({ product }) => {
 
   const onSaveClick = (e) => {
     e.preventDefault();
-    dispatch(addToWatchlist(product));
+    if (isActive) {
+      dispatch(removeFromWatchlist(id));
+    } else {
+      dispatch(addToWatchlist(product));
+    }
   };
 
   return (
@@ -40,11 +47,10 @@ const ProductCard = ({ product }) => {
             />
             <div className="absolute bottom-4 right-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
               <button
-                disabled={isActive}
                 onClick={(e) => {
                   onSaveClick(e);
                 }}
-                className={` ${isActive ? "dark:text-red-500 text-red-400 bg-red-500/10" : "hover:text-red-500 bg-red-500/10 dark:text-red-300  text-red-400  dark:bg-red-500/10"} cursor-pointer w-10 h-10 flex items-center justify-center  backdrop:blur-md rounded-full `}
+                className={` transition-all duration-300  w-10 h-10 flex items-center justify-center backdrop:blur-md rounded-full ${isActive ? "dark:text-red-500  " : "hover:text-red-500 "} hover:scale-110 dark:bg-red-500/10 bg-red-500/10 dark:text-red-300 text-red-400  cursor-pointer   `}
               >
                 {isActive ? (
                   <IoMdHeart className=" w-6 h-6" />
