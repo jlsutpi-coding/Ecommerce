@@ -29,7 +29,7 @@ const RightSection = ({ product }) => {
           <div className=" flex items-center gap-4">
             <StarRating rating={rating} />
             <div className=" text-[#C5C5D4]/30">|</div>
-            <div className=" font-inter font-normal leading-5 text-[14px] dark:text-[#FFB695] text-[#757684]">
+            <div className=" font-inter font-normal leading-5 text-[14px]  text-[#757684]">
               {reviews.length} Reviews
             </div>
           </div>
