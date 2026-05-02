@@ -10,7 +10,7 @@ import HeaderIconButton from "./HeaderIconButton";
 import InputSearch from "./InputSearch";
 import { ThemeContext } from "../context/ThemeContext";
 import { IoMdHeartEmpty } from "react-icons/io";
-import { setIsSearching, setSearchQery } from "../redux/features/searchSlice";
+import { setIsSearching, setSearchQuery } from "../redux/features/searchSlice";
 
 const Header = () => {
   const [inputValue, setInputValue] = useState("");
@@ -25,7 +25,7 @@ const Header = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     if (inputValue.trim()) {
-      dispatch(setSearchQery(inputValue));
+      dispatch(setSearchQuery(inputValue));
       dispatch(setIsSearching(true));
       navigate(`search?q=${encodeURIComponent(inputValue)}`);
       setInputValue("");
