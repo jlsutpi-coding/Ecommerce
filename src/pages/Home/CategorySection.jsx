@@ -19,7 +19,7 @@ const CategorySection = () => {
   //
 
   return (
-    <div className="  w-full lg:w-64 shrink-0  ">
+    <div className="  w-full lg:w-64  shrink-0  ">
       <h2 className=" mb-6 font-bold opacity-40 dark-transition dark:text-[#C7C4D8]  text-[#191C1D]  text-[14px] leading-5 tracking-[1.4px]">
         {" "}
         CATEGORIES

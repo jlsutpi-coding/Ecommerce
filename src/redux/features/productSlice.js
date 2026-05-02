@@ -6,8 +6,11 @@ import {
 
 const initialState = {
   products: [],
+  productsTotal: 0,
   filteredItems: [],
   selectedProduct: null,
+  limit: 30,
+  skip: 0,
   productsStatus: "idle", // idel | pending | successed | failed
   detailStatus: "idle", // idel | pending | successed | failed
 
@@ -15,12 +18,13 @@ const initialState = {
   detailError: null,
 };
 
-// fetch all products from fakestoreapi.com/products
+// fetch  products from fakestoreapi.com/products
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
-    const res = await fetch("/api/products?limit=0");
+    const res = await fetch("/api/products");
     const data = await res.json();
+    console.log(data);
     return data;
   },
 );
@@ -58,10 +62,13 @@ export const productsSlice = createSlice({
       .addCase(fetchProducts.pending, (state) => {
         state.productsStatus = "pending";
       })
-      .addCase(fetchProducts.fulfilled, (state, action) => {
+      .addCase(fetchProducts.fulfilled, (state, { payload }) => {
         state.productsStatus = "successed";
-        state.products = action.payload.products;
-        state.filteredItems = action.payload.products;
+        state.products = payload.products;
+        state.filteredItems = payload.products;
+        state.productsTotal = payload.total;
+        state.skip = payload.skip;
+        state.limit = payload.limit;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.productsStatus = "failed";
