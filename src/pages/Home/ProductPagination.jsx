@@ -1,8 +1,10 @@
-import React, { useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useSelector } from "react-redux";
+import { PaginationContext } from "../../context/PaginationContext";
 
-const ProductPagination = ({ currentPage, setCurrentPage, totalPages }) => {
+const ProductPagination = ({ totalPages, productsTotal }) => {
+  const { currentPage, setCurrentPage } = useContext(PaginationContext);
   const pageNumbers = useMemo(() => {
     const pages = [];
     const maxVisible = 5;
@@ -43,8 +45,6 @@ const ProductPagination = ({ currentPage, setCurrentPage, totalPages }) => {
     return pages;
   }, [currentPage, totalPages]);
 
-  console.log(pageNumbers);
-
   // Don't show pagination if 1 page or no products
 
   if (totalPages <= 1 || productsTotal === 0) {
@@ -67,23 +67,20 @@ const ProductPagination = ({ currentPage, setCurrentPage, totalPages }) => {
       >
         <IoIosArrowBack className=" text-[#191C1D]/40" />
       </button>
-      {pageNumbers.map((page, index) => {
-        console.log(page);
-        return (
-          <React.Fragment key={index}>
-            {page === "..." ? (
-              <span className="px-2 text-[#191c1d]/20">...</span>
-            ) : (
-              <button
-                onClick={() => handlePageChange(page)}
-                className={` ${currentPage === page ? "bg-primary text-white" : "text-[#191C1D]"}  cursor-pointer w-10 h-10 rounded-lg hover:bg-[#e7e8e9] transition-colors text-sm font-medium  `}
-              >
-                {page}
-              </button>
-            )}
-          </React.Fragment>
-        );
-      })}
+      {pageNumbers.map((page, index) => (
+        <React.Fragment key={index}>
+          {page === "..." ? (
+            <span className="px-2 text-[#191c1d]/20">...</span>
+          ) : (
+            <button
+              onClick={() => handlePageChange(page)}
+              className={` ${currentPage === page ? "bg-primary text-white" : "text-[#191C1D]"}  cursor-pointer w-10 h-10 rounded-lg hover:bg-[#e7e8e9] transition-colors text-sm font-medium  `}
+            >
+              {page}
+            </button>
+          )}
+        </React.Fragment>
+      ))}
       {/* Next button */}
       <button
         disabled={currentPage === totalPages}

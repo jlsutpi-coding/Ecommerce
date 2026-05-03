@@ -4,7 +4,6 @@ import ProductCard from "./ProductCard";
 import { useSelector } from "react-redux";
 
 const CardsSection = ({ productsToshow, page }) => {
-  const [currentPage, setCurrentPage] = useState(1);
   const { productsTotal, limit } = useSelector((state) => state.products);
   const totalPages = Math.ceil(productsTotal / limit);
 
@@ -18,8 +17,7 @@ const CardsSection = ({ productsToshow, page }) => {
         })}
       </div>
       <ProductPagination
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
+        productsTotal={productsTotal}
         totalPages={page === "home" ? totalPages : 0}
       />
     </div>
