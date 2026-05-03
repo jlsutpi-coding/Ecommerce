@@ -1,14 +1,12 @@
 import { useState } from "react";
 import ProductPagination from "../pages/Home/ProductPagination";
 import ProductCard from "./ProductCard";
+import { useSelector } from "react-redux";
 
 const CardsSection = ({ productsToshow, page }) => {
   const [currentPage, setCurrentPage] = useState(1);
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const { productsTotal, limit } = useSelector((state) => state.products);
+  const totalPages = Math.ceil(productsTotal / limit);
 
   return (
     <div>
@@ -21,7 +19,8 @@ const CardsSection = ({ productsToshow, page }) => {
       </div>
       <ProductPagination
         currentPage={currentPage}
-        setCurrentPage={handlePageChange}
+        setCurrentPage={setCurrentPage}
+        totalPages={page === "home" ? totalPages : 0}
       />
     </div>
   );
