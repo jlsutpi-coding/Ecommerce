@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Outlet } from "react-router";
 
@@ -10,17 +10,21 @@ import ThemeProvider from "./ThemeProvider";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../index.css";
+import { PaginationContext } from "../context/PaginationContext";
 
 const Layout = () => {
-  const { productsStatus, products } = useSelector((state) => state.products);
+  const { productsStatus, products, limit } = useSelector(
+    (state) => state.products,
+  );
+  const [currentPage, setCurrentPage] = useState(1);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (productsStatus === "idle") {
-      dispatch(fetchProducts());
-    }
-  }, [dispatch, productsStatus]);
+    const newSkip = (currentPage - 1) * limit;
+    dispatch(fetchProducts({ limit, skip: newSkip }));
+  }, [dispatch, currentPage, limit]);
+
   if (productsStatus === "pending")
     return (
       <div className=" h-screen  dark:bg-[#0b1326] text-white">
@@ -32,13 +36,15 @@ const Layout = () => {
     return <>No prodcuts available </>;
   return (
     <ThemeProvider>
-      <div className=" dark-transition flex flex-col min-h-screen bg-white dark:bg-[#0B1326] ">
-        <Header />
-        <main className=" grow">
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
+      <PaginationContext.Provider value={{ currentPage, setCurrentPage }}>
+        <div className=" dark-transition flex flex-col min-h-screen bg-white dark:bg-[#0B1326] ">
+          <Header />
+          <main className=" grow">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
+      </PaginationContext.Provider>
     </ThemeProvider>
   );
 };

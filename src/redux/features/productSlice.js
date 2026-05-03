@@ -9,8 +9,7 @@ const initialState = {
   productsTotal: 0,
   filteredItems: [],
   selectedProduct: null,
-  limit: 30,
-  skip: 0,
+  limit: 20,
   productsStatus: "idle", // idel | pending | successed | failed
   detailStatus: "idle", // idel | pending | successed | failed
 
@@ -21,10 +20,9 @@ const initialState = {
 // fetch  products from fakestoreapi.com/products
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async () => {
-    const res = await fetch("/api/products");
+  async ({ limit = 20, skip = 0 } = {}) => {
+    const res = await fetch(`/api/products?limit=${limit}&skip=${skip}`);
     const data = await res.json();
-    console.log(data);
     return data;
   },
 );
