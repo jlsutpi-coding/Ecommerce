@@ -38,7 +38,7 @@ const ProductCard = ({ product }) => {
               {category.toUpperCase()}
             </div>
             <h2 className=" font-bold text-[18px] leading-7 text-[#191C1D] dark:text-[#DAE2FD] dark-transition tracking-[0px]">
-              {title.length > 20 ? title.substring(0, 20) + "..." : title}
+              {title?.length > 20 ? title.substring(0, 20) + "..." : title}
             </h2>
             <ProductPricing product={product} page={"home"} />
           </div>

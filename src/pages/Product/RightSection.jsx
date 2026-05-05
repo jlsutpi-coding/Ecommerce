@@ -30,7 +30,7 @@ const RightSection = ({ product }) => {
             <StarRating rating={rating} />
             <div className=" text-[#C5C5D4]/30">|</div>
             <div className=" font-inter font-normal leading-5 text-[14px] dark:text-[#FFB695] text-[#757684]">
-              {reviews.length} Reviews
+              {reviews?.length} Reviews
             </div>
           </div>
         </div>

@@ -22,8 +22,10 @@ const Layout = () => {
 
   useEffect(() => {
     const newSkip = (currentPage - 1) * limit;
-    dispatch(fetchProducts({ limit, skip: newSkip }));
-  }, [dispatch, currentPage, limit]);
+    if (typeof currentPage === "number" && typeof newSkip === "number") {
+      dispatch(fetchProducts({ limit, skip: newSkip }));
+    }
+  }, [dispatch, currentPage]);
 
   if (productsStatus === "pending")
     return (
@@ -32,7 +34,7 @@ const Layout = () => {
       </div>
     );
   if (productsStatus === "failed") return <>Products fetch is error</>;
-  if (productsStatus === "successed" && products.length === 0)
+  if (productsStatus === "successed" && products?.length === 0)
     return <>No prodcuts available </>;
   return (
     <ThemeProvider>
