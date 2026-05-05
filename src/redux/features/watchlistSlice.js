@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = JSON.parse(localStorage.getItem("watchlist")) || {
+const initialState = JSON.parse(localStorage.getItem("watchlists")) || {
   watchlistItems: [],
   isError: null,
   isLoading: false,
 };
 
 const addToLocalStorage = (state) => {
-  localStorage.setItem("watchlist", JSON.stringify(state));
+  localStorage.setItem("watchlists", JSON.stringify(state));
 };
 
 const watchlistSlice = createSlice({
-  name: "watchlist",
+  name: "watchlists",
   initialState,
   reducers: {
     addToWatchlist: (state, { payload }) => {
@@ -19,6 +19,15 @@ const watchlistSlice = createSlice({
         state.watchlistItems.push(payload);
         addToLocalStorage(state);
       }
+    },
+    removeFromWatchlist: (state, { payload }) => {
+      const existingWatchlist = state.watchlistItems.find(
+        (item) => item.id === payload,
+      );
+      if (!existingWatchlist) return;
+      state.watchlistItems = state.watchlistItems.filter(
+        (item) => item.id !== existingWatchlist.id,
+      );
     },
     deleteAllFromWatchlist: (state) => {
       state.watchlistItems = [];
@@ -28,5 +37,9 @@ const watchlistSlice = createSlice({
 });
 
 export default watchlistSlice.reducer;
-export const { addToWatchlist, deleteAllFromWatchlist, moveAllToWatchlist } =
-  watchlistSlice.actions;
+export const {
+  addToWatchlist,
+  deleteAllFromWatchlist,
+  moveAllToWatchlist,
+  removeFromWatchlist,
+} = watchlistSlice.actions;
