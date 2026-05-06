@@ -11,7 +11,7 @@ const ProductImage = ({
   discountPercentage,
 }) => {
   return (
-    <div className="bg-[#F3F4F5] relative dark:bg-[#171F33] dark-transition overflow-hidden rounded-lg ">
+    <div className="bg-[#F3F4F5] w-full h-75 relative dark:bg-[#171F33] dark-transition overflow-hidden rounded-lg ">
       <ImageUrl item={thumbnail} />
       <div className="absolute bottom-4 right-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
         <button

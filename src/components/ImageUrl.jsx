@@ -42,9 +42,9 @@ const ImageUrl = ({ item }) => {
     );
   }
   return (
-    <div className=" w-full relative h-75">
+    <div className=" w-full overflow-hidden rounded-lg relative h-75">
       {isLoading && (
-        <div className=" absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-gray-700 animate-pulse">
+        <div className="absolute inset-0 flex items-center w-full justify-center bg-gray-200 dark:bg-gray-700 animate-pulse">
           <svg
             className="w-20 h-20 text-gray-900"
             fill="none"
@@ -65,7 +65,9 @@ const ImageUrl = ({ item }) => {
         src={item}
         alt={item}
         ref={imgRef}
-        className={` ${isLoading ? "opacity-0" : "opacity-100"}  w-full h-full rounded-lg  object-contain inset-0 hover:scale-105 duration-300 transition-transform `}
+        className={`${
+          isLoading ? "opacity-0" : "opacity-100"
+        }  w-full h-full rounded-lg  object-contain inset-0 hover:scale-105 duration-300 transition-transform`}
         onError={() => {
           setIsError(true);
           setIsLoading(false);

@@ -41,8 +41,8 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <Link to={`/products/${id}`}>
-      <div className="   col-span-1  flex flex-col gap-5  rounded-lg  relative ">
+    <Link to={`/products/${id}`} className="w-full block h-full   col-span-1 ">
+      <div className=" w-full flex flex-col gap-5  rounded-lg  relative ">
         <div className=" w-full group ">
           <ProductImage
             thumbnail={thumbnail}
