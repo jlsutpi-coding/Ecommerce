@@ -13,6 +13,7 @@ import {
 
 import BtnPrimary from "./BtnPrimary";
 import ProductPricing from "./ProductPricing";
+import ImageUrl from "./ImageUrl";
 
 const ProductCard = ({ product }) => {
   const { category, title, id, thumbnail } = product;
@@ -40,11 +41,12 @@ const ProductCard = ({ product }) => {
       <div className="   col-span-1  flex flex-col gap-5  rounded-lg  relative ">
         <div className="group w-full ">
           <div className="bg-[#F3F4F5] relative dark:bg-[#171F33] dark-transition overflow-hidden rounded-lg ">
-            <img
+            {/* <img
               src={thumbnail}
               className="w-full h-full object-contain group-hover:scale-105 duration-300 transition-transform "
               alt={title}
-            />
+            /> */}
+            <ImageUrl item={thumbnail} />
             <div className="absolute bottom-4 right-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
               <button
                 onClick={(e) => {
