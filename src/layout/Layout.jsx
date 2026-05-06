@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Outlet } from "react-router";
 
@@ -10,35 +10,37 @@ import ThemeProvider from "./ThemeProvider";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../index.css";
+import { PaginationContext } from "../context/PaginationContext";
 
 const Layout = () => {
-  const { productsStatus, products } = useSelector((state) => state.products);
+  const { productsStatus, products, limit } = useSelector(
+    (state) => state.products,
+  );
+  const [currentPage, setCurrentPage] = useState(1);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (productsStatus === "idle") {
-      dispatch(fetchProducts());
+    const newSkip = (currentPage - 1) * limit;
+    if (typeof currentPage === "number" && typeof newSkip === "number") {
+      dispatch(fetchProducts({ limit, skip: newSkip }));
     }
-  }, [dispatch, productsStatus]);
-  if (productsStatus === "pending")
-    return (
-      <div className=" h-screen  dark:bg-[#0b1326] text-white">
-        Products are pending
-      </div>
-    );
+  }, [dispatch, currentPage]);
+
   if (productsStatus === "failed") return <>Products fetch is error</>;
-  if (productsStatus === "successed" && products.length === 0)
+  if (productsStatus === "successed" && products?.length === 0)
     return <>No prodcuts available </>;
   return (
     <ThemeProvider>
-      <div className=" dark-transition flex flex-col min-h-screen bg-white dark:bg-[#0B1326] ">
-        <Header />
-        <main className=" grow">
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
+      <PaginationContext.Provider value={{ currentPage, setCurrentPage }}>
+        <div className=" dark-transition flex flex-col min-h-screen bg-white dark:bg-[#0B1326] ">
+          <Header />
+          <main className=" grow">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
+      </PaginationContext.Provider>
     </ThemeProvider>
   );
 };

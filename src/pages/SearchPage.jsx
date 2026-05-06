@@ -4,9 +4,6 @@ import { useSearchParams } from "react-router";
 
 import { useDispatch, useSelector } from "react-redux";
 
-// import {
-
-// } from "../features/searchSlice";
 import ProductCard from "../components/ProductCard";
 import CardsSection from "../components/CardsSection";
 import {
@@ -41,7 +38,7 @@ const SearchPage = () => {
       dispatch(clearSearch());
     };
   }, [query, dispatch, products]);
-  if (!searchResults.length) return <></>;
+  if (!searchResults?.length) return <></>;
 
   return (
     <div className=" mt-40 mx-auto max-w-360 px-8">

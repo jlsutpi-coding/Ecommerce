@@ -39,7 +39,7 @@ const WatchlistHeader = ({ watchlistItems }) => {
             </span>
           </div>
         </div>
-        {watchlistItems.length ? (
+        {watchlistItems?.length ? (
           <div className="flex gap-4 flex-nowrap ">
             <BtnPrimary
               onBtnClick={() => onMoveToAllCart(watchlistItems)}

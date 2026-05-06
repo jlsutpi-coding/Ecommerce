@@ -25,7 +25,7 @@ const Header = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     if (inputValue.trim()) {
-      dispatch(setSearchQery(inputValue));
+      dispatch(setSearchQuery(inputValue));
       dispatch(setIsSearching(true));
       navigate(`search?q=${encodeURIComponent(inputValue)}`);
       setInputValue("");

@@ -3,11 +3,14 @@ import {
   createSelector,
   createSlice,
 } from "@reduxjs/toolkit";
+import { retry } from "@reduxjs/toolkit/query";
 
 const initialState = {
   products: [],
+  productsTotal: 0,
   filteredItems: [],
   selectedProduct: null,
+  limit: 20,
   productsStatus: "idle", // idel | pending | successed | failed
   detailStatus: "idle", // idel | pending | successed | failed
 
@@ -15,12 +18,26 @@ const initialState = {
   detailError: null,
 };
 
-// fetch all products from fakestoreapi.com/products
+const delay = (delayTime) =>
+  new Promise((reslove) => setTimeout(reslove, delayTime));
+// fetch  products from fakestoreapi.com/products
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async () => {
-    const res = await fetch("/api/products?limit=0");
+  async ({ limit = 20, skip = 0 } = {}) => {
+    await delay(500);
+    let res = await fetch(`/api/products?limit=${limit}&skip=${skip}`);
+    if (res.status === 429) {
+      await delay(5000);
+      res = await fetch(`/api/products?limit=${limit}&skip=${skip}`);
+      if (!res.ok) {
+        throw new Error(`Falied after retry : ${res.status}`);
+      }
+    }
+    if (!res.ok) {
+      throw new Error(`Falied after retry : ${res.status}`);
+    }
     const data = await res.json();
+
     return data;
   },
 );
@@ -58,10 +75,13 @@ export const productsSlice = createSlice({
       .addCase(fetchProducts.pending, (state) => {
         state.productsStatus = "pending";
       })
-      .addCase(fetchProducts.fulfilled, (state, action) => {
+      .addCase(fetchProducts.fulfilled, (state, { payload }) => {
         state.productsStatus = "successed";
-        state.products = action.payload.products;
-        state.filteredItems = action.payload.products;
+        state.products = payload.products;
+        state.filteredItems = payload.products;
+        state.productsTotal = payload.total;
+        state.skip = payload.skip;
+        // state.limit = payload.limit;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.productsStatus = "failed";
@@ -106,11 +126,11 @@ export const selectCategoriesWithCounts = createSelector(
 // get category type
 export const getCategoryType = (state) => {
   const { filteredItems, products } = state.products;
-  if (!filteredItems.length) {
+  if (!filteredItems?.length) {
     return null;
   }
-  const allProductCounts = products.length || 0;
-  if (filteredItems.length === allProductCounts) {
+  const allProductCounts = products?.length || 0;
+  if (filteredItems?.length === allProductCounts) {
     return "all-products";
   }
 
