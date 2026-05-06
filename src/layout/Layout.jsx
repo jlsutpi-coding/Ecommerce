@@ -27,12 +27,6 @@ const Layout = () => {
     }
   }, [dispatch, currentPage]);
 
-  if (productsStatus === "pending")
-    return (
-      <div className=" h-screen  dark:bg-[#0b1326] text-white">
-        Products are pending
-      </div>
-    );
   if (productsStatus === "failed") return <>Products fetch is error</>;
   if (productsStatus === "successed" && products?.length === 0)
     return <>No prodcuts available </>;
