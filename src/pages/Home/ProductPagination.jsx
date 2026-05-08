@@ -1,6 +1,7 @@
 import React, { useContext, useMemo } from "react";
+
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { useSelector } from "react-redux";
+
 import { PaginationContext } from "../../context/PaginationContext";
 
 const ProductPagination = ({ totalPages, productsTotal }) => {
@@ -13,7 +14,7 @@ const ProductPagination = ({ totalPages, productsTotal }) => {
         pages.push(i);
       }
     } else {
-      // Always show fist page
+      // Always show first page
       pages.push(1);
 
       let start = Math.max(2, currentPage - 1);
@@ -57,24 +58,31 @@ const ProductPagination = ({ totalPages, productsTotal }) => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
+
+  const arrowIconClass = "text-[#191C1D]/40 dark:text-[#DAE2FD]/70";
+
+  const buttonBaseClass =
+    "rounded-lg w-10 h-10 flex items-center justify-center transition-colors cursor-pointer hover:bg-[#e7e8e9] dark:hover:bg-black/20 disabled:opacity-50 disabled:cursor-not-allowed";
   return (
-    <div className=" flex  justify-center items-center gap-2 pt-10">
+    <div className="flex justify-center items-center gap-2 pt-10">
       {/* Previous Button */}
       <button
         disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
-        className={` rounded-lg    w-10 h-10 flex items-center justify-center cursor-pointer ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-[#e7e8e9]"}`}
+        className={buttonBaseClass}
       >
-        <IoIosArrowBack className=" text-[#191C1D]/40" />
+        <IoIosArrowBack className={arrowIconClass} />
       </button>
       {pageNumbers.map((page, index) => (
         <React.Fragment key={index}>
           {page === "..." ? (
-            <span className="px-2 text-[#191c1d]/20">...</span>
+            <span className="px-2 text-[#191c1d]/20 dark:text-[#DAE2FD]/50">
+              ...
+            </span>
           ) : (
             <button
               onClick={() => handlePageChange(page)}
-              className={` ${currentPage === page ? "bg-primary text-white" : "text-[#191C1D]"}  cursor-pointer w-10 h-10 rounded-lg hover:bg-[#e7e8e9] transition-colors text-sm font-medium  `}
+              className={`${currentPage === page ? "bg-primary text-white" : "text-[#191C1D] dark:text-[#DAE2FD] dark:hover:bg-black/20 hover:bg-[#e7e8e9]"}  cursor-pointer w-10 h-10 rounded-lg  transition-colors text-sm font-medium  `}
             >
               {page}
             </button>
@@ -85,9 +93,9 @@ const ProductPagination = ({ totalPages, productsTotal }) => {
       <button
         disabled={currentPage === totalPages}
         onClick={() => handlePageChange(currentPage + 1)}
-        className={` rounded-lg   w-10 h-10 flex items-center justify-center cursor-pointer ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : "hover:bg-[#e7e8e9]"}`}
+        className={buttonBaseClass}
       >
-        <IoIosArrowForward className=" text-[#191C1D]/40 " />
+        <IoIosArrowForward className={arrowIconClass} />
       </button>
     </div>
   );
