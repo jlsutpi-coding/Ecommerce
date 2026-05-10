@@ -11,6 +11,7 @@ import InputSearch from "./InputSearch";
 import { ThemeContext } from "../context/ThemeContext";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { setIsSearching, setSearchQuery } from "../redux/features/searchSlice";
+import { FaRegUserCircle } from "react-icons/fa";
 
 const Header = () => {
   const [inputValue, setInputValue] = useState("");
@@ -71,6 +72,10 @@ const Header = () => {
           ) : (
             <MdOutlineLightMode className="w-7  group-hover:text-primary h-7" />
           )}
+        </button>
+
+        <button className=" curpointer">
+          <FaRegUserCircle />
         </button>
       </div>
     </nav>
