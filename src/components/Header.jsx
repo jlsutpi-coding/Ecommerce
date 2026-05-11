@@ -12,6 +12,7 @@ import { ThemeContext } from "../context/ThemeContext";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { setIsSearching, setSearchQuery } from "../redux/features/searchSlice";
 import { FaRegUserCircle } from "react-icons/fa";
+import HeaderUserIcon from "./HeaderUserIcon";
 
 const Header = () => {
   const [inputValue, setInputValue] = useState("");
@@ -51,32 +52,30 @@ const Header = () => {
 
         <HeaderIconButton
           icon={
-            <IoMdHeartEmpty className="w-7 dark:group-hover:text-[#dae2fd]dark-transition dark:text-[#C0C1FF] group-hover:text-primary h-7" />
+            <IoMdHeartEmpty className="w-7 h-7 dark-transition dark:text-[#C0C1FF] group-hover:text-primary " />
           }
           cartItems={watchlistItems}
           link={"/watchlist"}
         />
         <HeaderIconButton
           icon={
-            <LiaShoppingBagSolid className="w-7 dark:group-hover:text-[#dae2fd] dark:text-[#C0C1FF] dark-transition group-hover:text-primary h-7" />
+            <LiaShoppingBagSolid className="w-7 h-7 dark:text-[#C0C1FF] dark-transition group-hover:text-primary " />
           }
           cartItems={cartItems}
           link={"/cart"}
         />
-        <button
-          onClick={() => onSetTheme(theme)}
-          className=" cursor-pointer group"
-        >
-          {theme === "dark" ? (
-            <MdOutlineDarkMode className="w-7 dark:group-hover:text-[#dae2fd]dark-transition dark:text-[#FFB695] group-hover:text-primary h-7" />
-          ) : (
-            <MdOutlineLightMode className="w-7  group-hover:text-primary h-7" />
-          )}
-        </button>
 
-        <button className=" curpointer">
-          <FaRegUserCircle />
-        </button>
+        <HeaderIconButton
+          onBtnClick={() => onSetTheme(theme)}
+          icon={
+            theme === "dark" ? (
+              <MdOutlineDarkMode className="w-7 dark:group-hover:text-[#dae2fd] dark-transition dark:text-[#FFB695]  h-7" />
+            ) : (
+              <MdOutlineLightMode className="w-7  group-hover:text-primary h-7" />
+            )
+          }
+        />
+        <HeaderUserIcon />
       </div>
     </nav>
   );

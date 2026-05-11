@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import {
+  filterByCategory,
   getCategoryType,
   resetFilterByCategory,
   selectCategoriesWithCounts,
@@ -45,7 +46,6 @@ const CategorySection = () => {
             key={index}
             onClick={() => {
               dispatch(filterByCategory(item.slug));
-              // getActiveCategory();
             }}
             className={` ${activeCategory === item.slug ? "text-primary" : "text-[#191C1D]/60 dark:text-[#C7C4D8]"} group   dark-transition  w-full cursor-pointer flex justify-between items-center mb-4`}
           >
