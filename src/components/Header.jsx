@@ -1,25 +1,20 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Link, useNavigate } from "react-router";
 
 import { LiaShoppingBagSolid } from "react-icons/lia";
-import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
+
+import { setIsSearching, setSearchQuery } from "../redux/features/searchSlice";
 
 import HeaderIconButton from "./HeaderIconButton";
 import InputSearch from "./InputSearch";
-import { ThemeContext } from "../context/ThemeContext";
-import { IoMdHeartEmpty } from "react-icons/io";
-import { setIsSearching, setSearchQuery } from "../redux/features/searchSlice";
-import { FaRegUserCircle } from "react-icons/fa";
 import HeaderUserIcon from "./HeaderUserIcon";
 
 const Header = () => {
   const [inputValue, setInputValue] = useState("");
   const { cartItems } = useSelector((state) => state.carts);
   const { watchlistItems } = useSelector((state) => state.watchlists);
-
-  const { theme, setThemeMode } = useContext(ThemeContext);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,10 +27,6 @@ const Header = () => {
       navigate(`search?q=${encodeURIComponent(inputValue)}`);
       setInputValue("");
     }
-  };
-
-  const onSetTheme = (theme) => {
-    setThemeMode(theme === "dark" ? "light" : "dark");
   };
 
   return (
@@ -52,29 +43,12 @@ const Header = () => {
 
         <HeaderIconButton
           icon={
-            <IoMdHeartEmpty className="w-7 h-7 dark-transition dark:text-[#C0C1FF] group-hover:text-primary " />
-          }
-          cartItems={watchlistItems}
-          link={"/watchlist"}
-        />
-        <HeaderIconButton
-          icon={
             <LiaShoppingBagSolid className="w-7 h-7 dark:text-[#C0C1FF] dark-transition group-hover:text-primary " />
           }
           cartItems={cartItems}
           link={"/cart"}
         />
 
-        <HeaderIconButton
-          onBtnClick={() => onSetTheme(theme)}
-          icon={
-            theme === "dark" ? (
-              <MdOutlineDarkMode className="w-7 dark:group-hover:text-[#dae2fd] dark-transition dark:text-[#FFB695]  h-7" />
-            ) : (
-              <MdOutlineLightMode className="w-7  group-hover:text-primary h-7" />
-            )
-          }
-        />
         <HeaderUserIcon />
       </div>
     </nav>
