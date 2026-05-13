@@ -43,7 +43,7 @@ const Header = () => {
 
         <HeaderIconButton
           icon={
-            <LiaShoppingBagSolid className="w-7 h-7 dark:text-[#C0C1FF] dark-transition group-hover:text-primary " />
+            <LiaShoppingBagSolid className="w-7 h-7 dark:text-[#C0C1FF] text-[#454652] dark-transition group-hover:text-primary " />
           }
           cartItems={cartItems}
           link={"/cart"}
