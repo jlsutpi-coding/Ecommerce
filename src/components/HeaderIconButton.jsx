@@ -19,7 +19,7 @@ const HeaderIconButton = ({
         {children}
 
         {cartItems?.length ? (
-          <span className=" text-white text-[10px]  bg-primary rounded-full h-4 w-4 absolute top-0 r-0">
+          <span className=" text-white text-[8px] lg:text-[10px]  bg-primary rounded-full w-3 h-3 lg:h-4 lg:w-4 absolute top-0 r-0">
             {cartItems?.length}
           </span>
         ) : null}

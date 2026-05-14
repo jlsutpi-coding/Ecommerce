@@ -43,14 +43,14 @@ const WatchlistHeader = ({ watchlistItems }) => {
           <div className="flex gap-4 flex-nowrap ">
             <BtnPrimary
               onBtnClick={() => onMoveToAllCart(watchlistItems)}
-              aditionnal={"grow whitespace-nowrap"}
+              additional={"grow whitespace-nowrap"}
             >
               Move All to Cart
             </BtnPrimary>
             <BtnPrimary
               onBtnClick={() => onDeleteAllFromWatchlist()}
               bg_color="bg-[#ba1a1a]"
-              aditionnal={"whitespace-nowrap"}
+              additional={"whitespace-nowrap"}
             >
               <span>Delete All From watchlists</span>
             </BtnPrimary>

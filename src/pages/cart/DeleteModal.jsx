@@ -22,7 +22,7 @@ const DeleteModal = ({ openModal, setOpenModal, targetId }) => {
         <div className=" w-full flex  items-center gap-1 ">
           <BtnPrimary
             bg_color={"bg-gray-500"}
-            aditionnal={"grow"}
+            additional={"grow"}
             onBtnClick={() => setOpenModal(false)}
           >
             cancel

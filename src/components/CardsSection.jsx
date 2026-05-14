@@ -23,9 +23,9 @@ const CardsSection = ({ productsToshow, page }) => {
       <div
         className={`${
           page === "home"
-            ? " grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
-            : "grid-cols-1 sm:grid-cols-3 md:grid-cols-4"
-        } mb-10 items-start grid gap-x-8 gap-y-12`}
+            ? " grid-cols-2 md:grid-cols-2 xl:grid-cols-3"
+            : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4"
+        } mb-10 items-start grid  gap-x-4 gap-y-8 lg:gap-x-8 lg:gap-y-12`}
       >
         {productsToshow?.slice(0, 20).map((product) => (
           <ProductCard key={product.id} product={product} />

@@ -6,7 +6,7 @@ const ActionButtons = () => {
   return (
     <div className=" flex justify-center items-center gap-6">
       <Link to={"/"}>
-        <BtnPrimary aditionnal={"px-10 py-4"}>
+        <BtnPrimary additional={"px-10 py-4"}>
           <span className=" ">Back to Home</span>
         </BtnPrimary>
       </Link>
