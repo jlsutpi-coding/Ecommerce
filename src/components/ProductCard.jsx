@@ -42,7 +42,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <Link to={`/products/${id}`} className="w-full block h-full   col-span-1 ">
-      <div className=" w-full flex flex-col gap-5  rounded-lg  relative ">
+      <div className=" w-full flex flex-col gap-1 md:gap-2 lg:gap-5  rounded-lg  relative ">
         <div className=" w-full group ">
           <ProductImage
             thumbnail={thumbnail}
@@ -52,8 +52,8 @@ const ProductCard = ({ product }) => {
           />
           <ProductInfo category={category} product={product} title={title} />
         </div>
-        <BtnPrimary onBtnClick={hanldeAddToCart} aditionnal={" w-full"}>
-          <LiaShoppingBagSolid className="w-5 h-5" />
+        <BtnPrimary onBtnClick={hanldeAddToCart} additional={" w-full"}>
+          <LiaShoppingBagSolid className=" w-4 h-4  lg:w-5 lg:h-5" />
 
           <span>Add to Cart</span>
         </BtnPrimary>
