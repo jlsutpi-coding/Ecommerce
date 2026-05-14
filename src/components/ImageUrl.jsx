@@ -1,52 +1,47 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const ImageUrl = ({ item }) => {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const imgRef = useRef();
 
-  useEffect(() => {
-    if (imgRef.current.complete) {
-      setIsLoading(false);
-    }
-  }, []);
   useEffect(() => {
     setIsLoading(true);
     setIsError(false);
   }, [item]);
-
+  const containerClasses =
+    "w-full rounded-lg relative h-45 lg:h-75 overflow-hidden";
   if (isError) {
     return (
-      <>
-        <div className="relative h-75 w-full bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-          <div className="text-center">
-            <svg
-              className="w-12 h-12 mx-auto text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
-            </svg>
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-              Image not available
-            </p>
-          </div>
+      <div
+        className={` ${containerClasses} bg-gray-200 dark:bg-gray-700  flex items-center justify-center`}
+      >
+        <div className="text-center">
+          <svg
+            className="w-12 h-12 mx-auto text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+            />
+          </svg>
+          <p className="mt-2 text-xs lg:text-sm text-gray-500 dark:text-gray-400">
+            Image not available
+          </p>
         </div>
-      </>
+      </div>
     );
   }
   return (
-    <div className=" w-full overflow-hidden rounded-lg relative h-75">
+    <div className={containerClasses}>
       {isLoading && (
         <div className="absolute inset-0 flex items-center w-full justify-center bg-gray-200 dark:bg-gray-700 animate-pulse">
           <svg
-            className="w-20 h-20 text-gray-900"
+            className="w-10 h-10 lg:w-16 lg:h-16 text-gray-900"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -63,8 +58,7 @@ const ImageUrl = ({ item }) => {
       )}
       <img
         src={item}
-        alt={item}
-        ref={imgRef}
+        alt={"product image"}
         className={`${
           isLoading ? "opacity-0" : "opacity-100"
         }  w-full h-full rounded-lg  object-contain inset-0 hover:scale-105 duration-300 transition-transform`}
