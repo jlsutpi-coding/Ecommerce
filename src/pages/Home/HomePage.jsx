@@ -15,9 +15,9 @@ const HomePage = () => {
   const productsToshow = filteredItems?.length > 0 ? filteredItems : products;
 
   return (
-    <div className=" pt-22 lg:pt-32 md:px-6 px-4 lg:px-8 pb-20 max-w-360 mx-auto ">
+    <div className=" pt-22 lg:pt-32 md:px-6 px-4 lg:px-8 pb-10 lg:pb-20 max-w-360 mx-auto ">
       <HeroTitleSection />
-      <div className="flex flex-col lg:flex-row  gap-4 md:gap-8 lg:gap-12 mb-10">
+      <div className="flex flex-col lg:flex-row  gap-4 md:gap-8 lg:gap-12 lg:mb-10">
         <CategorySection />
         <CardsSection productsToshow={productsToshow} page={"home"} />
       </div>

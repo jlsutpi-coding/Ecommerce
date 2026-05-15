@@ -47,7 +47,7 @@ const Layout = () => {
           <main className=" grow">
             <Outlet />
           </main>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </PaginationContext.Provider>
     </ThemeProvider>
