@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -19,6 +19,7 @@ const Layout = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const dispatch = useDispatch();
+  const nav = useNavigate();
 
   useEffect(() => {
     const newSkip = (currentPage - 1) * limit;
@@ -27,9 +28,17 @@ const Layout = () => {
     }
   }, [dispatch, currentPage]);
 
-  if (productsStatus === "failed") return <>Products fetch is error</>;
-  if (productsStatus === "successed" && products?.length === 0)
-    return <>No prodcuts available </>;
+  useEffect(() => {
+    if (productsStatus === "failed") {
+      nav("/404");
+      return;
+    }
+    if (productsStatus === "succeeded" && products?.length === 0) {
+      nav("/empty");
+      return;
+    }
+  }, [productsStatus, nav, products]);
+
   return (
     <ThemeProvider>
       <PaginationContext.Provider value={{ currentPage, setCurrentPage }}>

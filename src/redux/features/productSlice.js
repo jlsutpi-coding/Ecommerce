@@ -11,8 +11,8 @@ const initialState = {
   filteredItems: [],
   selectedProduct: null,
   limit: 20,
-  productsStatus: "idle", // idel | pending | successed | failed
-  detailStatus: "idle", // idel | pending | successed | failed
+  productsStatus: "idle", // idel | pending | succeeded | failed
+  detailStatus: "idle", // idel | pending | succeeded | failed
 
   productsError: null,
   detailError: null,
@@ -76,7 +76,7 @@ export const productsSlice = createSlice({
         state.productsStatus = "pending";
       })
       .addCase(fetchProducts.fulfilled, (state, { payload }) => {
-        state.productsStatus = "successed";
+        state.productsStatus = "succeeded";
         state.products = payload.products;
         state.filteredItems = payload.products;
         state.productsTotal = payload.total;
@@ -91,7 +91,7 @@ export const productsSlice = createSlice({
         state.detailStatus = "pending";
       })
       .addCase(fetchProductById.fulfilled, (state, action) => {
-        state.detailStatus = "successed";
+        state.detailStatus = "succeeded";
         state.selectedProduct = action.payload;
       })
       .addCase(fetchProductById.rejected, (state, action) => {

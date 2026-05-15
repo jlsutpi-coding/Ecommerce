@@ -20,7 +20,7 @@ const ProductPagination = ({ totalPages, productsTotal }) => {
       let start = Math.max(2, currentPage - 1);
       let end = Math.min(totalPages - 1, currentPage + 1);
 
-      // Adjsut for edges
+      // Adjust for edges
       if (currentPage <= 3) {
         end = 4;
       }
@@ -60,15 +60,15 @@ const ProductPagination = ({ totalPages, productsTotal }) => {
   };
 
   const arrowIconClass = "text-[#191C1D]/40 dark:text-[#DAE2FD]/70";
-
   const buttonBaseClass =
-    "rounded-lg w-10 h-10 flex items-center justify-center transition-colors cursor-pointer hover:bg-[#e7e8e9] dark:hover:bg-black/20 disabled:opacity-50 disabled:cursor-not-allowed";
+    "rounded-lg w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center transition-colors cursor-pointer hover:bg-[#e7e8e9] dark:hover:bg-black/20 disabled:opacity-50 disabled:cursor-not-allowed";
   return (
-    <div className="flex justify-center items-center gap-2 pt-10">
+    <div className="flex justify-center items-center gap-1 lg:gap-2 pt-4 md:pt-8 lg:pt-10">
       {/* Previous Button */}
       <button
-        disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
+        aria-label="Previous page"
+        disabled={currentPage === 1}
         className={buttonBaseClass}
       >
         <IoIosArrowBack className={arrowIconClass} />
@@ -82,7 +82,13 @@ const ProductPagination = ({ totalPages, productsTotal }) => {
           ) : (
             <button
               onClick={() => handlePageChange(page)}
-              className={`${currentPage === page ? "bg-primary text-white" : "text-[#191C1D] dark:text-[#DAE2FD] dark:hover:bg-black/20 hover:bg-[#e7e8e9]"}  cursor-pointer w-10 h-10 rounded-lg  transition-colors text-sm font-medium  `}
+              aria-label={`Go to page ${page}`}
+              aria-current={currentPage === page ? "page" : undefined}
+              className={`${
+                currentPage === page
+                  ? "bg-primary text-white"
+                  : "text-[#191C1D] dark:text-[#DAE2FD] dark:hover:bg-black/20 hover:bg-[#e7e8e9]"
+              }  cursor-pointer w-8 h-8 lg:w-10 lg:h-10 rounded-lg  transition-colors text-xs lg:text-sm font-medium  `}
             >
               {page}
             </button>

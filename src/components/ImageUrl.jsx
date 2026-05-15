@@ -4,10 +4,6 @@ const ImageUrl = ({ item }) => {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    setIsLoading(true);
-    setIsError(false);
-  }, [item]);
   const containerClasses =
     "w-full rounded-lg relative h-45 lg:h-75 overflow-hidden";
   if (isError) {
