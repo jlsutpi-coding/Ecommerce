@@ -7,6 +7,7 @@ import {
   selectCategoriesWithCounts,
   selectTotalProductCount,
 } from "../../redux/features/productSlice";
+import CategorySectionSkeleton from "../../components/CategorySectionSkeleton";
 
 const CategorySection = () => {
   const categories = useSelector(selectCategoriesWithCounts);
@@ -20,7 +21,7 @@ const CategorySection = () => {
   //
 
   if (!categories || categories.length === 0) {
-    return null;
+    return <CategorySectionSkeleton />;
   }
 
   const isAllActive =
