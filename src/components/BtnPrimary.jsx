@@ -10,7 +10,7 @@ const BtnPrimary = ({
 }) => {
   return (
     <button
-      onClick={onBtnClick}
+      onClick={!disabled ? onBtnClick : undefined}
       disabled={disabled}
       className={`
         w-full flex items-center  justify-center gap-2
