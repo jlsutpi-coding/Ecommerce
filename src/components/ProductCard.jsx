@@ -8,7 +8,7 @@ import { addToCart } from "../redux/features/cartSlice";
 import {
   addToWatchlist,
   removeFromWatchlist,
-} from "../redux/features/watchListSlice";
+} from "../redux/features/watchlistSlice";
 
 import BtnPrimary from "./BtnPrimary";
 import ProductImage from "./ProductImage";
