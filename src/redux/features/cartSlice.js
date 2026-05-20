@@ -68,7 +68,7 @@ export const cartsSlice = createSlice({
         updateToLocalStorage(state);
       }
     },
-    subStractQuantity: (state, { payload }) => {
+    subtractQuantity: (state, { payload }) => {
       const selectedProduct = state.cartItems.find((item) => {
         return item.id === payload;
       });
@@ -157,5 +157,5 @@ const updateToLocalStorage = (state) => {
   localStorage.setItem("carts", JSON.stringify(state));
 };
 export default cartsSlice.reducer;
-export const { addToCart, addQuantity, subStractQuantity, deleteFromCart } =
+export const { addToCart, addQuantity, subtractQuantity, deleteFromCart } =
   cartsSlice.actions;

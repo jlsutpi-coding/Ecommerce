@@ -5,12 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import HeroTitleSection from "./HeroTitleSection";
 import CardsSection from "../../components/CardsSection";
 import CategorySection from "./CategorySection";
-import ProductPagination from "./ProductPagination";
-import { useNavigate } from "react-router";
 
 const HomePage = () => {
-  const { filteredItems, productsStatus, productsError, products } =
-    useSelector((state) => state.products);
+  const { filteredItems, products } = useSelector((state) => state.products);
 
   const productsToshow = filteredItems?.length > 0 ? filteredItems : products;
 

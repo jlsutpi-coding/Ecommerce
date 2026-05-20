@@ -19,7 +19,7 @@ const initialState = {
 };
 
 const delay = (delayTime) =>
-  new Promise((reslove) => setTimeout(reslove, delayTime));
+  new Promise((resolve) => setTimeout(resolve, delayTime));
 // fetch  products from fakestoreapi.com/products
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
