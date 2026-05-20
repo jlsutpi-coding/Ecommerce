@@ -42,12 +42,12 @@ const Layout = () => {
   return (
     <ThemeProvider>
       <PaginationContext.Provider value={{ currentPage, setCurrentPage }}>
-        <div className=" dark-transition flex flex-col min-h-screen bg-white dark:bg-[#0B1326] ">
+        <div className=" dark-transition flex flex-col min-h-dvh ">
           <Header />
           <main className="grow">
             <Outlet />
           </main>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </PaginationContext.Provider>
     </ThemeProvider>
