@@ -10,6 +10,13 @@
 }
 @custom-variant dark (&:where(.dark, .dark *));
 
-.dark-transition {
+@utility dark-transition {
   @apply transition-colors duration-300 ease-out;
+}
+
+@layer base {
+  html,
+  body {
+    @apply bg-white dark:bg-[#0B1326] dark-transition;
+  }
 }
