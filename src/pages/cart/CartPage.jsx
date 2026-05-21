@@ -2,6 +2,7 @@ import RightColumn from "./RightColumn";
 import LeftColumn from "./LeftColumn";
 import DeleteModal from "./DeleteModal";
 import { useState } from "react";
+import TitleSection from "../../components/TitleSection";
 
 const CartPage = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -12,20 +13,17 @@ const CartPage = () => {
     setOpenModal(true);
   };
   return (
-    <main className="pt-32 px-12 bg-[#f8f9fa]  dark:bg-[#0B1326] dark-transition  pb-20 max-w-screen-2xl mx-auto">
+    <main className="max-w-screen-2xl pt-22 lg:pt-32  px-4 md:px-6 lg:px-8 xl:px-12 bg-[#f8f9fa] dark:bg-[#0B1326] dark-transition pb-10 lg:pb-20 mx-auto">
       <DeleteModal
         openModal={openModal}
         setOpenModal={setOpenModal}
         targetId={targetId}
       />
-      <header className="mb-12">
-        <h1 className="text-4xl font-manrope dark-transition dark:text-[#DAE2FD] font-extrabold tracking-tight mb-2">
-          Shopping Bag
-        </h1>
-        <p className="font-inter font-[16px] leading-4 text-[#454652] dark-transition dark:text-[#C7C4D8]">
-          Review your selected pieces from the Archive.
-        </p>
-      </header>
+
+      <TitleSection
+        title="Shopping Bag"
+        description="Review your selected pieces from the Archive."
+      />
 
       <div className="  grid grid-cols-12 gap-12 items-start">
         <LeftColumn onOpenModal={triggerDeleteModal} />
