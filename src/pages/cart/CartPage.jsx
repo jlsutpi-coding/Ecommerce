@@ -8,10 +8,10 @@ const CartPage = () => {
   const [openModal, setOpenModal] = useState(false);
   const [targetId, setTargetId] = useState(null);
 
-  const triggerDeleteModal = (id) => {
+  const triggerDeleteModal = useCallback((id) => {
     setTargetId(id);
     setOpenModal(true);
-  };
+  }, []);
   return (
     <main className="max-w-screen-2xl pt-22 lg:pt-32  px-4 md:px-6 lg:px-8 xl:px-12 bg-[#f8f9fa] dark:bg-[#0B1326] dark-transition pb-10 lg:pb-20 mx-auto">
       <DeleteModal
@@ -25,7 +25,7 @@ const CartPage = () => {
         description="Review your selected pieces from the Archive."
       />
 
-      <div className="  grid grid-cols-12 gap-12 items-start">
+      <div className="  grid lg:grid-cols-12 gap-4  lg:gap-12">
         <LeftColumn onOpenModal={triggerDeleteModal} />
         <RightColumn />
       </div>

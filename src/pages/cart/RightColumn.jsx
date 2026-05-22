@@ -7,7 +7,7 @@ const RightColumn = () => {
   const carts = useSelector((state) => state.carts);
 
   return (
-    <div className="col-span-4 bg-[#F3F4F5] dark-transition dark:bg-[#131B2E] rounded-xl flex flex-col p-8 gap-8 ">
+    <div className=" col-span-full  lg:col-span-4 bg-[#F3F4F5] dark-transition dark:bg-[#131B2E] rounded-xl flex flex-col p-8 gap-8 ">
       <div className=" flex flex-col gap-8 ">
         <div className="flex flex-col gap-6">
           <h2 className=" dark:text-[#DAE2FD] dark-transition font-manrope leading-8 text-[24px] font-bold">

@@ -30,14 +30,12 @@ const Header = () => {
   };
 
   return (
-    <nav className="dark-transition   w-full  flex justify-between items-center px-4 md:px-8 lg:px-12 fixed top-0  z-50 bg-[#f8f9fa]/80 dark:bg-[#0B1326]/70 dark:shadow-[0_40px_64px_-12px_rgba(218,226,253,0.06)]  backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.05)] h-18 lg:h-21">
-      <div className="">
-        <Link to={"/"}>
-          <h1 className=" dark:text-[#DAE2FD] font-extrabold font-manrope leading-8 tracking-[-1.2px] dark-transition text-[20px] md:text-[22px]  lg:text-[24px]">
-            Indigo
-          </h1>
-        </Link>
-      </div>
+    <nav className="dark-transition w-full flex justify-between items-center px-4 md:px-8 lg:px-8 xl:px-12 fixed top-0  z-50 bg-[#f8f9fa]/80 dark:bg-[#0B1326]/70 dark:shadow-[0_40px_64px_-12px_rgba(218,226,253,0.06)]  backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.05)] h-18 lg:h-21">
+      <Link to={"/"}>
+        <h1 className="dark:text-[#DAE2FD] font-extrabold font-manrope leading-8 tracking-[-1.2px] dark-transition text-[20px] md:text-[22px]  lg:text-[24px]">
+          Indigo
+        </h1>
+      </Link>
       <div className=" items-center flex gap-2 lg:gap-3  justify-start ">
         <InputSearch />
 
