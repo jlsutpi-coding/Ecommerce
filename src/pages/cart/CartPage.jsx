@@ -28,7 +28,7 @@ const CartPage = () => {
         description="Review your selected pieces from the Archive."
       />
 
-      <div className="  grid lg:grid-cols-12 gap-4  lg:gap-12">
+      <div className="  grid lg:grid-cols-12 gap-4  lg:gap-12 items-start">
         <LeftColumn onOpenModal={triggerDeleteModal} />
         <RightColumn />
       </div>
