@@ -60,7 +60,7 @@ const HeaderUserIcon = () => {
         }
       ></HeaderIconButton>
       <div
-        className={`absolute right-0 w-40 lg:w-50 shadow-lg top-15 dark:bg-gray-800 bg-[#f8f9fa] rounded-lg overflow-hidden transition-all duration-200 transform origin-top-right ${
+        className={`absolute right-0 w-40 lg:w-50 shadow-lg top-15 dark:bg-gray-800 bg-[#f8f9fa] rounded-lg overflow-hidden transition-all dark-transition transform origin-top-right ${
           isDropdownOpen
             ? "scale-100 opacity-100"
             : "scale-95 opacity-0 pointer-events-none"

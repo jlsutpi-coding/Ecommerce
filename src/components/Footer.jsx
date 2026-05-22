@@ -12,7 +12,7 @@ const Footer = () => {
   ];
 
   return (
-    <div className="dark-transition py-6 md:py-12 lg:py-16 px-4 md:px-8 lg:px-12 bg-[#F3F4F5] dark:bg-[#060E20] flex-col lg:flex-row flex items-center justify-center lg:justify-between">
+    <div className=" flex-col lg:flex-row flex items-center justify-center lg:justify-between dark-transition py-6 md:py-12 lg:py-16 px-4 md:px-8 lg:px-12 bg-[#F3F4F5] dark:bg-[#060E20] ">
       <div className="text-center lg:text-start ">
         <h4 className="font-bold text-[18px] leading-7 dark-transition font-manrope text-[#191C1D] dark:text-[#DAE2FD]">
           Indigo

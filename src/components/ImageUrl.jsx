@@ -6,7 +6,7 @@ const ImageUrl = ({ item, page, alt = "product image" }) => {
 
   const containerClasses =
     page === "cart"
-      ? "w-full rounded-lg relative h-60  overflow-hidden"
+      ? "w-full rounded-lg relative h-45  lg:h-60  overflow-hidden"
       : "w-full rounded-lg relative h-45 lg:h-75 overflow-hidden";
   if (isError) {
     return (
@@ -15,7 +15,7 @@ const ImageUrl = ({ item, page, alt = "product image" }) => {
       >
         <div className="text-center">
           <svg
-            className="w-12 h-12 mx-auto text-gray-400"
+            className="w-12 h-12  mx-auto text-gray-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
