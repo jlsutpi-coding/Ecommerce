@@ -7,6 +7,7 @@ import { LiaShoppingBagSolid } from "react-icons/lia";
 import { addToCart } from "../redux/features/cartSlice";
 import {
   addToWatchlist,
+  checkIsInWatchlist,
   removeFromWatchlist,
 } from "../redux/features/watchlistSlice";
 
@@ -18,7 +19,7 @@ const ProductCard = ({ product }) => {
   const { category, title, id, thumbnail, discountPercentage } = product;
 
   const { watchlistItems } = useSelector((state) => state.watchlists);
-  const isInWatchlist = watchlistItems.some((item) => item.id === id);
+  const isInWatchlist = checkIsInWatchlist(watchlistItems, id);
 
   const dispatch = useDispatch();
 

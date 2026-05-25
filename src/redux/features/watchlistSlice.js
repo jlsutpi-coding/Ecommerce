@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 const initialState = JSON.parse(localStorage.getItem("watchlists")) || {
   watchlistItems: [],
@@ -28,6 +28,7 @@ const watchlistSlice = createSlice({
       state.watchlistItems = state.watchlistItems.filter(
         (item) => item.id !== existingWatchlist.id,
       );
+      addToLocalStorage(state);
     },
     deleteAllFromWatchlist: (state) => {
       state.watchlistItems = [];
@@ -36,10 +37,10 @@ const watchlistSlice = createSlice({
   },
 });
 
+export const checkIsInWatchlist = (watchlistItems, productId) => {
+  return watchlistItems?.some((item) => item.id === productId);
+};
+
 export default watchlistSlice.reducer;
-export const {
-  addToWatchlist,
-  deleteAllFromWatchlist,
-  moveAllToWatchlist,
-  removeFromWatchlist,
-} = watchlistSlice.actions;
+export const { addToWatchlist, deleteAllFromWatchlist, removeFromWatchlist } =
+  watchlistSlice.actions;
