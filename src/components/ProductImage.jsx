@@ -12,7 +12,10 @@ const ProductImage = ({
 }) => {
   return (
     <div className="bg-[#F3F4F5] w-full  h-45 lg:h-75 relative dark:bg-[#171F33] dark-transition overflow-hidden rounded-lg ">
-      <ImageUrl item={thumbnail} />
+      <ImageUrl
+        containerClasses="w-full rounded-lg relative h-45 lg:h-75 overflow-hidden"
+        src={thumbnail}
+      />
       <div className="absolute bottom-2 lg:bottom-4 right-2 lg:right-4  opacity-100 lg:opacity-0 translate-y-0 lg:translate-y-2  group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
         <button
           aria-label={

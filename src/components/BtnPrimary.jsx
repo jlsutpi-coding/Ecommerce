@@ -13,6 +13,7 @@ const BtnPrimary = ({
       onClick={!disabled ? onBtnClick : undefined}
       disabled={disabled}
       className={`
+        dark-transition
         w-full flex items-center  justify-center gap-2
         ${font_family} 
         ${

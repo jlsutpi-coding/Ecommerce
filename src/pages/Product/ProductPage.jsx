@@ -7,6 +7,7 @@ import {
   clearSelectedProduct,
   fetchProductById,
 } from "../../redux/features/productSlice";
+
 import LeftSection from "./LeftSection";
 import RightSection from "./RightSection";
 
@@ -30,8 +31,8 @@ const ProductPage = () => {
   if (!selectedProduct) return null;
 
   return (
-    <div className="pt-32 pb-20 max-w-screen-2xl mx-auto px-8">
-      <div className=" mt-24 mb-12 mx-12 grid grid-cols-1 lg:grid-cols-12 gap-16">
+    <div className="pt-22 lg:pt-32 md:px-6 px-4 lg:px-8 xl:px-12 pb-10 lg:pb-20 max-w-screen-2xl mx-auto">
+      <div className="  mt-8 md:mt-16 lg:mt-24  mb-4 md:mb-8 lg:mb-12 lg:mx-12 grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 md:gap-12 lg:gap-16">
         {/* Left section */}
         <LeftSection
           images={selectedProduct.images}

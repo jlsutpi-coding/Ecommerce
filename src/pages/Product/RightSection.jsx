@@ -3,6 +3,7 @@ import ProductPricing from "../../components/ProductPricing";
 import ProductActions from "./ProductActions";
 import ProductDescription from "./ProductDescription";
 import ProductTrustBadges from "./ProductTrustBadges";
+import ProductHeading from "./ProductHeading";
 
 const RightSection = ({ product }) => {
   const {
@@ -18,24 +19,14 @@ const RightSection = ({ product }) => {
 
   return (
     <>
-      <div className="lg:col-span-5 flex flex-col gap-4 ">
-        <div className="flex flex-col gap-2 pb-6 ">
-          <p className="font-semibold uppercase text-[12px] text-primary dark:text-[#FFB695] dark-transition  font-inter leading-4 tracking-[2.4px]">
-            {category}
-          </p>
-          <h2 className="text-start dark:text-[#DAE2FD] dark-transition font-manrope font-extrabold text-[48px] leading-12 tracking-[-1.2px] text-[#191C1D]">
-            {title}
-          </h2>
-          <div className=" flex items-center gap-4">
-            <StarRating rating={rating} />
-            <div className=" text-[#C5C5D4]/30">|</div>
-            <div className=" font-inter font-normal leading-5 text-[14px] dark:text-[#FFB695] text-[#757684]">
-              {reviews?.length} Reviews
-            </div>
-          </div>
-        </div>
-
-        <div className="flex font-inter flex-col gap-2 mb-8">
+      <div className="col-span-1 md:col-span-3 lg:col-span-5 flex flex-col items-center gap-6 md:gap-8 lg:gap-10 w-full">
+        <ProductHeading
+          reviews={reviews}
+          title={title}
+          category={category}
+          rating={rating}
+        />
+        <div className="w-full flex font-inter flex-col gap-0 lg:gap-2">
           <ProductPricing product={product} page={"detail"} />
           <ProductTrustBadges
             shipping={shippingInformation}
