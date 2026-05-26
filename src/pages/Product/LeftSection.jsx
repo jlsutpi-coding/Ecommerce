@@ -1,15 +1,15 @@
-import React from "react";
+import ImageUrl from "../../components/ImageUrl";
 
 const LeftSection = ({ thumbnail, images }) => {
   return (
     <>
       {/* Left : Image Gallery (Bento style) */}
-      <div className="lg:col-span-6 grid grid-cols-6 gap-4">
+      <div className=" col-span-1 md:col-span-3 lg:col-span-6 grid grid-cols-6 gap-4">
         <div className="col-span-6  rounded-xl overflow-hidden bg-surface-container-low">
-          <img
+          <ImageUrl
+            imgClasses=""
             src={thumbnail}
-            className="w-full h-full mx-auto object-contain"
-            alt=""
+            containerClasses={"w-full h-full mx-auto object-contain"}
           />
         </div>
         {images?.map((item, index) => (
@@ -17,7 +17,12 @@ const LeftSection = ({ thumbnail, images }) => {
             key={index}
             className="col-span-2 aspect-square rounded-xl overflow-hidden bg-surface-container-low"
           >
-            <img className="w-full h-full object-cover" src={item} alt="" />
+            <ImageUrl
+              imgClasses=""
+              src={item}
+              alt="Product image"
+              containerClasses="w-full rounded-lg relative h-full overflow-hidden"
+            />
           </div>
         ))}
       </div>

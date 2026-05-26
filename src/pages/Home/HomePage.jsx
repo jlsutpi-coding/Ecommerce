@@ -12,7 +12,7 @@ const HomePage = () => {
   const productsToshow = filteredItems?.length > 0 ? filteredItems : products;
 
   return (
-    <div className=" pt-22 lg:pt-32 md:px-6 px-4 lg:px-8 xl:px-12 pb-10 lg:pb-20 max-w-screen-2xl mx-auto ">
+    <div className="pt-22 lg:pt-32 md:px-6 px-4 lg:px-8 xl:px-12 pb-10 lg:pb-20 max-w-screen-2xl mx-auto">
       <TitleSection
         title="Curated Objects"
         description="A meticulous selection of rare finds and everyday essentials, chosen for their enduring quality and design integrity."

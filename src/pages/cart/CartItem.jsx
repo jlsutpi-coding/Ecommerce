@@ -41,7 +41,11 @@ const CartItem = memo(({ cart, onOpenModal }) => {
   return (
     <div className="flex md:gap-6 lg:gap-8 bg-white dark:bg-[#171F33] dark-transition rounded-xl shadow-sm p-3 md:p-4 lg:p-6">
       <Link to={`/products/${id}`} className=" shrink-0 w-fit">
-        <ImageUrl item={thumbnail} alt={title} page="cart" />
+        <ImageUrl
+          src={thumbnail}
+          alt={title}
+          containerClasses="w-full rounded-lg relative h-45 lg:h-60 overflow-hidden"
+        />
       </Link>
 
       <div className=" grow flex-col flex justify-between py-2 ">

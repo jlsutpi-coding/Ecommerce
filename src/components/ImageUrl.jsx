@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 
-const ImageUrl = ({ item, page, alt = "product image" }) => {
+const ImageUrl = ({
+  src,
+  page,
+  alt = "product image",
+  containerClasses,
+  imgClasses = "hover:scale-105  transition-transform",
+}) => {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const containerClasses =
-    page === "cart"
-      ? "w-full rounded-lg relative h-45  lg:h-60  overflow-hidden"
-      : "w-full rounded-lg relative h-45 lg:h-75 overflow-hidden";
   if (isError) {
     return (
       <div
@@ -55,11 +57,11 @@ const ImageUrl = ({ item, page, alt = "product image" }) => {
         </div>
       )}
       <img
-        src={item}
+        src={src}
         alt={alt}
         className={`${
           isLoading ? "opacity-0" : "opacity-100"
-        }  w-full h-full rounded-lg  object-contain hover:scale-105  transition-transform`}
+        }  w-full h-full rounded-lg  object-contain ${imgClasses}`}
         onError={() => {
           setIsError(true);
           setIsLoading(false);
