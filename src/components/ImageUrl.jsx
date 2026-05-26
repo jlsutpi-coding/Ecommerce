@@ -5,7 +5,7 @@ const ImageUrl = ({
   page,
   alt = "product image",
   containerClasses,
-  imgClasses = "hover:scale-105  transition-transform",
+  imgClasses = "hover:scale-105 transition-transform",
 }) => {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
