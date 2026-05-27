@@ -4,6 +4,7 @@ import RightColumn from "./RightColumn";
 import LeftColumn from "./LeftColumn";
 import DeleteModal from "./DeleteModal";
 import TitleSection from "../../components/TitleSection";
+import Breadcrumb from "../../components/Breadcrumb";
 
 const CartPage = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -34,7 +35,7 @@ const CartPage = () => {
         setOpenModal={setOpenModal}
         targetId={targetId}
       />
-
+      <Breadcrumb />
       <TitleSection
         title="Shopping Bag"
         description="Review your selected pieces from the Archive."

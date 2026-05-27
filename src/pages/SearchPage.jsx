@@ -11,6 +11,7 @@ import {
   setIsSearching,
   setSearchResults,
 } from "../redux/features/searchSlice";
+import Breadcrumb from "../components";
 
 const SearchPage = () => {
   const { products, productsStatus, filteredItems } = useSelector(
@@ -42,6 +43,7 @@ const SearchPage = () => {
 
   return (
     <div className=" mt-40 mx-auto max-w-360 px-8">
+      <Breadcrumb />
       <CardsSection productsToshow={searchResults}></CardsSection>{" "}
     </div>
   );
