@@ -11,7 +11,7 @@ import {
   setIsSearching,
   setSearchResults,
 } from "../redux/features/searchSlice";
-import Breadcrumb from "../components";
+import Breadcrumb from "../components/Breadcrumb";
 
 const SearchPage = () => {
   const { products, productsStatus, filteredItems } = useSelector(

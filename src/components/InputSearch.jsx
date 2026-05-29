@@ -37,7 +37,12 @@ const InputSearch = ({ page }) => {
         name="search-input-name"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
-        className={` ${page !== "not-found" ? "w-48  text-[10px] lg:text-sm  pr-2 lg:pr-4 pl-10 py-1.5 lg:py-2" : "w-full pr-6 pl-12 py-4.5 text-[16px] "} duration-300 border-none focus:ring-1 dark:focus:ring-[#C0C1FF] transition-all outline-none placeholder:text-[#757684]/60 dark:text-[#dae2fd]  dark:placeholder:text-[#918fa1] rounded-lg focus:ring-primary bg-[#e1e3e4] dark:bg-[#131B2E] focus:bg-white dark:focus:bg-[#131B2E]/40 font-inter font-normal `}
+        className={` ${
+          page !== "not-found"
+            ? "w-48  text-[10px] lg:text-sm  pr-2 lg:pr-4 pl-10 py-1.5 lg:py-2"
+            : "w-full pr-6 pl-12 py-4.5 text-base"
+        } 
+        duration-300 border-none focus:ring-1 dark:focus:ring-[#C0C1FF] transition-all outline-none placeholder:text-[#757684]/60 dark:text-[#dae2fd]  dark:placeholder:text-[#918fa1] rounded-lg focus:ring-primary bg-[#e1e3e4] dark:bg-[#131B2E] focus:bg-white dark:focus:bg-[#131B2E]/40 font-inter font-normal`}
         placeholder="Search the archive"
       />
     </form>
