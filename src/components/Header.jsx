@@ -1,33 +1,15 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 
 import { LiaShoppingBagSolid } from "react-icons/lia";
-
-import { setIsSearching, setSearchQuery } from "../redux/features/searchSlice";
 
 import HeaderIconButton from "./HeaderIconButton";
 import InputSearch from "./InputSearch";
 import HeaderUserIcon from "./HeaderUserIcon";
 
 const Header = () => {
-  const [inputValue, setInputValue] = useState("");
   const { cartItems } = useSelector((state) => state.carts);
-  const { watchlistItems } = useSelector((state) => state.watchlists);
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (inputValue.trim()) {
-      dispatch(setSearchQuery(inputValue));
-      dispatch(setIsSearching(true));
-      navigate(`search?q=${encodeURIComponent(inputValue)}`);
-      setInputValue("");
-    }
-  };
 
   return (
     <nav className="h-18 lg:h-21 dark-transition w-full flex justify-between items-center px-4 md:px-8 lg:px-8 xl:px-12 fixed top-0  z-50 bg-[#f8f9fa]/80 dark:bg-[#0B1326]/70 dark:shadow-[0_40px_64px_-12px_rgba(218,226,253,0.06)]  backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.05)]">
