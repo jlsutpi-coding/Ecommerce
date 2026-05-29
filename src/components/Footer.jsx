@@ -14,10 +14,10 @@ const Footer = () => {
   return (
     <div className=" flex-col lg:flex-row flex items-center justify-center lg:justify-between dark-transition py-6 md:py-12 lg:py-16 px-4 md:px-8 lg:px-12 bg-[#F3F4F5] dark:bg-[#060E20] ">
       <div className="text-center lg:text-start ">
-        <h4 className="font-bold text-[18px] leading-7 dark-transition font-manrope text-[#191C1D] dark:text-[#DAE2FD]">
+        <h4 className="font-bold text-lg leading-7 dark-transition font-manrope text-[#191C1D] dark:text-[#DAE2FD]">
           Indigo
         </h4>
-        <span className="font-inter font-normal text-xs lg:text-[14px] leading-5 tracking-[0.34px] dark-transition text-[#191C1D]/50 dark:text-[#C7C4D8]">
+        <span className="font-inter font-normal text-xs lg:text-sm leading-5 tracking-[0.34px] dark-transition text-[#191C1D]/50 dark:text-[#C7C4D8]">
           Curating the intersection of utility and <br /> beauty <br /> for the
           modern aesthetic.
         </span>
@@ -30,7 +30,7 @@ const Footer = () => {
               to={item.path}
               className="hover:underline underline-offset-5 decoration-1 dark-transition decoration-[#191C1D]/50 dark:decoration-[#C7C4D8]/50"
             >
-              <li className="font-inter font-normal text-[12px] lg:text-[14px] leading-5 tracking-[0.35px] text-[#191C1D]/50 dark-transition dark:text-[#C7C4D8]">
+              <li className="font-inter font-normal text-xs lg:text-sm leading-5 tracking-[0.35px] text-[#191C1D]/50 dark-transition dark:text-[#C7C4D8]">
                 {item.name}
               </li>
             </Link>
@@ -47,7 +47,7 @@ const Footer = () => {
           </button>
         </div>
         <div>
-          <span className="font-inter font-normal text-[12px] lg:text-[14px] leading-5 tracking-[0.35px] dark-transition text-[#191C1D]/50 dark:text-[#C0C1FF]">
+          <span className="font-inter font-normal text-xs lg:text-sm leading-5 tracking-[0.35px] dark-transition text-[#191C1D]/50 dark:text-[#C0C1FF]">
             &copy; 2024 Indigo Archive. All rights reserved.
           </span>
         </div>

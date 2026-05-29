@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+
+import { Link } from "react-router";
 
 import { FaRegUserCircle } from "react-icons/fa";
-
-import HeaderIconButton from "./HeaderIconButton";
-import { Link } from "react-router";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { FiLogOut } from "react-icons/fi";
-
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
+
+import HeaderIconButton from "./HeaderIconButton";
 import { ThemeContext } from "../context/ThemeContext";
 
 const HeaderUserIcon = () => {
@@ -47,10 +47,10 @@ const HeaderUserIcon = () => {
   };
 
   const iconBtnClass =
-    "w-5 h-5  lg:w-7 lg:h-7 group-hover:text-primary dark-transition ";
+    "w-5 h-5  lg:w-7 lg:h-7 group-hover:text-primary dark-transition";
 
   const btnClass =
-    "w-full flex items-center justify-center gap-1 lg:gap-2 text-[12px] lg:text-sm font-bold text-[#454652]  group-hover:text-primary dark-transition py-2.5 lg:py-3.5 dark:text-[#C0C1FF]";
+    "w-full flex items-center justify-center gap-1 lg:gap-2 text-sm lg:text-sm font-bold text-[#454652]  group-hover:text-primary dark-transition py-2.5 lg:py-3.5 dark:text-[#C0C1FF]";
   return (
     <div ref={dropdownRef} className=" relative rounded-lg">
       <HeaderIconButton
@@ -63,17 +63,17 @@ const HeaderUserIcon = () => {
         className={`absolute right-0 w-40 lg:w-50 shadow-lg top-15 dark:bg-gray-800 bg-[#f8f9fa] rounded-lg overflow-hidden transition-all dark-transition transform origin-top-right ${
           isDropdownOpen
             ? "scale-100 opacity-100"
-            : "scale-95 opacity-0 pointer-events-none"
+            : "scale-100 opacity-0 pointer-events-none"
         }`}
       >
-        <ul className=" flex items-center flex-col w-full">
-          <li className=" group flex justify-center border-b   border-gray-300 dark:border-gray-500  w-full  ">
+        <ul className="flex items-center flex-col w-full">
+          <li className="group flex justify-center border-b border-gray-300 dark:border-gray-500 w-full">
             <HeaderIconButton
               link={"/watchlist"}
               btnClass={btnClass}
               icon={
                 <IoMdHeartEmpty
-                  className={`${iconBtnClass} dark:text-[#C0C1FF]  `}
+                  className={`${iconBtnClass} dark:text-[#C0C1FF]`}
                 />
               }
             >
@@ -81,7 +81,7 @@ const HeaderUserIcon = () => {
             </HeaderIconButton>
           </li>
 
-          <li className="flex w-full group justify-center items-center  border-b  border-gray-300 dark:border-gray-500 ">
+          <li className="flex w-full group justify-center items-center  border-b  border-gray-300 dark:border-gray-500">
             <HeaderIconButton
               btnClass={btnClass}
               onBtnClick={onSetTheme}
@@ -98,7 +98,7 @@ const HeaderUserIcon = () => {
               {theme === "dark" ? "Dark Mode" : "Light Mode"}
             </HeaderIconButton>
           </li>
-          <li className=" group w-full   ">
+          <li className="group w-full">
             <HeaderIconButton
               onBtnClick={handleLogout}
               icon={<FiLogOut className={`${iconBtnClass}`} />}

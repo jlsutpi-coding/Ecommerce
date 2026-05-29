@@ -1,5 +1,3 @@
-import React from "react";
-
 import ProductSkeleton from "./ProductSkeleton";
 
 const ProductsSkeleton = ({ page }) => {

@@ -23,10 +23,13 @@ const ProductImage = ({
           }
           aria-pressed={isInWatchlist}
           onClick={onSaveClick}
-          className={`transition-all duration-300  w-5 h-5 lg:w-10 lg:h-10 flex items-center justify-center  rounded-full ${isInWatchlist ? "dark:text-red-500  " : "hover:text-red-500 "} hover:scale-110 dark:bg-red-500/10 bg-red-500/10 dark:text-red-300 text-red-400  cursor-pointer   `}
+          className={`transition-all duration-300  w-5 h-5 lg:w-10 lg:h-10 flex items-center justify-center  rounded-full
+             ${
+               isInWatchlist ? "dark:text-red-500  " : "hover:text-red-500"
+             } hover:scale-110 dark:bg-red-500/10 bg-red-500/10 dark:text-red-300 text-red-400  cursor-pointer`}
         >
           {isInWatchlist ? (
-            <IoMdHeart className="w-4 h-4  lg:w-6 lg:h-6" />
+            <IoMdHeart className="w-4 h-4 lg:w-6 lg:h-6" />
           ) : (
             <IoMdHeartEmpty className="w-4 h-4 lg:w-6 lg:h-6" />
           )}

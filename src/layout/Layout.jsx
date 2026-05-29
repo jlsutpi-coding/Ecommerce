@@ -9,8 +9,9 @@ import { fetchProducts } from "../redux/features/productSlice";
 import ThemeProvider from "./ThemeProvider";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import "../index.css";
 import { PaginationContext } from "../context/PaginationContext";
+
+import "../index.css";
 
 const Layout = () => {
   const { productsStatus, products, limit } = useSelector(

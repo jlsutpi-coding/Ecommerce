@@ -11,9 +11,13 @@ const ActionButtons = () => {
         </BtnPrimary>
       </Link>
       <Link to={"/"}>
-        <button className=" active:scale-[0.98] cursor-pointer  text-primary px-10 py-4 rounded-lg font-inter font-semibold text-[16px] leading-6 border border-[#c5c5d4]/20 hover:bg-[#f3f4f5] ">
+        <BtnPrimary
+          bg_color={"bg-[#C5C5D4]/20"}
+          hover=" hover:bg-[#f3f4f5] dark:hover:bg-slate-800"
+          additional="shadow-lg border border-[#C5C5D4]/20 dark:border-white/10"
+        >
           Browse New Arrivals
-        </button>
+        </BtnPrimary>
       </Link>
     </div>
   );

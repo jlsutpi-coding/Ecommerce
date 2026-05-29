@@ -64,7 +64,7 @@ const CartItem = memo(({ cart, onOpenModal }) => {
             aria-label="Delete item"
             className=" p-1 lg:p-2 text-[#454652] dark:text-[#DAE2FD] bg-[#F3F4F5] dark:bg-[#171F33] dark:border dark:border-[#464555]/20 dark:hover:bg-[#F3F4F5]/20 rounded-full hover:text-[#ba1a1a] dark:hover:text-[#FFB695] dark-transition cursor-pointer"
           >
-            <CgTrash className="text-[20px]" />
+            <CgTrash className="text-xl" />
           </button>
         </div>
         <div className="mt-2 lg:mt-4 flex flex-row lg:gap-4 items-end lg:items-center justify-between lg:justify-start">
