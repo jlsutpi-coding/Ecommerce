@@ -3,7 +3,6 @@ import {
   createSelector,
   createSlice,
 } from "@reduxjs/toolkit";
-import { retry } from "@reduxjs/toolkit/query";
 
 const initialState = {
   products: [],

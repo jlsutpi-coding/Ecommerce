@@ -1,31 +1,36 @@
-import React, { useId, useState } from "react";
+import { useState } from "react";
+
+import { useNavigate, useSearchParams } from "react-router";
+
 import { CiSearch } from "react-icons/ci";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
-import { setIsSearching, setSearchQuery } from "../redux/features/searchSlice";
+import { useEffect } from "react";
 
 const InputSearch = ({ page }) => {
   const [inputValue, setInputValue] = useState("");
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const id = useId();
+  const [searchParam] = useSearchParams();
+  const currentQuery = searchParam.get("q") || "";
 
+  // Synchronizes the input text with the URL bar on load, back/forward navigation, or page refresh
+  useEffect(() => {
+    setInputValue(currentQuery);
+  }, [currentQuery]);
   const onSearchSubmit = (e) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
-    dispatch(setSearchQuery(inputValue));
-    dispatch(setIsSearching(true));
-    navigate(`/search?q=${encodeURIComponent(inputValue)}`);
+    navigate(`/search?q=${encodeURIComponent(inputValue)}`, {
+      state: { timestamp: Date.now() },
+    });
   };
   return (
     <form
-      id={`search-form-${id}`}
+      id={`search-form`}
       name="search-form"
       onSubmit={onSearchSubmit}
       className={` ${page !== "not-found" ? " lg:flex" : ""} group relative  flex items-center transition-all duration-300`}
     >
       <label
-        htmlFor={`search-input-${id}`}
+        htmlFor={`search-input`}
         className=" absolute left-4 text-[#757684] group-focus-within:text-primary cursor-pointer   dark:group-focus-within:text-[#C0C1FF] dark-transition"
       >
         <CiSearch className=" w-3 h-3 lg:w-4 lg:h-4" />
@@ -33,7 +38,7 @@ const InputSearch = ({ page }) => {
 
       <input
         type="text"
-        id={`search-input-${id}`}
+        id={`search-input`}
         name="search-input-name"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}

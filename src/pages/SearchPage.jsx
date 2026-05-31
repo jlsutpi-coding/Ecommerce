@@ -1,50 +1,57 @@
 import { useEffect } from "react";
 
-import { useSearchParams } from "react-router";
+import { useLocation, useSearchParams } from "react-router";
 
 import { useDispatch, useSelector } from "react-redux";
 
+import { clearSearch, fetchSearchProduct } from "../redux/features/searchSlice";
+
 import ProductCard from "../components/ProductCard";
 import CardsSection from "../components/CardsSection";
-import {
-  clearSearch,
-  setIsSearching,
-  setSearchResults,
-} from "../redux/features/searchSlice";
 import Breadcrumb from "../components/Breadcrumb";
 
 const SearchPage = () => {
-  const { products, productsStatus, filteredItems } = useSelector(
-    (state) => state.products,
+  const { searchResults, searchStatus, searchError } = useSelector(
+    (state) => state.search,
   );
-  const { searchResults } = useSelector((state) => state.search);
-
+  console.log(searchStatus);
+  const location = useLocation();
   const [searchParam] = useSearchParams();
 
   const query = searchParam.get("q") || "";
   const dispatch = useDispatch();
-
   useEffect(() => {
     if (query) {
-      // Filtering products based on search query
-      const searchFilteredProducts = products.filter(
-        (product) =>
-          product.title.toLowerCase().includes(query.toLocaleLowerCase()) ||
-          product.description.toLowerCase().includes(query.toLocaleLowerCase()),
-      );
-      dispatch(setSearchResults(searchFilteredProducts));
-      dispatch(setIsSearching(false));
+      dispatch(fetchSearchProduct(query));
     }
+  }, [query, location.state]);
+  console.log(location);
+
+  useEffect(() => {
     return () => {
       dispatch(clearSearch());
     };
-  }, [query, dispatch, products]);
-  if (!searchResults?.length) return <></>;
+  }, []);
 
+  if (searchStatus === "pending") return <>loading...</>;
+
+  if (searchStatus === "rejected") return <>{searchError}</>;
+
+  if (searchStatus === "idle")
+    return <div className="mt-40">Enter a search term</div>;
   return (
     <div className=" mt-40 mx-auto max-w-360 px-8">
       <Breadcrumb />
-      <CardsSection productsToshow={searchResults}></CardsSection>{" "}
+      {searchResults.length > 0 ? (
+        <CardsSection productsToshow={searchResults} />
+      ) : (
+        <div className="text-center mt-20 text-[#757684]">
+          <p className="text-xl font-medium">No results found for "{query}"</p>
+          <p className="text-sm mt-2">
+            Check your spelling or try searching for a different keyword.
+          </p>
+        </div>
+      )}
     </div>
   );
 };
