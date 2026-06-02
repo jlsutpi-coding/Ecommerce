@@ -19,7 +19,7 @@ const RightSection = ({ product }) => {
 
   return (
     <>
-      <div className="col-span-1 md:col-span-3 lg:col-span-5 flex flex-col items-center gap-6 md:gap-8 lg:gap-10 w-full">
+      <div className="col-span-1 md:col-span-3 lg:col-span-5 flex flex-col  gap-6 md:gap-8 lg:gap-10 w-full">
         <ProductHeading
           reviews={reviews}
           title={title}

@@ -4,9 +4,7 @@ import { MdFolderOff } from "react-icons/md";
 const TopSection = () => {
   return (
     <div className=" relative">
-      <div className=" absolute rounded-full -top-12 -left-12 w-24 h-24 opacity-50 bg-[#F3F4F5] ">
-        {" "}
-      </div>
+      <div className=" absolute rounded-full -top-12 -left-12 w-24 h-24 opacity-50 bg-[#F3F4F5] "></div>
       <div className=" w-32 h-32  rounded-xl bg-[#3F51B5]/10 absolute  -bottom-8 -right-20 rotate-12"></div>
       <div>
         <span className="text-[12rem] font-extrabold  leading-64 tracking-[-12.4px] text-[#D9DADB] font-manrope opacity-40">
@@ -28,7 +26,6 @@ const TopSection = () => {
           </div>
         </div>
       </div>
-      <div></div>
     </div>
   );
 };

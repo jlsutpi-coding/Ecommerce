@@ -5,17 +5,18 @@ const LeftSection = ({ thumbnail, images }) => {
     <>
       {/* Left : Image Gallery (Bento style) */}
       <div className=" col-span-1 md:col-span-3 lg:col-span-6 grid grid-cols-6 gap-4">
-        <div className="col-span-6  rounded-xl overflow-hidden bg-surface-container-low">
+        <div className="col-span-6  rounded-xl overflow-hidden">
           <ImageUrl
             imgClasses=""
             src={thumbnail}
+            alt="thumbnaim img"
             containerClasses={"w-full h-full mx-auto object-contain"}
           />
         </div>
         {images?.map((item, index) => (
           <div
             key={index}
-            className="col-span-2 aspect-square rounded-xl overflow-hidden bg-surface-container-low"
+            className="col-span-2 aspect-square rounded-xl overflow-hidden"
           >
             <ImageUrl
               imgClasses=""
