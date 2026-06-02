@@ -39,7 +39,7 @@ const ImageUrl = ({
   return (
     <div className={containerClasses}>
       {isLoading && (
-        <div className="absolute inset-0 flex items-center w-full justify-center bg-gray-200 dark:bg-gray-700 animate-pulse">
+        <div className=" w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-700 animate-pulse">
           <svg
             className="w-10 h-10 lg:w-16 lg:h-16 text-gray-900"
             fill="none"

@@ -14,7 +14,6 @@ const SearchPage = () => {
   const { searchResults, searchStatus, searchError } = useSelector(
     (state) => state.search,
   );
-  console.log(searchStatus);
   const location = useLocation();
   const [searchParam] = useSearchParams();
 
@@ -25,7 +24,6 @@ const SearchPage = () => {
       dispatch(fetchSearchProduct(query));
     }
   }, [query, location.state]);
-  console.log(location);
 
   useEffect(() => {
     return () => {
