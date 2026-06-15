@@ -6,11 +6,13 @@ import {
 
 const initialState = {
   products: [],
+  categories: [],
   productsTotal: 0,
-  filteredItems: [],
   selectedProduct: null,
+  selectedCategory: null,
   limit: 20,
   productsStatus: "idle", // idel | pending | succeeded | failed
+  categoriesStatus: "idle", // idel | pending | succeeded | failed
   detailStatus: "idle", // idel | pending | succeeded | failed
 
   productsError: null,
@@ -51,22 +53,32 @@ export const fetchProductById = createAsyncThunk(
   },
 );
 
+// fetch categories
+export const fetchcategories = createAsyncThunk(
+  "categories/fetchCategories",
+  async () => {
+    const res = await fetch("/api/products/categories");
+    const data = await res.json();
+    return data;
+  },
+);
+
+// fetch products with category name
+export const fetchProductsByCategory = createAsyncThunk(
+  "categories/fetchProductsByCategory",
+  async (categorySlug) => {
+    const res = await fetch(`/api/products/${categorySlug}`);
+    const data = await res.json();
+    return data?.products || [];
+  },
+);
+
 export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
     clearSelectedProduct: (state) => {
-      state.selectedProduct = null;
-    },
-
-    filterByCategory: (state, { payload }) => {
-      if (!payload) return;
-      state.filteredItems = state.products.filter(
-        (item) => item.category.toLowerCase() === payload.toLowerCase(),
-      );
-    },
-    resetFilterByCategory: (state) => {
-      state.filteredItems = state.products;
+      state.selectedCategory = null;
     },
   },
   extraReducers: (builder) => {
@@ -77,10 +89,7 @@ export const productsSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, { payload }) => {
         state.productsStatus = "succeeded";
         state.products = payload.products;
-        state.filteredItems = payload.products;
         state.productsTotal = payload.total;
-        state.skip = payload.skip;
-        // state.limit = payload.limit;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.productsStatus = "failed";
@@ -96,62 +105,21 @@ export const productsSlice = createSlice({
       .addCase(fetchProductById.rejected, (state, action) => {
         state.detailStatus = "failed";
         state.detailError = action.error.message;
+      })
+      .addCase(fetchcategories.pending, (state) => {
+        state.categoriesStatus = "pending";
+      })
+      .addCase(fetchcategories.fulfilled, (state, { payload }) => {
+        state.categoriesStatus = "succecced";
+        state.categories = payload ? payload : [];
+      })
+      .addCase(fetchcategories.rejected, (state) => {
+        state.categoriesStatus = "rejected";
       });
   },
 });
 
 const selectAllProducts = (state) => state.products.products;
-
-export const selectCategoriesWithCounts = createSelector(
-  [selectAllProducts],
-  (products) => {
-    const counts = {};
-
-    products?.forEach((p) => {
-      counts[p.category] = (counts[p.category] || 0) + 1;
-    });
-    return Object.keys(counts).map((slug) => ({
-      slug,
-      name: slug
-        .replace(/-/g, " ")
-        .split(" ")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" "),
-      counts: counts[slug],
-    }));
-  },
-);
-
-// get category type
-export const getCategoryType = (state) => {
-  const { filteredItems, products } = state.products;
-  if (!filteredItems?.length) {
-    return null;
-  }
-  const allProductCounts = products?.length || 0;
-  if (filteredItems?.length === allProductCounts) {
-    return "all-products";
-  }
-
-  if (!allProductCounts) {
-    return null;
-  }
-
-  const firstCategory = filteredItems[0].category;
-
-  const allSameCategory = filteredItems.every(
-    (item) => item.category === firstCategory,
-  );
-
-  return allSameCategory ? firstCategory : null;
-};
-
-export const selectTotalProductCount = createSelector(
-  [selectCategoriesWithCounts],
-  (categories) => {
-    return categories.reduce((acc, cat) => cat.counts + acc, 0);
-  },
-);
 
 export default productsSlice.reducer;
 

@@ -4,7 +4,7 @@ import { Outlet, useNavigate } from "react-router";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchProducts } from "../redux/features/productSlice";
+import { fetchcategories, fetchProducts } from "../redux/features/productSlice";
 
 import ThemeProvider from "./ThemeProvider";
 import Header from "../components/Header";
@@ -27,7 +27,11 @@ const Layout = () => {
     if (typeof currentPage === "number" && typeof newSkip === "number") {
       dispatch(fetchProducts({ limit, skip: newSkip }));
     }
-  }, [dispatch, currentPage]);
+  }, [currentPage]);
+
+  useEffect(() => {
+    dispatch(fetchcategories());
+  }, []);
 
   useEffect(() => {
     if (productsStatus === "failed") {
