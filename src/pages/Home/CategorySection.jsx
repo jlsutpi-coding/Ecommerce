@@ -1,12 +1,33 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import CategorySectionSkeleton from "./CategorySectionSkeleton";
+import {
+  clearSelectedProduct,
+  fetchProductsByCategory,
+  setSelectedCategory,
+} from "../../redux/features/productSlice";
+import {
+  MdOutlineKeyboardArrowDown,
+  MdOutlineKeyboardArrowUp,
+} from "react-icons/md";
 
 const CategorySection = () => {
+  const [showAllCategories, setShowAllCategories] = useState(false);
+
   const dispatch = useDispatch();
-  const { categories, categoriesStatus } = useSelector(
+  const { categories, categoriesStatus, selectedCategory } = useSelector(
     (state) => state.products,
   );
+
+  const onSelectedCategory = (slug) => {
+    dispatch(fetchProductsByCategory(slug));
+    dispatch(setSelectedCategory(slug));
+  };
+
+  const visibleCategories = showAllCategories
+    ? categories
+    : categories.slice(0, 5);
 
   return (
     <div>
@@ -18,53 +39,58 @@ const CategorySection = () => {
             CATEGORIES
           </h2>
           <button
-            // onClick={() => dispatch(resetFilterByCategory())}
+            onClick={() => dispatch(clearSelectedProduct())}
             className="w-full group cursor-pointer flex justify-between items-center mb-2 lg:mb-4"
           >
             <span
-              className={`font-inter text-[#191C1D]/60 dark:text-[#C7C4D8] group-hover:text-primary/90 dark-transition font-semibold text-base leading-6`}
-              //  ${
-              //      isAllActive
-              //        ? "text-primary"
-              //        : "text-[#191C1D]/60 dark:text-[#C7C4D8]"
-              //    }`}
+              className={` ${
+                selectedCategory === null
+                  ? "text-primary"
+                  : "text-[#191C1D]/60 dark:text-[#C7C4D8]"
+              } font-inter group-hover:text-primary/90 dark-transition font-semibold text-base leading-6
+                `}
             >
-              All Object
-            </span>
-            <span
-            // className={`font-inter group-hover:text-primary/90 dark-transition font-semibold text-xs lg:text-sm leading-4
-            //    ${activeCategory === null && "opacity-50"} ${
-            //      activeCategory === "all-products"
-            //        ? "text-primary"
-            //        : "text-[#191C1D]/60 dark:text-[#C7C4D8]"
-            //    }`}
-            >
-              {/* {allProductCounts} */}
+              All Objects
             </span>
           </button>
-          {categories.map((item, index) => {
-            // const isActive = activeCategory === item.slug;
+          {visibleCategories.map((item) => {
+            const isActive = selectedCategory === item.slug;
 
-            if (index < 4) {
-              return (
-                <button
-                  key={item.slug}
-                  onClick={() => {
-                    dispatch(filterByCategory(item.slug));
-                  }}
-                  className="text-[#191C1D]/60 dark:text-[#C7C4D8] group dark-transition  w-full cursor-pointer flex justify-between items-center mb-2 lg:mb-4"
-                  // className={`${isActive ? "text-primary" : "text-[#191C1D]/60 dark:text-[#C7C4D8]"} }
-                >
-                  <span className="group-hover:text-primary/90  text-xs md:text-sm lg:text-base leading-6 font-normal font-inter">
-                    {item.name}
-                  </span>
-                  <span className="font-inter leading-4 group-hover:text-primary/90  text-[10px] lg:text-xs">
-                    {item.counts}
-                  </span>
-                </button>
-              );
-            }
+            return (
+              <button
+                key={item.slug}
+                onClick={() => {
+                  onSelectedCategory(item.slug);
+                }}
+                className={`${isActive ? "text-primary" : "text-[#191C1D]/60 dark:text-[#C7C4D8]"} group dark-transition  w-full cursor-pointer flex justify-between items-center mb-2 lg:mb-4`}
+              >
+                <span className="group-hover:text-primary/90  text-xs md:text-sm lg:text-base leading-6 font-normal font-inter">
+                  {item.name}
+                </span>
+                <span className="font-inter leading-4 group-hover:text-primary/90  text-[10px] lg:text-xs">
+                  {item.counts}
+                </span>
+              </button>
+            );
           })}
+          <button
+            onClick={() => {
+              setShowAllCategories(!showAllCategories);
+            }}
+            className=" my-4 text-xs font-bold uppercase tracking-widest text-primary/60 hover:text-primary transition-colors flex items-center gap-1 group"
+          >
+            {showAllCategories ? (
+              <>
+                <span>Show less </span>
+                <MdOutlineKeyboardArrowUp className=" text-sm transition-transform group-hover:translate-y-0.5" />
+              </>
+            ) : (
+              <>
+                <span>Show all categories</span>
+                <MdOutlineKeyboardArrowDown className=" text-sm transition-transform group-hover:translate-y-0.5" />
+              </>
+            )}
+          </button>
         </div>
       )}
     </div>

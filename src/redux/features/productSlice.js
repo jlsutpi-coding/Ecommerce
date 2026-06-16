@@ -1,22 +1,21 @@
-import {
-  createAsyncThunk,
-  createSelector,
-  createSlice,
-} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   products: [],
   categories: [],
+  selectedCategoryProducts: [],
   productsTotal: 0,
   selectedProduct: null,
   selectedCategory: null,
   limit: 20,
-  productsStatus: "idle", // idel | pending | succeeded | failed
-  categoriesStatus: "idle", // idel | pending | succeeded | failed
-  detailStatus: "idle", // idel | pending | succeeded | failed
+  productsStatus: "idle", // idle | pending | succeeded | failed
+  categoriesStatus: "idle", // idle | pending | succeeded | failed
+  detailStatus: "idle", // idle | pending | succeeded | failed
+  selectedCategoryStatus: "idle", // idle | pending | succeeded | failed
 
   productsError: null,
   detailError: null,
+  categoriesError: null,
 };
 
 const delay = (delayTime) =>
@@ -66,10 +65,27 @@ export const fetchcategories = createAsyncThunk(
 // fetch products with category name
 export const fetchProductsByCategory = createAsyncThunk(
   "categories/fetchProductsByCategory",
-  async (categorySlug) => {
-    const res = await fetch(`/api/products/${categorySlug}`);
+  async (categorySlug, { signal }) => {
+    const res = await fetch(`/api/products/category/${categorySlug}`, {
+      signal,
+    });
     const data = await res.json();
     return data?.products || [];
+  },
+  {
+    // condition runs BEFORE the payload creator executes
+    condition: (categorySlug, { getState }) => {
+      const { selectedCategory, selectedCategoryProducts } =
+        getState().products;
+
+      // If the user clicks the already active category, cancel the execution
+      if (
+        selectedCategory === categorySlug &&
+        selectedCategoryProducts.length > 0
+      ) {
+        return false;
+      }
+    },
   },
 );
 
@@ -77,8 +93,12 @@ export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+    setSelectedCategory: (state, { payload }) => {
+      state.selectedCategory = payload;
+    },
     clearSelectedProduct: (state) => {
       state.selectedCategory = null;
+      state.selectedCategoryProducts = [];
     },
   },
   extraReducers: (builder) => {
@@ -110,11 +130,19 @@ export const productsSlice = createSlice({
         state.categoriesStatus = "pending";
       })
       .addCase(fetchcategories.fulfilled, (state, { payload }) => {
-        state.categoriesStatus = "succecced";
-        state.categories = payload ? payload : [];
+        state.categoriesStatus = "succeeded";
+        state.categories = payload.length ? payload : [];
       })
-      .addCase(fetchcategories.rejected, (state) => {
-        state.categoriesStatus = "rejected";
+      .addCase(fetchcategories.rejected, (state, action) => {
+        state.categoriesStatus = "failed";
+        state.categoriesError = action.error.message;
+      })
+      .addCase(fetchProductsByCategory.pending, (state) => {
+        state.selectedCategoryStatus = "pending";
+      })
+      .addCase(fetchProductsByCategory.fulfilled, (state, { payload }) => {
+        state.selectedCategoryStatus = "succeeded";
+        state.selectedCategoryProducts = payload;
       });
   },
 });
@@ -123,5 +151,5 @@ const selectAllProducts = (state) => state.products.products;
 
 export default productsSlice.reducer;
 
-export const { clearSelectedProduct, filterByCategory, resetFilterByCategory } =
+export const { clearSelectedProduct, setSelectedCategory } =
   productsSlice.actions;
