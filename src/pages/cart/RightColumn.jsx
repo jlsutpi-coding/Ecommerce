@@ -5,9 +5,10 @@ import { FaArrowRight } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
 import BtnPrimary from "../../components/BtnPrimary";
+import { Link } from "react-router";
 
 const RightColumn = memo(() => {
-  const carts = useSelector((state) => state.carts);
+  const cart = useSelector((state) => state.cart);
 
   const sameKeyClass =
     "font-normal text-sm lg:text-base leading-6 font-inter text-[#454652] dark-transition dark:text-[#C7C4D8]";
@@ -15,9 +16,10 @@ const RightColumn = memo(() => {
   const sameValueClass =
     "font-inter font-semibold text-sm lg:text-base dark-transition leading-6";
 
-  if (!carts) {
+  if (!cart) {
     return <>Loading order summary</>;
   }
+  const { totalAmount, totalDiscount, totalDiscountedPrice } = cart;
   return (
     <div className="col-span-full  lg:col-span-4 bg-[#F3F4F5] dark-transition dark:bg-[#131B2E] rounded-xl p-6 lg:p-8">
       <div className="flex flex-col gap-6 lg:gap-8">
@@ -31,7 +33,7 @@ const RightColumn = memo(() => {
               <p
                 className={`${sameValueClass} dark:text-[#DAE2FD] text-[#191C1D]`}
               >
-                ${carts?.totalAmount}
+                ${totalAmount}
               </p>
             </div>
             <div className="flex justify-between items-center">
@@ -43,13 +45,13 @@ const RightColumn = memo(() => {
               </p>
             </div>
 
-            {carts?.totalDiscount > 0 && (
+            {totalDiscount > 0 && (
               <div className="flex justify-between items-center">
                 <p className={sameKeyClass}>Discounts Applied</p>
                 <p
                   className={`${sameValueClass} dark:text-[#FFB695] text-[#2E7D32]`}
                 >
-                  -${carts?.totalDiscount}
+                  -${totalDiscount}
                 </p>
               </div>
             )}
@@ -59,7 +61,7 @@ const RightColumn = memo(() => {
                 Total
               </p>
               <p className="text-xl lg:text-2xl text-primary dark-transition dark:text-[#DAE2FD] font-semibold font-inter leading-8">
-                ${carts.totalDiscountedPrice}
+                ${totalDiscountedPrice}
               </p>
             </div>
           </div>
@@ -83,12 +85,14 @@ const RightColumn = memo(() => {
           </div>
         </div>
         <div>
-          <BtnPrimary aditionnal={"grow"}>
-            <span className="font-manrope text-base lg:text-lg leading-7 font-bold">
-              Proceed Checkout
-            </span>
-            <FaArrowRight />
-          </BtnPrimary>
+          <Link to={"/checkout"}>
+            <BtnPrimary aditionnal={"grow"}>
+              <span className="font-manrope text-base lg:text-lg leading-7 font-bold">
+                Proceed Checkout
+              </span>
+              <FaArrowRight />
+            </BtnPrimary>
+          </Link>
         </div>
       </div>
     </div>

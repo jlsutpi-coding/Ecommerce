@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
 
 const LeftColumn = ({ onOpenModal }) => {
-  const { cartItems } = useSelector((state) => state.carts);
+  const { cartItems } = useSelector((state) => state.cart);
   return (
     <div className="col-span-full  lg:col-span-8  space-y-4 md:space-y-6 lg:space-y-8">
       {cartItems?.map((cart) => {
