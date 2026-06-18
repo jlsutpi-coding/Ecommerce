@@ -7,6 +7,8 @@ const CategorySectionSkeleton = () => {
       <div className=" w-full h-4 mb-3 lg:mb-4  bg-[#191C1D]/60 rounded-full  dark:bg-[#C7C4D8]"></div>
       <div className=" w-full h-4 mb-3 lg:mb-4  bg-[#191C1D]/60 rounded-full  dark:bg-[#C7C4D8]"></div>
       <div className=" w-full h-4 mb-3 lg:mb-4  bg-[#191C1D]/60 rounded-full  dark:bg-[#C7C4D8]"></div>
+      <div className=" w-full h-4 mb-3 lg:mb-4  bg-[#191C1D]/60 rounded-full  dark:bg-[#C7C4D8]"></div>
+      <div className=" w-full h-4 mb-3 lg:mb-4  bg-[#191C1D]/60 rounded-full  dark:bg-[#C7C4D8]"></div>
     </div>
   );
 };

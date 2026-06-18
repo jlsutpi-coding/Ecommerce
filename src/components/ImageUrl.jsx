@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 const ImageUrl = ({
   src,
-  page,
   alt = "product image",
   containerClasses,
   imgClasses = "hover:scale-105 transition-transform",
