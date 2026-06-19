@@ -1,5 +1,7 @@
 import { Link } from "react-router";
 
+import toast from "react-hot-toast";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import { LiaShoppingBagSolid } from "react-icons/lia";
@@ -14,6 +16,7 @@ import {
 import BtnPrimary from "./BtnPrimary";
 import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
+import { truncateText } from "../utils/textUtils";
 
 const ProductCard = ({ product }) => {
   const { category, title, id, thumbnail, discountPercentage } = product;
@@ -28,23 +31,26 @@ const ProductCard = ({ product }) => {
     e.stopPropagation();
     if (isInWatchlist) {
       dispatch(removeFromWatchlist(id));
+      toast.success(`Removed from watchlist`, { icon: "💔" });
     } else {
       dispatch(addToWatchlist(product));
+      toast.success(`Added to watchlist`, { icon: "❤️" });
     }
   };
 
-  const hanldeAddToCart = (e) => {
+  const handleAddToCart = (e) => {
     e.preventDefault();
     e.stopPropagation();
     if (product) {
       dispatch(addToCart(product));
+      toast.success(`${truncateText(title, 12)} added to cart`, { icon: "🛒" });
     }
   };
 
   return (
     <Link to={`/products/${id}`} className="w-full block h-full   col-span-1 ">
       <div className=" w-full flex flex-col gap-1 md:gap-2 lg:gap-5  rounded-lg  relative ">
-        <div className=" w-full group ">
+        <div className=" w-full group">
           <ProductImage
             thumbnail={thumbnail}
             onSaveClick={onSaveClick}
@@ -53,7 +59,7 @@ const ProductCard = ({ product }) => {
           />
           <ProductInfo category={category} product={product} title={title} />
         </div>
-        <BtnPrimary onBtnClick={hanldeAddToCart} additional={" w-full"}>
+        <BtnPrimary onBtnClick={handleAddToCart} additional={" w-full"}>
           <LiaShoppingBagSolid className=" w-4 h-4  lg:w-5 lg:h-5" />
 
           <span>Add to Cart</span>

@@ -12,6 +12,7 @@ import Footer from "../components/Footer";
 import { PaginationContext } from "../context/PaginationContext";
 
 import "../index.css";
+import { Toaster } from "react-hot-toast";
 
 const Layout = () => {
   const { productsStatus, products, limit } = useSelector(
@@ -53,6 +54,14 @@ const Layout = () => {
             <Outlet />
           </main>
           <Footer />
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              success: {
+                duration: 3000,
+              },
+            }}
+          />
         </div>
       </PaginationContext.Provider>
     </ThemeProvider>
