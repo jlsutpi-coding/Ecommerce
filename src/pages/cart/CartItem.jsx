@@ -39,8 +39,8 @@ const CartItem = memo(({ cart, onOpenModal }) => {
   };
 
   return (
-    <div className="flex md:gap-6 lg:gap-8 bg-white dark:bg-[#171F33] dark-transition rounded-xl shadow-sm p-3 md:p-4 lg:p-6">
-      <Link to={`/products/${id}`} className="shrink-0 w-50">
+    <div className="flex gap-2 md:gap-6 lg:gap-8 bg-white dark:bg-[#171F33] dark-transition rounded-xl shadow-sm p-3 md:p-4 lg:p-6">
+      <Link to={`/products/${id}`} className="shrink-0 w-30 lg:w-50">
         <ImageUrl
           src={thumbnail}
           alt={title}

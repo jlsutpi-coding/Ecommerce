@@ -3,11 +3,18 @@ import { useDispatch } from "react-redux";
 
 import BtnPrimary from "../../components/BtnPrimary";
 import { deleteFromCart } from "../../redux/features/cartSlice";
+import toast from "react-hot-toast";
 
 const DeleteModal = ({ openModal, setOpenModal, targetId }) => {
   const dispatch = useDispatch();
 
   if (!openModal) return null;
+
+  const onDeleteClick = () => {
+    dispatch(deleteFromCart(targetId));
+    toast.success("Deleted from cart", { icon: "🧹" });
+    setOpenModal(false);
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center w-full h-screen bg-gray-900/60 backdrop-blur-sm p-5 md:p-0">
@@ -30,10 +37,7 @@ const DeleteModal = ({ openModal, setOpenModal, targetId }) => {
           <BtnPrimary
             bg_color={"bg-red-500"}
             aditionnal={"grow"}
-            onBtnClick={() => {
-              dispatch(deleteFromCart(targetId));
-              setOpenModal(false);
-            }}
+            onBtnClick={onDeleteClick}
           >
             delete
           </BtnPrimary>

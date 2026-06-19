@@ -16,12 +16,12 @@ const CheckoutCard = ({ cart }) => {
   } = cart;
 
   return (
-    <div className="flex md:gap-6 lg:gap-8 dark-transition shadow-sm p-3 md:p-4 lg:p-6">
-      <Link to={`/products/${id}`} className="shrink-0">
+    <div className="flex gap-2 md:gap-6 lg:gap-8 dark-transition shadow-sm p-3 md:p-4 lg:p-6">
+      <Link to={`/products/${id}`} className="shrink-0  ">
         <ImageUrl
           src={thumbnail}
           alt={title}
-          containerClasses="w-40 rounded-lg relative h-35 overflow-hidden"
+          containerClasses="w-30 lg:w-50 rounded-lg relative h-35 overflow-hidden"
         />
       </Link>
 

@@ -147,8 +147,6 @@ export const productsSlice = createSlice({
   },
 });
 
-const selectAllProducts = (state) => state.products.products;
-
 export default productsSlice.reducer;
 
 export const { clearSelectedProduct, setSelectedCategory } =

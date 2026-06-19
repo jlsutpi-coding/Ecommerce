@@ -1,6 +1,7 @@
 import React from "react";
 
 import ProductPricing from "./ProductPricing";
+import { truncateText } from "../utils/textUtils";
 
 const ProductInfo = ({ category, title, product }) => {
   return (
@@ -10,7 +11,7 @@ const ProductInfo = ({ category, title, product }) => {
       </span>
 
       <h2 className=" font-bold text-sm lg:text-lg leading-6 lg:leading-7 text-[#191C1D] dark:text-[#DAE2FD] dark-transition tracking-normal">
-        {title?.length > 20 ? title.substring(0, 20) + "..." : title}
+        {truncateText(title)}
       </h2>
       <ProductPricing product={product} page={"home"} />
     </div>

@@ -6,23 +6,29 @@ import { addToCart } from "../../redux/features/cartSlice";
 import BtnPrimary from "../../components/BtnPrimary";
 import TitleSection from "../../components/TitleSection";
 import { Link } from "react-router";
+import toast from "react-hot-toast";
 
 const WatchlistHeader = ({ watchlistItems }) => {
   const dispatch = useDispatch();
+
   const onDeleteAllFromWatchlist = () => {
     dispatch(deleteAllFromWatchlist());
+    toast.success("Watchlist cleared", { icon: "🧹" });
   };
 
   const onMoveToAllCart = (watchlistItems) => {
     watchlistItems.forEach((item) => {
       dispatch(addToCart(item));
     });
+    dispatch(deleteAllFromWatchlist());
+    toast.success("All items moved to cart", { icon: "❤️→🛒" });
   };
+
   if (watchlistItems?.length === 0) {
     return (
       <div className="text-center py-20">
         <p className="text-gray-500 text-3xl">Your watchlist is empty</p>
-        <Link to="/products" className="text-primary hover:underline">
+        <Link to="/" className="text-primary hover:underline">
           Start exploring products
         </Link>
       </div>
