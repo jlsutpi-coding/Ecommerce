@@ -27,12 +27,17 @@ const ShippingPayment = () => {
       cvc: "",
     });
   };
-  const inputClasses =
-    "py-4 text-base duration-300 border-none focus:ring-1 dark:focus:ring-[#C0C1FF] transition-all outline-none placeholder:text-[#757684]/60 dark:text-[#dae2fd]  dark:placeholder:text-[#918fa1] rounded-lg focus:ring-primary bg-[#e1e3e4] dark:bg-[#131B2E] focus:bg-white dark:focus:bg-[#131B2E]/40 font-inter font-normal";
+
+  const inputClasses = `py-4 text-base duration-300 border-none focus:ring-1 dark:focus:ring-[#C0C1FF]
+ dark:text-[#6B7280] dark:bg-[#171F33] focus:outline-none bg-[#E1E3E4]
+   transition-all outline-none placeholder:text-[#757684]/60  dark:placeholder:text-[#918fa1]
+    rounded-lg focus:ring-primary focus:bg-white dark:focus:bg-[#131B2E]/40 font-inter font-normal`;
+
+  const labelClasses = `font-inter text-xs dark:text-[#c7c4d8] dark-transition uppercase tracking-widest  pl-1`;
   return (
-    <section className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+    <section>
       <div className="flex items-baseline justify-between mb-8">
-        <h2 className="font-manrope dark:text-[#DAE2FD] text-[#191C1D] text-2xl font-bold tracking-tight">
+        <h2 className="font-manrope dark-transition dark:text-[#DAE2FD] text-[#191C1D] text-2xl font-bold tracking-tight">
           Shipping &amp; Payment
         </h2>
       </div>
@@ -45,10 +50,7 @@ const ShippingPayment = () => {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col gap-2">
-            <label
-              htmlFor="fullname"
-              className="font-label text-xs uppercase tracking-widest text-on-surface-variant pl-1"
-            >
+            <label htmlFor="fullname" className={`${labelClasses}`}>
               Full Name
             </label>
             <input
@@ -62,10 +64,7 @@ const ShippingPayment = () => {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <label
-              htmlFor="email"
-              className="font-label text-xs uppercase tracking-widest text-on-surface-variant pl-1"
-            >
+            <label htmlFor="email" className={`${labelClasses}`}>
               Email Address
             </label>
             <input
@@ -79,10 +78,7 @@ const ShippingPayment = () => {
             />
           </div>
           <div className="flex flex-col gap-2 md:col-span-2">
-            <label
-              htmlFor="shippingAddress"
-              className="font-label text-xs uppercase tracking-widest text-on-surface-variant pl-1"
-            >
+            <label htmlFor="shippingAddress" className={`${labelClasses}`}>
               Shipping Address
             </label>
             <input
@@ -98,10 +94,7 @@ const ShippingPayment = () => {
         </div>
         <div className="  p-4 lg:p-6 bg-[#f3f4f5] dark:bg-[#131B2E] rounded-xl border dark:border-white/10 border-indigo-50/50">
           <div className="flex flex-col gap-4">
-            <label
-              htmlFor="cardNumber"
-              className="font-label text-xs uppercase tracking-widest text-on-secondary-fixed-variant"
-            >
+            <label htmlFor="cardNumber" className={`${labelClasses}`}>
               Secure Credit Card Transaction
             </label>
             <div className="flex flex-col md:flex-row gap-4">
@@ -113,11 +106,13 @@ const ShippingPayment = () => {
                   className={`${inputClasses} w-full pl-12 pr-4`}
                   placeholder="Card Number"
                   type="text"
+                  inputMode="numeric"
+                  pattern="[0-9\s]*"
                   value={formData.cardNumber}
                   onChange={handleInputChange}
                 />
 
-                <MdCreditCard className="absolute left-4 top-1/2 -translate-y-1/2 text-[#c7c4d8]" />
+                <MdCreditCard className="absolute dark:text-[#c7c4d8]  left-4 top-1/2 -translate-y-1/2 text-[#c7c4d8]" />
               </div>
               <div className="flex gap-4">
                 <input
@@ -142,7 +137,7 @@ const ShippingPayment = () => {
                 />
               </div>
             </div>
-            <p className="text-xs text-on-surface-variant uppercase tracking-tighter opacity-60 flex items-center gap-1">
+            <p className="text-xs dark:text-[#c7c4d8]  uppercase tracking-tighter opacity-60 flex items-center gap-1">
               <MdLockOutline />
               Encrypted and processed via Nocturnal Secure-Vault.
             </p>
@@ -153,9 +148,9 @@ const ShippingPayment = () => {
             type="submit"
             className="w-full py-6 rounded-full bg-primary text-white font-manrope font-extrabold text-lg uppercase tracking-widest shadow-xl hover:shadow-primary/20 hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 relative overflow-hidden group"
           >
-            <span>Place Order</span>
+            Place Order
           </button>
-          <p className="text-center mt-6 text-label-md  opacity-50 uppercase tracking-widest">
+          <p className="text-center mt-6 text-label-md dark:text-[#c7c4d8]   opacity-50 uppercase tracking-widest">
             By placing this order, you agree to our Archive Terms.
           </p>
         </div>

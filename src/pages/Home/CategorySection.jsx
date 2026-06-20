@@ -40,13 +40,13 @@ const CategorySection = () => {
           </h2>
           <button
             onClick={() => dispatch(clearSelectedProduct())}
-            className="w-full group cursor-pointer flex justify-between items-center mb-2 lg:mb-4"
+            className="w-fit group cursor-pointer flex justify-between items-center mb-2 lg:mb-4"
           >
             <span
               className={` ${
                 selectedCategory === null
                   ? "text-primary"
-                  : "text-[#191C1D]/60 dark:text-[#C7C4D8]"
+                  : "text-[#191C1D]/60 dark:text-[#C7C4D8]/60"
               } font-inter group-hover:text-primary/90 dark-transition font-semibold text-base leading-6
                 `}
             >
@@ -62,7 +62,7 @@ const CategorySection = () => {
                 onClick={() => {
                   onSelectedCategory(item.slug);
                 }}
-                className={`${isActive ? "text-primary" : "text-[#191C1D]/60 dark:text-[#C7C4D8]"} group dark-transition  w-full cursor-pointer flex justify-between items-center mb-2 lg:mb-4`}
+                className={`${isActive ? "text-primary" : "text-[#191C1D]/60 dark:text-[#C7C4D8]/60"} group dark-transition  w-fit cursor-pointer flex justify-between items-center mb-2 lg:mb-4`}
               >
                 <span className="group-hover:text-primary/90  text-xs md:text-sm lg:text-base leading-6 font-normal font-inter">
                   {item.name}
