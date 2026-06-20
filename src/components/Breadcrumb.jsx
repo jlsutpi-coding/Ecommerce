@@ -11,6 +11,7 @@ const Breadcrumb = () => {
     products: "Products",
     search: "Search",
   };
+  const unclickableRoutes = ["products"];
   const textClasses =
     "text-[#191C1D]/60 dark:text-[#C7C4D8]/60 font-inter text-[10px] md:text-xs lg:text-sm leading-3.75 tracking-[2px]";
 
@@ -25,7 +26,12 @@ const Breadcrumb = () => {
 
         {pathnames.map((name, index) => {
           const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
+
           const isLast = index === pathnames.length - 1;
+
+          // Check if this specific path slice should be unclickable
+          const isUnclickable = unclickableRoutes.includes(name);
+
           const displayName =
             routeNames[name] || name.charAt(0).toUpperCase() + name.slice(1);
 
@@ -35,7 +41,7 @@ const Breadcrumb = () => {
                 className=" w-2 h-2 text-[#191C1D]/60 dark:text-[#C7C4D8]/60"
                 aria-hidden="true"
               />
-              {isLast ? (
+              {isLast || isUnclickable ? (
                 <span className={`${textClasses}`} aria-current="page">
                   {displayName}
                 </span>
