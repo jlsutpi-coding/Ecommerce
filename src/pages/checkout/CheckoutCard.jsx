@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-import PriceDisplay from "../cart/PriceDisplay";
+import PriceDisplay from "../../components/PriceDisplay";
 import ImageUrl from "../../components/ImageUrl";
 
 const CheckoutCard = ({ cart }) => {
@@ -16,7 +16,7 @@ const CheckoutCard = ({ cart }) => {
   } = cart;
 
   return (
-    <div className="flex gap-2 md:gap-6 lg:gap-8 dark-transition shadow-sm p-3 md:p-4 lg:p-6">
+    <div className="flex m-0.5 gap-2 md:gap-6 lg:gap-8  dark-transition  dark:bg-[#131b2e] shadow-sm p-3 md:p-4 lg:p-6">
       <Link to={`/products/${id}`} className="shrink-0  ">
         <ImageUrl
           src={thumbnail}

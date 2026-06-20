@@ -10,7 +10,7 @@ import { IoMdAdd, IoMdRemove } from "react-icons/io";
 import { addQuantity, subtractQuantity } from "../../redux/features/cartSlice";
 
 import ImageUrl from "../../components/ImageUrl";
-import PriceDisplay from "./PriceDisplay";
+import PriceDisplay from "../../components/PriceDisplay";
 
 const CartItem = memo(({ cart, onOpenModal }) => {
   const {
