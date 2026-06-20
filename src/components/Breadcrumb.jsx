@@ -12,7 +12,7 @@ const Breadcrumb = () => {
     search: "Search",
   };
   const textClasses =
-    "text-[#454652] font-inter text-[10px] md:text-xs lg:text-sm leading-3.75 tracking-[2px]";
+    "text-[#191C1D]/60 dark:text-[#C7C4D8]/60 font-inter text-[10px] md:text-xs lg:text-sm leading-3.75 tracking-[2px]";
 
   return (
     <nav className=" text-sm mb-4 lg:mb-8" aria-label="Breadcrumb">
@@ -31,7 +31,10 @@ const Breadcrumb = () => {
 
           return (
             <li className="flex items-center gap-2 lg:gap-4" key={routeTo}>
-              <MdArrowForwardIos className=" w-2 h-2" aria-hidden="true" />
+              <MdArrowForwardIos
+                className=" w-2 h-2 text-[#191C1D]/60 dark:text-[#C7C4D8]/60"
+                aria-hidden="true"
+              />
               {isLast ? (
                 <span className={`${textClasses}`} aria-current="page">
                   {displayName}
