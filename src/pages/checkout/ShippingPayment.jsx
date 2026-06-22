@@ -1,8 +1,21 @@
-import React from "react";
 import { useState } from "react";
+
+import toast from "react-hot-toast";
+
+import { useDispatch } from "react-redux";
+
+import { useNavigate } from "react-router";
+
 import { MdCreditCard, MdLockOutline } from "react-icons/md";
 
-const ShippingPayment = () => {
+import { clearCart } from "../../redux/features/cartSlice";
+
+const ShippingPayment = ({
+  cartItems,
+  totalAmount,
+  totalDiscount,
+  totalDiscountedPrice,
+}) => {
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
@@ -12,12 +25,55 @@ const ShippingPayment = () => {
     cvc: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
+
   const handleSubmit = () => {
-    console.log("form data", formData);
+    if (isSubmitting) return;
+
+    if (!formData.fullname || !formData.email || !formData.shippingAddress) {
+      toast.warn("Please fill in all required fields.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const orderId = `${Date.now()}`;
+
+    const orderData = {
+      fullname: formData.fullname,
+      email: formData.email,
+      shippingAddress: formData.shippingAddress,
+      cardNumber: formData.cardNumber,
+      expiry: formData.expiry,
+      cvc: formData.cvc,
+      cartItems,
+      totalAmount,
+      totalDiscount,
+      totalDiscountedPrice,
+      orderId,
+    };
+
+    localStorage.setItem("orderDetail", JSON.stringify(orderData));
+    toast.success("Order placed successfully!", {
+      icon: "🎉",
+      autoClose: 3000,
+    });
+
+    navigate("/order-success", {
+      state: {
+        orderData,
+      },
+    });
+
+    dispatch(clearCart());
     setFormData({
       fullname: "",
       email: "",
@@ -26,6 +82,8 @@ const ShippingPayment = () => {
       expiry: "",
       cvc: "",
     });
+
+    setIsSubmitting(false);
   };
 
   const inputClasses = `py-4 text-base duration-300 border-none focus:ring-1 dark:focus:ring-[#C0C1FF]
