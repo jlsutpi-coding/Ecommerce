@@ -1,9 +1,9 @@
 import { Link } from "react-router";
 
-import PriceDisplay from "../../components/PriceDisplay";
-import ImageUrl from "../../components/ImageUrl";
+import PriceDisplay from "./PriceDisplay";
+import ImageUrl from "./ImageUrl";
 
-const CheckoutCard = ({ cart }) => {
+const OrderSummaryCard = ({ cart }) => {
   const {
     id,
     title,
@@ -50,4 +50,4 @@ const CheckoutCard = ({ cart }) => {
   );
 };
 
-export default CheckoutCard;
+export default OrderSummaryCard;

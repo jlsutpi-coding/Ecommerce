@@ -8,6 +8,7 @@ import WatchlistPage from "./pages/watchlist/WatchlistPage";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import SearchPage from "./pages/SearchPage";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
+import OrderSuccessPage from "./pages/order-success/OrderSuccessPage";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="watchlist" element={<WatchlistPage />} />
         <Route path="checkout" element={<CheckoutPage />} />
         <Route path="search" element={<SearchPage />} />
+        <Route path="order-success" element={<OrderSuccessPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

@@ -1,5 +1,3 @@
-import { memo } from "react";
-
 import { FaArrowRight } from "react-icons/fa";
 
 import { useSelector } from "react-redux";
@@ -7,7 +5,7 @@ import { useSelector } from "react-redux";
 import BtnPrimary from "../../components/BtnPrimary";
 import { Link } from "react-router";
 
-const RightColumn = memo(() => {
+const RightColumn = () => {
   const cart = useSelector((state) => state.cart);
 
   const sameKeyClass =
@@ -39,7 +37,7 @@ const RightColumn = memo(() => {
             <div className="flex justify-between items-center">
               <p className={sameKeyClass}>Shipping</p>
               <p
-                className={`${sameValueClass} text-[#24389C] dark:text-[#FFB695]`}
+                className={`${sameValueClass} dark:text-[#FFB695] dark-transition text-[#8e4d2a]`}
               >
                 Free
               </p>
@@ -49,7 +47,7 @@ const RightColumn = memo(() => {
               <div className="flex justify-between items-center">
                 <p className={sameKeyClass}>Discounts Applied</p>
                 <p
-                  className={`${sameValueClass} dark:text-[#FFB695] text-[#2E7D32]`}
+                  className={`${sameValueClass} dark:text-[#FFB695] dark-transition text-[#8e4d2a]`}
                 >
                   -${totalDiscount}
                 </p>
@@ -97,6 +95,6 @@ const RightColumn = memo(() => {
       </div>
     </div>
   );
-});
+};
 
 export default RightColumn;

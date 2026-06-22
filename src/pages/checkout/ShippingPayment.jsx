@@ -87,9 +87,9 @@ const ShippingPayment = ({
   };
 
   const inputClasses = `py-4 text-base duration-300 border-none focus:ring-1 dark:focus:ring-[#C0C1FF]
- dark:text-[#6B7280] dark:bg-[#171F33] focus:outline-none bg-[#E1E3E4]
-   transition-all outline-none placeholder:text-[#757684]/60  dark:placeholder:text-[#918fa1]
-    rounded-lg focus:ring-primary focus:bg-white dark:focus:bg-[#131B2E]/40 font-inter font-normal`;
+  dark:text-[#6B7280] dark:bg-[#171F33] focus:outline-none bg-[#E1E3E4]
+    transition-all outline-none placeholder:text-[#757684]/60  dark:placeholder:text-[#918fa1]
+      rounded-lg focus:ring-primary focus:bg-white dark:focus:bg-[#131B2E]/40 font-inter font-normal`;
 
   const labelClasses = `font-inter text-xs dark:text-[#c7c4d8] dark-transition uppercase tracking-widest  pl-1`;
   return (
