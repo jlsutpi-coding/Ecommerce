@@ -10,6 +10,7 @@ const Breadcrumb = () => {
     wishlist: "Wishlist",
     products: "Products",
     search: "Search",
+    "order-success": "Order Success",
   };
   const unclickableRoutes = ["products"];
   const textClasses =
