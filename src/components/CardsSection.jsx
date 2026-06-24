@@ -11,7 +11,7 @@ const CardsSection = ({ productsToshow, page }) => {
 
   const totalPages = Math.ceil(productsTotal / limit);
 
-  if (productsStatus === "pending") {
+  if (page === "home" && productsStatus === "pending") {
     return (
       <div className=" grow">
         <ProductsSkeleton page={page} />
