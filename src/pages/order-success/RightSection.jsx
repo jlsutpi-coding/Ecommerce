@@ -1,5 +1,5 @@
-import React from "react";
 import { Link } from "react-router";
+
 import BtnPrimary from "../../components/BtnPrimary";
 
 const RightSection = ({ fullname, email, shippingAddress }) => {

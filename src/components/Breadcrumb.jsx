@@ -1,5 +1,6 @@
-import { MdArrowForwardIos } from "react-icons/md";
 import { Link, useLocation } from "react-router";
+
+import { MdArrowForwardIos } from "react-icons/md";
 
 const Breadcrumb = () => {
   const location = useLocation();

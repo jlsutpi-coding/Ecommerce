@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import CardsSection from "../../components/CardsSection";
 import CategorySection from "./CategorySection";

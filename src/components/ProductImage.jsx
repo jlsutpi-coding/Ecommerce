@@ -1,5 +1,3 @@
-import React from "react";
-
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 
 import ImageUrl from "./ImageUrl";

@@ -23,13 +23,13 @@ const SearchPage = () => {
     if (query) {
       dispatch(fetchSearchProduct(query));
     }
-  }, [query, location.state]);
+  }, [query, location.state, dispatch]);
 
   useEffect(() => {
     return () => {
       dispatch(clearSearch());
     };
-  }, []);
+  }, [dispatch]);
 
   if (searchStatus === "pending") return <>loading...</>;
 

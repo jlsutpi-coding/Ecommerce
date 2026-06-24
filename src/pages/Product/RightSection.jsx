@@ -7,7 +7,6 @@ import ProductHeading from "./ProductHeading";
 
 const RightSection = ({ product }) => {
   const {
-    id,
     category,
     title,
     rating,

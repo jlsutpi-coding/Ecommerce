@@ -1,4 +1,3 @@
-import React from "react";
 import { IoMdStarOutline } from "react-icons/io";
 import { MdOutlineStar, MdOutlineStarHalf } from "react-icons/md";
 

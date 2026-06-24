@@ -1,5 +1,3 @@
-import React from "react";
-
 import ProductPricing from "./ProductPricing";
 import { truncateText } from "../utils/textUtils";
 

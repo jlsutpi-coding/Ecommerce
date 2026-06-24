@@ -1,5 +1,3 @@
-import React from "react";
-
 const ProductPageSkeleton = () => {
   const skeletonColor =
     "rounded-lg bg-gray-200 dark:bg-gray-600 animate-pulse dark-transition";
