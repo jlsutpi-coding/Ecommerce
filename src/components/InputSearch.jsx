@@ -6,15 +6,18 @@ import { CiSearch } from "react-icons/ci";
 import { useEffect } from "react";
 
 const InputSearch = ({ page }) => {
-  const [inputValue, setInputValue] = useState("");
-  const navigate = useNavigate();
   const [searchParam] = useSearchParams();
   const currentQuery = searchParam.get("q") || "";
 
-  // Synchronizes the input text with the URL bar on load, back/forward navigation, or page refresh
-  useEffect(() => {
+  const [inputValue, setInputValue] = useState(currentQuery);
+  const [prevQuery, setPrevQuery] = useState(currentQuery);
+  const navigate = useNavigate();
+
+  // Inline sync during render
+  if (currentQuery !== prevQuery) {
+    setPrevQuery(currentQuery);
     setInputValue(currentQuery);
-  }, [currentQuery]);
+  }
   const onSearchSubmit = (e) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
