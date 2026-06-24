@@ -9,10 +9,14 @@ export default defineConfig({
     port: 3000,
     proxy: {
       "/api": {
-        target: "https://dummyjson.com/",
+        target: "https://dummyjson.com",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
+  },
+  preview: {
+    port: 3000, // Forces preview mode to use port 3000
+    strictPort: true, // Keeps it from switching ports if 3000 is blocked
   },
 });

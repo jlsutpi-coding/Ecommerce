@@ -1,4 +1,4 @@
-import { useContext, useMemo } from "react";
+import { useContext, useMemo, Fragment } from "react";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
@@ -74,7 +74,7 @@ const ProductPagination = ({ totalPages, productsTotal }) => {
         <IoIosArrowBack className={arrowIconClass} />
       </button>
       {pageNumbers.map((page, index) => (
-        <React.Fragment key={index}>
+        <Fragment key={index}>
           {page === "..." ? (
             <span className="px-2 text-[#191c1d]/20 dark:text-[#DAE2FD]/50">
               ...
@@ -93,7 +93,7 @@ const ProductPagination = ({ totalPages, productsTotal }) => {
               {page}
             </button>
           )}
-        </React.Fragment>
+        </Fragment>
       ))}
       {/* Next button */}
       <button
