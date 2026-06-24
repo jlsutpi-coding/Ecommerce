@@ -8,30 +8,21 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const OrderSuccessPage = () => {
-  const [orderData, setOrderData] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
+  const [orderData, setOrderData] = useState(() => {
+    let data = location.state?.orderData;
+
+    if (data) return data;
+    const stored = localStorage.getItem("orderDetails");
+    return stored ? JSON.parse(stored) : null;
+  });
 
   useEffect(() => {
-    let data = location.state.orderData;
-
-    if (!data) {
-      const stored = localStorage.getItem("orderDetails");
-      if (stored) {
-        data = JSON.parse(stored);
-      }
-    }
-
-    if (data) {
-      setOrderData(data);
-    } else {
+    if (!orderData) {
       navigate("/");
     }
-  }, [location.state]);
-
-  if (!orderData) {
-    return <div>Loading order details…</div>; // or redirect
-  }
+  }, [orderData]);
 
   return (
     <main className=" max-w-screen-2xl pt-22 lg:pt-32  px-4 md:px-6 lg:px-8 xl:px-12 bg-white dark:bg-[#0B1326] dark-transition pb-10 lg:pb-20 mx-auto">
