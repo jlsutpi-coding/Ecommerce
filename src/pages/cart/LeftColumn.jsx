@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+
 import CartItem from "./CartItem";
 
 const LeftColumn = ({ onOpenModal }) => {
@@ -8,6 +9,7 @@ const LeftColumn = ({ onOpenModal }) => {
       {cartItems?.map((cart) => {
         return <CartItem key={cart.id} onOpenModal={onOpenModal} cart={cart} />;
       })}
+      <div className=" text-white">no cart</div>
     </div>
   );
 };
